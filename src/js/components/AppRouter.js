@@ -33,7 +33,12 @@ var AppRouter = Backbone.Router.extend({
         });
     },
     battle: function (id) {
-        characterCollection.fetch();
+        characterCollection.fetch({
+            success: function () {
+                var model = characterCollection.find({ id: parseInt(id) });
+                dispatcher.trigger('app:show', new BattleView());
+            }
+        });
     }
 });
 

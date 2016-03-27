@@ -3,7 +3,8 @@ var CharacterModel = require('./CharacterModel');
 
 var CharacterCollection = Backbone.Collection.extend({
     model: CharacterModel,
-    url: function (apikey, )
-});
+    url: function (input) {
+       return 'https://gateway.marvel.com/v1/public/characters?nameStartsWith=' + input +'&apikey=b28b7b0839633aa9e5ec65ba74293318'
+}
 
 module.exports = new CharacterCollection();

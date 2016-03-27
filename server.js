@@ -15,7 +15,7 @@ var marvelAPI = 'https://gateway.marvel.com/v1/public/characters?nameStartsWith=
 app.listen(3000);
 
 function getMarvelAPI (input, callback) {
-        app.get('https://gateway.marvel.com/v1/public/characters?nameStartsWith=', {
+        $.get('https://gateway.marvel.com/v1/public/characters?nameStartsWith=', {
             nameStartsWith: input,
             apikey: apikey
         }, callback);

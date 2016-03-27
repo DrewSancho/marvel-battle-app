@@ -3,6 +3,7 @@ var _ = require('underscore');
 var $ = require('jquery');
 
 var dispatch = require('./dispatcher');
+var CharacterCollection = require('./CharacterCollection');
 
 var SearchView = Backbone.View.extend({
     className: 'searchView',
@@ -15,13 +16,13 @@ var SearchView = Backbone.View.extend({
         'click .submit': 'search',
         'keydown': 'onKeydown'
     },
-    performSearch: function () {
-        dispatch.trigger('change', this.$el.val());
+    search: function () {
+        CharacterCollection.fetch(this.$el.val());
         $('input').val('');
     },
     onKeydown: function (e) {
         if (e.keyCode === 13) {
-            dispatch.trigger('change', this.$el.val());
+            CharacterCollection.fetch(this.$el.val());
             $('input').val('');
         }
     },
