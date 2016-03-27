@@ -1,27 +1,28 @@
 var Backbone = require('backbone');
 
-var IndexView = require('./IndexView');
-var NewRunPage = require('./NewRunPage');
+var ChararcterListView = require('./ChararcterListView');
 var dispatcher = require('./dispatcher');
 var DetailView = require('./DetailView');
 
 var characterCollection = require('./CharacterCollection');
+var characterView = require('./');
 
 var AppRouter = Backbone.Router.extend({
     routes: {
         '': 'index',
+        'index': 'index',
         'create': 'create',
-        'search': 'search',
+        'character': 'character',
         'detail/:id': 'detail',
         'battle/:id/:id': 'battle'
     },
     index: function () {
         characterCollection.fetch();
-        dispatcher.trigger('app:show', new IndexView({collection: characterCollection}));
+        dispatcher.trigger('app:show', new characterView({collection: characterCollection}));
     },
     search: function () {
         characterCollection.fetch();
-        dispatcher.trigger('app:show', new NewRunPage({collection: characterCollection}));
+        dispatcher.trigger('app:show', new ChararcterListView({collection: characterCollection}));
     },
     detail: function (id) {
         characterCollection.fetch({
@@ -30,6 +31,9 @@ var AppRouter = Backbone.Router.extend({
                 dispatcher.trigger('app:show', new DetailView({ model: model }));
             }
         });
+    },
+    battle: function (id) {
+        characterCollection.fetch();
     }
 });
 

@@ -1,16 +1,14 @@
 var $ = require('jquery');
 var Backbone = require('backbone');
 
-var SearchView = require('./components/SearchView');
-// var AppView = require('./components/AppView');
-// var AppRouter = require('./components/AppRouter');
+var AppView = require('./components/AppView');
+var AppRouter = require('./components/AppRouter');
 
-// var appView = new AppView();
-var searchView = new SearchView();
-// appView.render();
-searchView.render();
-// var router = new AppRouter();
+var appView = new AppView();
+appView.render();
 
-document.body.appendChild(searchView.el);
+var router = new AppRouter();
 
-// Backbone.history.start();
+document.body.appendChild(appView.el);
+
+Backbone.history.start();

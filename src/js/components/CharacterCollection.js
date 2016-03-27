@@ -3,7 +3,7 @@ var CharacterModel = require('./CharacterModel');
 
 var CharacterCollection = Backbone.Collection.extend({
     model: CharacterModel,
-    url: '/api/characters'
+    url: function (apikey, )
 });
 
 module.exports = new CharacterCollection();

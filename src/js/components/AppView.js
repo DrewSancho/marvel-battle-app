@@ -1,41 +1,43 @@
-// var Backbone = require('backbone');
-// var _ = require('underscore');
-// var $ = require('jquery');
+var Backbone = require('backbone');
+var _ = require('underscore');
+var $ = require('jquery');
 
-// var NavView = require('./NavView');
-// var dispatcher = require('./dispatcher');
+var NavView = require('./NavView');
+var dispatcher = require('./dispatcher');
 
-// var AppView = Backbone.View.extend({
-//     clssName: 'app',
+var AppView = Backbone.View.extend({
+    clssName: 'app',
 
-//     template: _.template(`
-//         <div class="navView"></div>
-//         <div class="pageView"></div>
-//         <div class="footerView"></div>
-//     `),
+    template: _.template(`
+        <div class="navView"></div>
+        <div class="pageView"></div>
+        <div class="footerView"></div>
+    `),
 
-//     initialize: function () {
-//         this.navView = new NavView();
-//         this.listenTo(dispatcher, 'app:show', this.show);
-//     },
+    initialize: function () {
+        this.navView = new NavView();
+        this.listenTo(dispatcher, 'app:show', this.show);
+    },
 
-//     render: function () {
-//         this.$el.html(this.template());
-//     },
+    render: function () {
+        this.$el.html(this.template());
+        this.$('.navView').append(this.navView.$el);
+        this.navView.render();
+    },
 
-//     remove: function () {
-//         this.navView.remove();
-//         Backbone.View.prototype.remove.call(this);
-//     },
+    remove: function () {
+        this.navView.remove();
+        Backbone.View.prototype.remove.call(this);
+    },
 
-//     show: function (view) {
-//         if (this.child) {
-//             this.child.remove();
-//         }
-//         view.render();
-//         this.$('pageView').append(view.$el);
-//         this.child = view;
-//     }
-// });
+    show: function (view) {
+        if (this.child) {
+            this.child.remove();
+        }
+        view.render();
+        this.$('.pageView').append(view.$el);
+        this.child = view;
+    }
+});
 
-// module.exports = AppView;
+module.exports = AppView;
