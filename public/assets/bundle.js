@@ -13325,7 +13325,7 @@ var DetailView = require('./DetailView');
 var CharacterModel = require('./CharacterModel');
 var characterCollection = require('./CharacterCollection');
 var CharacterView = require('./CharacterView');
-// var BattleView = require('./BattleView');
+var BattleView = require('./BattleView');
 
 var AppRouter = Backbone.Router.extend({
     routes: {
@@ -13364,19 +13364,26 @@ var AppRouter = Backbone.Router.extend({
                 dispatcher.trigger('app:show', new CharacterListView({collection: characterCollection}));
             }
         });
+    },
+    battle: function (id) {
+        var model = new CharacterModel({ id: id });
+
+        model.fetch({
+            success: function () {
+                dispatcher.trigger('app:show', new BattleView({ model: model }));
+            }
+        });
+        // characterCollection.fetch({
+        //     success: function () {
+        //         var model = characterCollection.find({ id: parseInt(id) });
+        //         dispatcher.trigger('app:show', new BattleView({model: model}));
+        //     }
+        // });
     }
-    // battle: function (id) {
-    //     characterCollection.fetch({
-    //         success: function () {
-    //             var model = characterCollection.find({ id: parseInt(id) });
-    //             dispatcher.trigger('app:show', new BattleView({model: model}));
-    //         }
-    //     });
-    // }
 });
 
 module.exports = AppRouter;
-},{"./CharacterCollection":6,"./CharacterListView":7,"./CharacterModel":8,"./CharacterView":9,"./DetailView":10,"./dispatcher":13,"backbone":1}],5:[function(require,module,exports){
+},{"./BattleView":6,"./CharacterCollection":7,"./CharacterListView":8,"./CharacterModel":9,"./CharacterView":10,"./DetailView":11,"./dispatcher":14,"backbone":1}],5:[function(require,module,exports){
 var Backbone = require('backbone');
 var _ = require('underscore');
 var $ = require('jquery');
@@ -13422,7 +13429,17 @@ var AppView = Backbone.View.extend({
 });
 
 module.exports = AppView;
-},{"./NavView":11,"./dispatcher":13,"backbone":1,"jquery":2,"underscore":3}],6:[function(require,module,exports){
+},{"./NavView":12,"./dispatcher":14,"backbone":1,"jquery":2,"underscore":3}],6:[function(require,module,exports){
+var Backbone = require('backbone');
+var _ = require('underscore');
+var $ = require('jquery');
+
+var BattleView = Backbone.View.extend({
+    template: _.template(`
+        
+    `)
+});
+},{"backbone":1,"jquery":2,"underscore":3}],7:[function(require,module,exports){
 var Backbone = require('backbone');
 var CharacterModel = require('./CharacterModel');
 
@@ -13437,12 +13454,13 @@ var CharacterCollection = Backbone.Collection.extend({
 });
 
 module.exports = new CharacterCollection();
-},{"./CharacterModel":8,"backbone":1}],7:[function(require,module,exports){
+},{"./CharacterModel":9,"backbone":1}],8:[function(require,module,exports){
 var Backbone = require('backbone');
 var _ = require('underscore');
 var $ = require('jquery');
 
 var CharacterView = require('./CharacterView');
+var SearchView = require('./SearchView');
 
 var CharacterListView = Backbone.View.extend({
     className: 'CharacterView',
@@ -13452,6 +13470,7 @@ var CharacterListView = Backbone.View.extend({
         this.render();
         this.listenTo(this.collection, 'sync', this.render);
     },
+
     render: function () {
         var that = this;
 
@@ -13461,11 +13480,18 @@ var CharacterListView = Backbone.View.extend({
             return new CharacterView({ model: model });
         });
 
+        var searchView = new SearchView({ collection: this.collection });
+
+        searchView.render();
+
+        this.children.unshift(searchView);
+
         this.children.forEach(function (view) {
             that.$el.append(view.$el);
             view.render();
         });
     },
+
     removeChildren: function () {
         this.children.forEach(function (view) {
             view.remove();
@@ -13474,7 +13500,7 @@ var CharacterListView = Backbone.View.extend({
 });
 
 module.exports = CharacterListView;
-},{"./CharacterView":9,"backbone":1,"jquery":2,"underscore":3}],8:[function(require,module,exports){
+},{"./CharacterView":10,"./SearchView":13,"backbone":1,"jquery":2,"underscore":3}],9:[function(require,module,exports){
 var Backbone = require('backbone');
 
 var CharacterModel = Backbone.Model.extend({
@@ -13487,7 +13513,7 @@ var CharacterModel = Backbone.Model.extend({
 });
 
 module.exports = CharacterModel;
-},{"backbone":1}],9:[function(require,module,exports){
+},{"backbone":1}],10:[function(require,module,exports){
 var Backbone = require('backbone');
 var _ = require('underscore');
 
@@ -13512,7 +13538,7 @@ var CharacterView = Backbone.View.extend({
 });
 
 module.exports = CharacterView;
-},{"backbone":1,"underscore":3}],10:[function(require,module,exports){
+},{"backbone":1,"underscore":3}],11:[function(require,module,exports){
 var Backbone = require('backbone');
 var _ = require('underscore');
 var $ = require('jquery');
@@ -13553,7 +13579,7 @@ var DetailView = Backbone.View.extend({
 });
 
 module.exports = DetailView;
-},{"backbone":1,"jquery":2,"underscore":3}],11:[function(require,module,exports){
+},{"backbone":1,"jquery":2,"underscore":3}],12:[function(require,module,exports){
 var Backbone = require('backbone');
 var _ = require('underscore');
 var $ = require('jquery');
@@ -13584,13 +13610,12 @@ var NavView = Backbone.View.extend({
 });
 
 module.exports = NavView;
-},{"backbone":1,"jquery":2,"underscore":3}],12:[function(require,module,exports){
+},{"backbone":1,"jquery":2,"underscore":3}],13:[function(require,module,exports){
 var Backbone = require('backbone');
 var _ = require('underscore');
 var $ = require('jquery');
 
 var dispatch = require('./dispatcher');
-var CharacterCollection = require('./CharacterCollection');
 
 var SearchView = Backbone.View.extend({
     className: 'searchView',
@@ -13603,12 +13628,12 @@ var SearchView = Backbone.View.extend({
         'keydown': 'onKeydown'
     },
     search: function () {
-        CharacterCollection.fetch({ data: { nameStartsWith: this.$('.search').val() } });
+        this.collection.fetch({ data: { nameStartsWith: this.$('.search').val() } });
         $('input').val('');
     },
     onKeydown: function (e) {
         if (e.keyCode === 13) {
-            CharacterCollection.fetch({ data: { nameStartsWith: this.$('.search').val() } });
+            this.collection.fetch({ data: { nameStartsWith: this.$('.search').val() } });
             $('input').val('');
         }
     },
@@ -13618,14 +13643,14 @@ var SearchView = Backbone.View.extend({
 });
 
 module.exports = SearchView;
-},{"./CharacterCollection":6,"./dispatcher":13,"backbone":1,"jquery":2,"underscore":3}],13:[function(require,module,exports){
+},{"./dispatcher":14,"backbone":1,"jquery":2,"underscore":3}],14:[function(require,module,exports){
 var Backbone = require('backbone');
 var _ = require('underscore');
 
 var dispatcher = _.extend({}, Backbone.Events);
 
 module.exports = dispatcher;
-},{"backbone":1,"underscore":3}],14:[function(require,module,exports){
+},{"backbone":1,"underscore":3}],15:[function(require,module,exports){
 var $ = require('jquery');
 var Backbone = require('backbone');
 var SearchView = require('./components/SearchView');
@@ -13649,4 +13674,4 @@ document.body.appendChild(appView.el);
 // document.body.appendChild(characterListView.el);
 
 Backbone.history.start();
-},{"./components/AppRouter":4,"./components/AppView":5,"./components/CharacterCollection":6,"./components/CharacterListView":7,"./components/SearchView":12,"backbone":1,"jquery":2}]},{},[14]);
+},{"./components/AppRouter":4,"./components/AppView":5,"./components/CharacterCollection":7,"./components/CharacterListView":8,"./components/SearchView":13,"backbone":1,"jquery":2}]},{},[15]);
