@@ -3,20 +3,21 @@ var $ = require('jquery');
 var bodyParser = require('body-parser');
 var app = express();
 
-var searchCache = [];
+var stats = require('./src/js/components/stats.json');
 
 app.use(bodyParser());
 
 app.use(express.static(__dirname + '/public'));
 
-var apikey = 'b28b7b0839633aa9e5ec65ba74293318';
-var marvelAPI = 'https://gateway.marvel.com/v1/public/characters?nameStartsWith=';
+app.get('/api/stats/:id', function (req, res) {
+    var id = parseInt(req.params.id);
+    var stat = stats.find(function (x) { return x.id === id; });
+
+    if (!stat) {
+        return res.sendStatus(404);
+    }
+
+    res.json(stat);
+});
 
 app.listen(3000);
-
-// app.get('https://gateway.marvel.com/v1/public/characters', {
-//     nameStartsWith: 'spider',
-//     apikey: apikey
-// }, function (req, res) {
-//     res.json(searchCache);
-// });

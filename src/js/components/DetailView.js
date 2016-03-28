@@ -10,18 +10,23 @@ var DetailView = Backbone.View.extend({
         <h2 class="name"> <%= name %> </h2>
         <div class="description"> <%= description %> </div>
         <div class="appearances"> <%= comics.available %> appearances </div>
+        <div id="container"></div>
         <div class="detailNav">
         <button class="select"> select </button>
         <button class="back"> characters </button>
         </div>
     `),
 
-    initialize: function () {
+    initialize: function (options) {
+        // var stats = options.stats;
+        // this.child = new StatsView({ stats: [stats.durability, stats.energy, stats.fighting] })
+        // this.stats = options.stats;
         this.listenTo(this.model, 'sync', this.render);
     },
 
     render: function () {
         this.$el.html(this.template(this.model.attributes));
+        this.$('#container').append(JSON.stringify(this.stats));
     },
 
     events: {
