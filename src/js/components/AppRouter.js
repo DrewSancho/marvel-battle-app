@@ -6,7 +6,7 @@ var DetailView = require('./DetailView');
 var CharacterModel = require('./CharacterModel');
 var characterCollection = require('./CharacterCollection');
 var CharacterView = require('./CharacterView');
-// var BattleView = require('./BattleView');
+var BattleView = require('./BattleView');
 
 var AppRouter = Backbone.Router.extend({
     routes: {
@@ -45,15 +45,22 @@ var AppRouter = Backbone.Router.extend({
                 dispatcher.trigger('app:show', new CharacterListView({collection: characterCollection}));
             }
         });
+    },
+    battle: function (id) {
+        var model = new CharacterModel({ id: id });
+
+        model.fetch({
+            success: function () {
+                dispatcher.trigger('app:show', new BattleView({ model: model }));
+            }
+        });
+        // characterCollection.fetch({
+        //     success: function () {
+        //         var model = characterCollection.find({ id: parseInt(id) });
+        //         dispatcher.trigger('app:show', new BattleView({model: model}));
+        //     }
+        // });
     }
-    // battle: function (id) {
-    //     characterCollection.fetch({
-    //         success: function () {
-    //             var model = characterCollection.find({ id: parseInt(id) });
-    //             dispatcher.trigger('app:show', new BattleView({model: model}));
-    //         }
-    //     });
-    // }
 });
 
 module.exports = AppRouter;
