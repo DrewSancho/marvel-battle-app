@@ -19,4 +19,4 @@ function getMarvelAPI (input, callback) {
             nameStartsWith: input,
             apikey: apikey
         }, callback);
-    }
+}

@@ -2,7 +2,7 @@ var Backbone = require('backbone');
 var _ = require('underscore');
 var $ = require('jquery');
 
-var CharacterView = require('./CharacterListView');
+// var CharacterView = require('./CharacterListView');
 
 var CharacterListView = Backbone.View.extend({
     className: 'CharacterView',
