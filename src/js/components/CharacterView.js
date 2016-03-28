@@ -3,7 +3,7 @@ var _ = require('underscore');
 
 var CharacterView = Backbone.View.extend({
     events: {
-        'click img': 'onClick'
+        'click .charImage': 'onClick'
     },
 
     onClick: function () {
@@ -11,6 +11,8 @@ var CharacterView = Backbone.View.extend({
     },
 
     template: _.template(`
+        <img class="charImage" src="<%= thumbnail.path %>.jpg">
+        <div class="charName"> <%= name %> </div>
     `),
 
     render: function () {

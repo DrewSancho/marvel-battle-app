@@ -3,7 +3,7 @@ var $ = require('jquery');
 var bodyParser = require('body-parser');
 var app = express();
 
-var data = [];
+var searchCache = [];
 
 app.use(bodyParser());
 
@@ -14,9 +14,9 @@ var marvelAPI = 'https://gateway.marvel.com/v1/public/characters?nameStartsWith=
 
 app.listen(3000);
 
-function getMarvelAPI (input, callback) {
-        $.get('https://gateway.marvel.com/v1/public/characters?nameStartsWith=', {
-            nameStartsWith: input,
-            apikey: apikey
-        }, callback);
-}
+// app.get('https://gateway.marvel.com/v1/public/characters', {
+//     nameStartsWith: 'spider',
+//     apikey: apikey
+// }, function (req, res) {
+//     res.json(searchCache);
+// });

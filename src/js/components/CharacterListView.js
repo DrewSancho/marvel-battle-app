@@ -2,15 +2,11 @@ var Backbone = require('backbone');
 var _ = require('underscore');
 var $ = require('jquery');
 
-// var CharacterView = require('./CharacterListView');
+var CharacterView = require('./CharacterView');
 
 var CharacterListView = Backbone.View.extend({
     className: 'CharacterView',
 
-    template: _.template(`
-        <div> <%= img => </div>
-        <div> <%= name => </div>
-    `),
     initialize: function () {
         this.children = [];
         this.render();
@@ -21,8 +17,6 @@ var CharacterListView = Backbone.View.extend({
 
         this.removeChildren();
 
-        this.$el.html(this.template());
-
         this.children = this.collection.map(function (model) {
             return new CharacterView({ model: model });
         });
@@ -32,11 +26,10 @@ var CharacterListView = Backbone.View.extend({
             view.render();
         });
     },
-    events: {
-        'click img': 'details'
-    },
-    details: function () {
-        window.location.hash = 'details';
+    removeChildren: function () {
+        this.children.forEach(function (view) {
+            view.remove();
+        });
     }
 });
 

@@ -13319,52 +13319,64 @@ return jQuery;
 },{}],4:[function(require,module,exports){
 var Backbone = require('backbone');
 
-var ChararcterListView = require('./CharacterListView');
+var CharacterListView = require('./CharacterListView');
 var dispatcher = require('./dispatcher');
 var DetailView = require('./DetailView');
-
+var CharacterModel = require('./CharacterModel');
 var characterCollection = require('./CharacterCollection');
 var CharacterView = require('./CharacterView');
-var SearchView = require('./SearchView');
+// var BattleView = require('./BattleView');
 
 var AppRouter = Backbone.Router.extend({
     routes: {
         '': 'index',
         'index': 'index',
-        'create': 'create',
         'character': 'character',
         'detail/:id': 'detail',
-        'battle/:id/:id': 'battle',
-        'search': 'search'
+        'battle/:id/:id': 'battle'
     },
     index: function () {
         characterCollection.fetch();
-        dispatcher.trigger('app:show', new CharacterView({collection: characterCollection}));
+        dispatcher.trigger('app:show', new CharacterView({ collection: characterCollection }));
     },
     search: function () {
         characterCollection.fetch();
-        dispatcher.trigger('app:show', new characterCollection({collection: characterCollection}));
+        dispatcher.trigger('app:show', characterCollection({ collection: characterCollection }));
     },
     detail: function (id) {
-        characterCollection.fetch({
+        var model = new CharacterModel({ id: id });
+
+        model.fetch({
             success: function () {
-                var model = characterCollection.find({ id: parseInt(id) });
                 dispatcher.trigger('app:show', new DetailView({ model: model }));
             }
         });
+
+        // characterCollection.fetch({
+        //     success: function () {
+        //         var model = characterCollection.find({ id: parseInt(id) });
+        //     }
+        // });
     },
-    battle: function (id) {
+    character: function () {
         characterCollection.fetch({
             success: function () {
-                var model = characterCollection.find({ id: parseInt(id) });
-                dispatcher.trigger('app:show', new BattleView());
+                dispatcher.trigger('app:show', new CharacterListView({collection: characterCollection}));
             }
         });
     }
+    // battle: function (id) {
+    //     characterCollection.fetch({
+    //         success: function () {
+    //             var model = characterCollection.find({ id: parseInt(id) });
+    //             dispatcher.trigger('app:show', new BattleView({model: model}));
+    //         }
+    //     });
+    // }
 });
 
 module.exports = AppRouter;
-},{"./CharacterCollection":6,"./CharacterListView":7,"./CharacterView":9,"./DetailView":10,"./SearchView":12,"./dispatcher":13,"backbone":1}],5:[function(require,module,exports){
+},{"./CharacterCollection":6,"./CharacterListView":7,"./CharacterModel":8,"./CharacterView":9,"./DetailView":10,"./dispatcher":13,"backbone":1}],5:[function(require,module,exports){
 var Backbone = require('backbone');
 var _ = require('underscore');
 var $ = require('jquery');
@@ -13394,6 +13406,8 @@ var AppView = Backbone.View.extend({
 
     remove: function () {
         this.navView.remove();
+        this.pageView.remove();
+        this.footerView.remove();
         Backbone.View.prototype.remove.call(this);
     },
 
@@ -13414,10 +13428,9 @@ var CharacterModel = require('./CharacterModel');
 
 var CharacterCollection = Backbone.Collection.extend({
     model: CharacterModel,
-    url: function (input) {
-        return 'https://gateway.marvel.com/v1/public/characters?nameStartsWith=' + input + '&apikey=b28b7b0839633aa9e5ec65ba74293318';
+    url: function () {
+        return 'https://gateway.marvel.com/v1/public/characters?apikey=b28b7b0839633aa9e5ec65ba74293318';
     },
-
     parse: function (response) {
         return response.data.results;
     }
@@ -13429,15 +13442,11 @@ var Backbone = require('backbone');
 var _ = require('underscore');
 var $ = require('jquery');
 
-// var CharacterView = require('./CharacterListView');
+var CharacterView = require('./CharacterView');
 
 var CharacterListView = Backbone.View.extend({
     className: 'CharacterView',
 
-    template: _.template(`
-        <div> <%= img => </div>
-        <div> <%= name => </div>
-    `),
     initialize: function () {
         this.children = [];
         this.render();
@@ -13448,8 +13457,6 @@ var CharacterListView = Backbone.View.extend({
 
         this.removeChildren();
 
-        this.$el.html(this.template());
-
         this.children = this.collection.map(function (model) {
             return new CharacterView({ model: model });
         });
@@ -13459,19 +13466,25 @@ var CharacterListView = Backbone.View.extend({
             view.render();
         });
     },
-    events: {
-        'click img': 'details'
-    },
-    details: function () {
-        window.location.hash = 'details';
+    removeChildren: function () {
+        this.children.forEach(function (view) {
+            view.remove();
+        });
     }
 });
 
 module.exports = CharacterListView;
-},{"backbone":1,"jquery":2,"underscore":3}],8:[function(require,module,exports){
+},{"./CharacterView":9,"backbone":1,"jquery":2,"underscore":3}],8:[function(require,module,exports){
 var Backbone = require('backbone');
 
-var CharacterModel = Backbone.Model.extend();
+var CharacterModel = Backbone.Model.extend({
+    url: function () {
+        return 'https://gateway.marvel.com/v1/public/characters/' + this.get('id') + '?apikey=b28b7b0839633aa9e5ec65ba74293318';
+    },
+    parse: function (response) {
+        return response.data ? response.data.results[0] : response;
+    }
+});
 
 module.exports = CharacterModel;
 },{"backbone":1}],9:[function(require,module,exports){
@@ -13480,7 +13493,7 @@ var _ = require('underscore');
 
 var CharacterView = Backbone.View.extend({
     events: {
-        'click img': 'onClick'
+        'click .charImage': 'onClick'
     },
 
     onClick: function () {
@@ -13488,6 +13501,8 @@ var CharacterView = Backbone.View.extend({
     },
 
     template: _.template(`
+        <img class="charImage" src="<%= thumbnail.path %>.jpg">
+        <div class="charName"> <%= name %> </div>
     `),
 
     render: function () {
@@ -13506,15 +13521,19 @@ var DetailView = Backbone.View.extend({
     className: 'detailView',
 
     template: _.template(`
-        <div class="thumbnail"> <%= thumbnail %> </div>
-        <h2 class="name"> name</h2>
+        <img class="thumbnail" src="<%= thumbnail.path %>.jpg">
+        <h2 class="name"> <%= name %> </h2>
         <div class="description"> <%= description %> </div>
-        <div class="appearances"> <%= appearances %> </div>
+        <div class="appearances"> <%= comics.available %> appearances </div>
         <div class="detailNav">
         <button class="select"> select </button>
         <button class="back"> characters </button>
         </div>
     `),
+
+    initialize: function () {
+        this.listenTo(this.model, 'sync', this.render);
+    },
 
     render: function () {
         this.$el.html(this.template(this.model.attributes));
@@ -13529,7 +13548,7 @@ var DetailView = Backbone.View.extend({
         window.location.hash = 'battle/:id';
     },
     back: function (id) {
-        window.location.hash = 'search';
+        window.location.hash = 'character';
     }
 });
 
@@ -13544,7 +13563,6 @@ var NavView = Backbone.View.extend({
         <button class='home'> home </button>
         <button class= 'characters'> characters </button>
         <button class= 'battle'> battle </button>
-        <button class= 'search'> search </button>
         `),
     render: function () {
         this.$el.html(this.template());
@@ -13552,8 +13570,7 @@ var NavView = Backbone.View.extend({
     events: {
         'click .home': 'goHome',
         'click .characters': 'characterView',
-        'click .battle': 'battleView',
-        'click .search': 'searchView'
+        'click .battle': 'battleView'
     },
     goHome: function () {
         window.location.hash = 'index';
@@ -13563,9 +13580,6 @@ var NavView = Backbone.View.extend({
     },
     battleView: function () {
         window.location.hash = 'battle';
-    },
-    searchView: function () {
-        window.location.hash = 'search';
     }
 });
 
@@ -13583,19 +13597,18 @@ var SearchView = Backbone.View.extend({
     template: _.template(`
         <input class="search" placeHolder="Name Starts With">
         <button class="submit">Search</button>
-        <div id="results"></div>
     `),
     events: {
         'click .submit': 'search',
         'keydown': 'onKeydown'
     },
     search: function () {
-        CharacterCollection.fetch(this.$el.val());
+        CharacterCollection.fetch({ data: { nameStartsWith: this.$('.search').val() } });
         $('input').val('');
     },
     onKeydown: function (e) {
         if (e.keyCode === 13) {
-            CharacterCollection.fetch(this.$el.val());
+            CharacterCollection.fetch({ data: { nameStartsWith: this.$('.search').val() } });
             $('input').val('');
         }
     },
@@ -13615,16 +13628,25 @@ module.exports = dispatcher;
 },{"backbone":1,"underscore":3}],14:[function(require,module,exports){
 var $ = require('jquery');
 var Backbone = require('backbone');
+var SearchView = require('./components/SearchView');
+var CharacterListView = require('./components/CharacterListView');
+var CharacterCollection = require('./components/CharacterCollection');
 
 var AppView = require('./components/AppView');
 var AppRouter = require('./components/AppRouter');
 
 var appView = new AppView();
-appView.render();
+// var searchView = new SearchView();
+// var characterListView = new CharacterListView({ collection: CharacterCollection });
 
-// var router = new AppRouter();
+appView.render();
+// searchView.render();
+// characterListView.render();
+
+var router = new AppRouter();
 
 document.body.appendChild(appView.el);
+// document.body.appendChild(characterListView.el);
 
 Backbone.history.start();
-},{"./components/AppRouter":4,"./components/AppView":5,"backbone":1,"jquery":2}]},{},[14]);
+},{"./components/AppRouter":4,"./components/AppView":5,"./components/CharacterCollection":6,"./components/CharacterListView":7,"./components/SearchView":12,"backbone":1,"jquery":2}]},{},[14]);

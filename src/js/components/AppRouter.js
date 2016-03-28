@@ -1,47 +1,59 @@
 var Backbone = require('backbone');
 
-var ChararcterListView = require('./CharacterListView');
+var CharacterListView = require('./CharacterListView');
 var dispatcher = require('./dispatcher');
 var DetailView = require('./DetailView');
-
+var CharacterModel = require('./CharacterModel');
 var characterCollection = require('./CharacterCollection');
 var CharacterView = require('./CharacterView');
-var SearchView = require('./SearchView');
+// var BattleView = require('./BattleView');
 
 var AppRouter = Backbone.Router.extend({
     routes: {
         '': 'index',
         'index': 'index',
-        'create': 'create',
         'character': 'character',
         'detail/:id': 'detail',
-        'battle/:id/:id': 'battle',
-        'search': 'search'
+        'battle/:id/:id': 'battle'
     },
     index: function () {
         characterCollection.fetch();
-        dispatcher.trigger('app:show', new CharacterView({collection: characterCollection}));
+        dispatcher.trigger('app:show', new CharacterView({ collection: characterCollection }));
     },
     search: function () {
         characterCollection.fetch();
-        dispatcher.trigger('app:show', new characterCollection({collection: characterCollection}));
+        dispatcher.trigger('app:show', characterCollection({ collection: characterCollection }));
     },
     detail: function (id) {
-        characterCollection.fetch({
+        var model = new CharacterModel({ id: id });
+
+        model.fetch({
             success: function () {
-                var model = characterCollection.find({ id: parseInt(id) });
                 dispatcher.trigger('app:show', new DetailView({ model: model }));
             }
         });
+
+        // characterCollection.fetch({
+        //     success: function () {
+        //         var model = characterCollection.find({ id: parseInt(id) });
+        //     }
+        // });
     },
-    battle: function (id) {
+    character: function () {
         characterCollection.fetch({
             success: function () {
-                var model = characterCollection.find({ id: parseInt(id) });
-                dispatcher.trigger('app:show', new BattleView());
+                dispatcher.trigger('app:show', new CharacterListView({collection: characterCollection}));
             }
         });
     }
+    // battle: function (id) {
+    //     characterCollection.fetch({
+    //         success: function () {
+    //             var model = characterCollection.find({ id: parseInt(id) });
+    //             dispatcher.trigger('app:show', new BattleView({model: model}));
+    //         }
+    //     });
+    // }
 });
 
 module.exports = AppRouter;

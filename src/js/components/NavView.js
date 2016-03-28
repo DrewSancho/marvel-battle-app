@@ -7,7 +7,6 @@ var NavView = Backbone.View.extend({
         <button class='home'> home </button>
         <button class= 'characters'> characters </button>
         <button class= 'battle'> battle </button>
-        <button class= 'search'> search </button>
         `),
     render: function () {
         this.$el.html(this.template());
@@ -15,8 +14,7 @@ var NavView = Backbone.View.extend({
     events: {
         'click .home': 'goHome',
         'click .characters': 'characterView',
-        'click .battle': 'battleView',
-        'click .search': 'searchView'
+        'click .battle': 'battleView'
     },
     goHome: function () {
         window.location.hash = 'index';
@@ -26,9 +24,6 @@ var NavView = Backbone.View.extend({
     },
     battleView: function () {
         window.location.hash = 'battle';
-    },
-    searchView: function () {
-        window.location.hash = 'search';
     }
 });
 

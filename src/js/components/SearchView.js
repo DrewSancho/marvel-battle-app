@@ -10,19 +10,18 @@ var SearchView = Backbone.View.extend({
     template: _.template(`
         <input class="search" placeHolder="Name Starts With">
         <button class="submit">Search</button>
-        <div id="results"></div>
     `),
     events: {
         'click .submit': 'search',
         'keydown': 'onKeydown'
     },
     search: function () {
-        CharacterCollection.fetch(this.$el.val());
+        CharacterCollection.fetch({ data: { nameStartsWith: this.$('.search').val() } });
         $('input').val('');
     },
     onKeydown: function (e) {
         if (e.keyCode === 13) {
-            CharacterCollection.fetch(this.$el.val());
+            CharacterCollection.fetch({ data: { nameStartsWith: this.$('.search').val() } });
             $('input').val('');
         }
     },

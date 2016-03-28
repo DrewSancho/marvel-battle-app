@@ -6,15 +6,19 @@ var DetailView = Backbone.View.extend({
     className: 'detailView',
 
     template: _.template(`
-        <div class="thumbnail"> <%= thumbnail %> </div>
-        <h2 class="name"> name</h2>
+        <img class="thumbnail" src="<%= thumbnail.path %>.jpg">
+        <h2 class="name"> <%= name %> </h2>
         <div class="description"> <%= description %> </div>
-        <div class="appearances"> <%= appearances %> </div>
+        <div class="appearances"> <%= comics.available %> appearances </div>
         <div class="detailNav">
         <button class="select"> select </button>
         <button class="back"> characters </button>
         </div>
     `),
+
+    initialize: function () {
+        this.listenTo(this.model, 'sync', this.render);
+    },
 
     render: function () {
         this.$el.html(this.template(this.model.attributes));
@@ -29,7 +33,7 @@ var DetailView = Backbone.View.extend({
         window.location.hash = 'battle/:id';
     },
     back: function (id) {
-        window.location.hash = 'search';
+        window.location.hash = 'character';
     }
 });
 
