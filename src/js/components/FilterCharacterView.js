@@ -4,13 +4,7 @@ var $ = require('jquery');
 
 var FilterCharacterView = Backbone.View.extend({
 
-    template: _.template(`
-        <img class="charImage" src="<%= character.thumbnail.path + '.' + character.thumbnail.extension %>">
-        <div class="charName"> <%= character.name %> </div>
-        <% if (!stats) { %>
-            No data available.
-        <% } %>
-    `),
+    template: _.template(require('./characterView.html')),
 
     render: function () {
         this.$el.html(this.template());
