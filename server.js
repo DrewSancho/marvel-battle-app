@@ -5,10 +5,7 @@ var app = express();
 
 var searchesIds = 0;
 
-var searches = [
-
-];
-var battles = [];
+var searches = [];
 
 var stats = require('./src/js/components/stats.json');
 

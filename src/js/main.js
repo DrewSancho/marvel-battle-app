@@ -7,6 +7,8 @@ var CharacterCollection = require('./components/CharacterCollection');
 var AppView = require('./components/AppView');
 var AppRouter = require('./components/AppRouter');
 
+var searchesCollection = require('./components/SearchesCollection');
+
 var appView = new AppView();
 // var searchView = new SearchView();
 // var characterListView = new CharacterListView({ collection: CharacterCollection });

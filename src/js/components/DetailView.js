@@ -2,6 +2,8 @@ var Backbone = require('backbone');
 var _ = require('underscore');
 var $ = require('jquery');
 
+var dispatcher = require('./dispatcher');
+
 var radarGraph = require('./utility').radarGraph;
 
 var DetailView = Backbone.View.extend({
@@ -12,8 +14,16 @@ var DetailView = Backbone.View.extend({
     initialize: function (options) {
         // var stats = options.stats;
         // this.child = new StatsView({ stats: [stats.durability, stats.energy, stats.fighting] })
+        var _this = this;
         this.stats = options.stats;
-        this.listenTo(this.model, 'sync', this.render);
+        this.listenTo(this.model, 'sync', function () {
+            _this.render();
+            dispatcher.trigger('search', {
+                characterId: _this.model.get('id'),
+                name: _this.model.get('name'),
+                thumbnail: _this.model.get('thumbnail')
+            });
+        });
     },
 
     render: function () {
