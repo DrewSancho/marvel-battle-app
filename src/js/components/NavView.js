@@ -3,11 +3,7 @@ var _ = require('underscore');
 var $ = require('jquery');
 
 var NavView = Backbone.View.extend({
-    template: _.template(`
-        <button class='home'> home </button>
-        <button class= 'characters'> characters </button>
-        <button class= 'battle'> battle </button>
-        `),
+    template: _.template(require('./navView.html')),
     render: function () {
         this.$el.html(this.template());
     },

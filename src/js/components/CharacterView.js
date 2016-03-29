@@ -11,13 +11,7 @@ var CharacterView = Backbone.View.extend({
         window.location.hash = 'detail/' + this.model.get('id');
     },
 
-    template: _.template(`
-        <img class="charImage" src="<%= character.thumbnail.path + '.' + character.thumbnail.extension %>">
-        <div class="charName"> <%= character.name %> </div>
-        <% if (!stats) { %>
-            No data available.
-        <% } %>
-    `),
+    template: _.template(require('./characterView.html')),
 
     initialize: function () {
 

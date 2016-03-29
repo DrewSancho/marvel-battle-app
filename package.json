@@ -8,9 +8,9 @@
     "serve": "node server.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "postinstall": "cp node_modules/normalize.css/normalize.css src/scss/components/_normalize.scss",
-    "watch:js": "watchify src/js/main.js -o public/assets/bundle.js",
+    "watch:js": "watchify src/js/main.js -t -o public/assets/bundle.js",
     "watch:css": "sass --watch src/scss:public/assets",
-    "build:js": "browserify src/js/main.js -o public/assets/bundle.js",
+    "build:js": "browserify src/js/main.js -t -o public/assets/bundle.js",
     "build:css": "sass src/scss/main.scss public/assets/main.css",
     "build": "npm run build:js && npm run build:css",
     "watch": "npm run watch:js & npm run watch:css"
@@ -25,6 +25,12 @@
     "highcharts": "^4.2.3",
     "jquery": "^2.2.2",
     "normalize.css": "^4.0.0",
+    "stringify": "^5.1.0",
     "watchify": "^3.7.0"
+  },
+  "browserify": {
+    "transform": [
+      "stringify"
+    ]
   }
 }

@@ -8,11 +8,7 @@ var dispatcher = require('./dispatcher');
 var AppView = Backbone.View.extend({
     clssName: 'app',
 
-    template: _.template(`
-        <div class="navView"></div>
-        <div class="pageView"></div>
-        <div class="footerView"></div>
-    `),
+    template: _.template(require('./appView.html')),
 
     initialize: function () {
         this.navView = new NavView();

@@ -7,17 +7,7 @@ var radarGraph = require('./utility').radarGraph;
 var DetailView = Backbone.View.extend({
     className: 'detailView',
 
-    template: _.template(`
-        <img class="thumbnail" src="<%= thumbnail.path + '.' + thumbnail.extension %>">
-        <h2 class="name"> <%= name %> </h2>
-        <div class="description"> <%= description %> </div>
-        <div class="appearances"> <%= comics.available %> appearances </div>
-        <div id="container"></div>
-        <div class="detailNav">
-        <button class="select"> select </button>
-        <button class="back"> characters </button>
-        </div>
-    `),
+    template: _.template(require('./detailView.html')),
 
     initialize: function (options) {
         // var stats = options.stats;
