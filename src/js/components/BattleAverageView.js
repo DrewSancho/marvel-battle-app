@@ -5,10 +5,7 @@ var BattleAverageView = Backbone.View.extend({
 
     className: 'battle-average-view',
 
-    template: _.template(`
-        <img class="thumbnail" src="<%= thumbnail.path %>.jpg">
-        <img class="thumbnail" src="<%= thumbnail.path %>.jpg">
-    `),
+    template: _.template(require('./battleAverageView.html')),
 
     render: function () {
         this.$el.html(this.template());

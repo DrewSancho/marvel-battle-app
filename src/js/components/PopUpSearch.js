@@ -6,10 +6,7 @@ var $ = require('jquery');
 var PopUpSearchView = Backbone.View.extend({
     className: 'hidden',
 
-    template: _.template(`
-        <input class="search" placeHolder="Name Starts With">
-        <button class="submit">Search</button>
-    `),
+    template: _.template(require('./searchView.html')),
     events: {
         'click .submit': 'search',
         'keydown': 'onKeydown'
