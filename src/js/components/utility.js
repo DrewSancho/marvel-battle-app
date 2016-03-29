@@ -50,7 +50,8 @@ var radarGraph = function (el, stats1, stats2) {
                 enabled: true,
                 show: 'y.value',
                 style: {
-                    visibility: 'visible'
+                    visibility: 'visible',
+                    opacity: 1
                 }
             }
         }
