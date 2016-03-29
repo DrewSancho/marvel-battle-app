@@ -30,10 +30,10 @@ var DetailView = Backbone.View.extend({
     },
 
     select: function (id) {
-        window.location.hash = 'battle/:id';
+        window.location.hash = 'battle/:id/:id';
     },
     back: function (id) {
-        window.location.hash = 'character';
+        window.location.hash = 'character/filter';
     }
 });
 

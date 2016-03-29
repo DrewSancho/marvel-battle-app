@@ -1,9 +1,10 @@
 var Backbone = require('backbone');
 var CharacterCollection = require('./CharacterCollection');
-
+var _ = require('underscore');
+var $ = require('jquery');
 
 var PopUpSearchView = Backbone.View.extend({
-    className: 'pop-up-search',
+    className: 'hidden',
 
     template: _.template(`
         <input class="search" placeHolder="Name Starts With">
@@ -27,3 +28,5 @@ var PopUpSearchView = Backbone.View.extend({
         this.$el.html(this.template());
     }
 });
+
+module.exports = PopUpSearchView;

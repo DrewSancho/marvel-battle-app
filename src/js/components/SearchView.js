@@ -17,11 +17,13 @@ var SearchView = Backbone.View.extend({
     search: function () {
         this.collection.fetch({ data: { nameStartsWith: this.$('.search').val() } });
         $('input').val('');
+        window.location.hash = '/character/filter';
     },
     onKeydown: function (e) {
         if (e.keyCode === 13) {
             this.collection.fetch({ data: { nameStartsWith: this.$('.search').val() } });
             $('input').val('');
+            window.location.hash = '/character/filter';
         }
     },
     render: function () {
