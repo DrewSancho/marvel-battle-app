@@ -2,7 +2,7 @@ var Backbone = require('backbone');
 var _ = require('underscore');
 var $ = require('jquery');
 
-var dispatch = require('./dispatcher');
+var dispatcher = require('./dispatcher');
 
 var SearchView = Backbone.View.extend({
     className: 'searchView',
@@ -25,6 +25,10 @@ var SearchView = Backbone.View.extend({
     },
     render: function () {
         this.$el.html(this.template());
+    },
+
+    back: function () {
+        window.location.hash = '/character';
     }
 });
 

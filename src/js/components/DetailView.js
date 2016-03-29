@@ -1,7 +1,7 @@
 var Backbone = require('backbone');
 var _ = require('underscore');
 var $ = require('jquery');
-
+var CharacterCollection = require('./CharacterCollection');
 var radarGraph = require('./utility').radarGraph;
 
 var DetailView = Backbone.View.extend({
@@ -28,10 +28,10 @@ var DetailView = Backbone.View.extend({
     },
 
     select: function (id) {
-        window.location.hash = 'battle/:id/:id';
+        window.location.hash = 'battle/' + this.model.get('id');
     },
     back: function (id) {
-        window.location.hash = 'character/filter';
+        // window.location.hash = 'character/filter';
     }
 });
 
