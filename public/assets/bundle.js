@@ -13425,16 +13425,8 @@ var AppView = Backbone.View.extend({
 
 module.exports = AppView;
 },{"./NavView":12,"./dispatcher":14,"backbone":1,"jquery":2,"underscore":3}],6:[function(require,module,exports){
-var Backbone = require('backbone');
-var _ = require('underscore');
-var $ = require('jquery');
 
-var BattleView = Backbone.View.extend({
-    template: _.template(`
-        
-    `)
-});
-},{"backbone":1,"jquery":2,"underscore":3}],7:[function(require,module,exports){
+},{}],7:[function(require,module,exports){
 var Backbone = require('backbone');
 var CharacterModel = require('./CharacterModel');
 
