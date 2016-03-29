@@ -18,10 +18,12 @@ var CharacterView = Backbone.View.extend({
     },
 
     render: function (stats) {
-        this.$el.html(this.template({
-            character: this.model.attributes,
-            stats: stats
-        }));
+        if (stats) {
+            this.$el.html(this.template({
+                character: this.model.attributes,
+                stats: stats
+            }));
+        }
     }
 
 });
