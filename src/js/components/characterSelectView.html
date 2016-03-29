@@ -1,6 +1,6 @@
 <div class="characterSelectView">
     <% if (thumbnail) { %>
-        <img src="<%= thumbnail.path %>.jpg">
+        <img src="<%= thumbnail.path + '.' + thumbnail.extension %>">
     <% } %>
     <h2 class="name"><%= name %></h2>
     <button class="select">Select</button>

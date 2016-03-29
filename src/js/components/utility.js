@@ -3,7 +3,6 @@ var Highcharts = require('highcharts');
 require('../../vendor/highcharts-more')(Highcharts);
 
 var radarGraph = function (el, stats1, stats2) {
-
     var chart = new Highcharts.Chart({
         chart: {
             renderTo: el,
@@ -12,7 +11,7 @@ var radarGraph = function (el, stats1, stats2) {
         },
 
         title: {
-            text: stats1.name,
+            text: '',
             x: -80
         },
 
@@ -35,6 +34,10 @@ var radarGraph = function (el, stats1, stats2) {
             allowDecimals: false,
             tickInterval: 2,
             pointPlacement: 'on'
+        },
+
+        legend: {
+            enabled: false
         },
 
         tooltip: {
