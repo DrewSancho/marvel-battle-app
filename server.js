@@ -6,8 +6,7 @@ var app = express();
 var searchesIds = 0;
 
 var searches = [
-    { date: new Date('1/1/2013') },
-    { date: new Date() }
+
 ];
 var battles = [];
 
