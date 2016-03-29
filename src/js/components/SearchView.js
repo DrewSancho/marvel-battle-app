@@ -6,10 +6,7 @@ var dispatch = require('./dispatcher');
 
 var SearchView = Backbone.View.extend({
     className: 'searchView',
-    template: _.template(`
-        <input class="search" placeHolder="Name Starts With">
-        <button class="submit">Search</button>
-    `),
+    template: _.template(require('./searchView.html')),
     events: {
         'click .submit': 'search',
         'keydown': 'onKeydown'

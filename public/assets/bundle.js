@@ -13720,7 +13720,7 @@ var AppRouter = Backbone.Router.extend({
 });
 
 module.exports = AppRouter;
-},{"./BattleView":7,"./CharacterCollection":8,"./CharacterListView":9,"./CharacterModel":10,"./CharacterView":11,"./DetailView":12,"./dispatcher":15,"./statsCache":16,"backbone":1,"jquery":3}],6:[function(require,module,exports){
+},{"./BattleView":7,"./CharacterCollection":8,"./CharacterListView":9,"./CharacterModel":10,"./CharacterView":11,"./DetailView":12,"./dispatcher":18,"./statsCache":21,"backbone":1,"jquery":3}],6:[function(require,module,exports){
 var Backbone = require('backbone');
 var _ = require('underscore');
 var $ = require('jquery');
@@ -13731,11 +13731,7 @@ var dispatcher = require('./dispatcher');
 var AppView = Backbone.View.extend({
     clssName: 'app',
 
-    template: _.template(`
-        <div class="navView"></div>
-        <div class="pageView"></div>
-        <div class="footerView"></div>
-    `),
+    template: _.template(require('./appView.html')),
 
     initialize: function () {
         this.navView = new NavView();
@@ -13766,7 +13762,7 @@ var AppView = Backbone.View.extend({
 });
 
 module.exports = AppView;
-},{"./NavView":13,"./dispatcher":15,"backbone":1,"jquery":3,"underscore":4}],7:[function(require,module,exports){
+},{"./NavView":13,"./appView.html":15,"./dispatcher":18,"backbone":1,"jquery":3,"underscore":4}],7:[function(require,module,exports){
 
 },{}],8:[function(require,module,exports){
 var Backbone = require('backbone');
@@ -13834,7 +13830,7 @@ var CharacterListView = Backbone.View.extend({
 });
 
 module.exports = CharacterListView;
-},{"./CharacterView":11,"./SearchView":14,"./statsCache":16,"backbone":1,"jquery":3,"underscore":4}],10:[function(require,module,exports){
+},{"./CharacterView":11,"./SearchView":14,"./statsCache":21,"backbone":1,"jquery":3,"underscore":4}],10:[function(require,module,exports){
 var Backbone = require('backbone');
 
 var CharacterModel = Backbone.Model.extend({
@@ -13861,13 +13857,7 @@ var CharacterView = Backbone.View.extend({
         window.location.hash = 'detail/' + this.model.get('id');
     },
 
-    template: _.template(`
-        <img class="charImage" src="<%= character.thumbnail.path + '.' + character.thumbnail.extension %>">
-        <div class="charName"> <%= character.name %> </div>
-        <% if (!stats) { %>
-            No data available.
-        <% } %>
-    `),
+    template: _.template(require('./characterView.html')),
 
     initialize: function () {
 
@@ -13883,7 +13873,7 @@ var CharacterView = Backbone.View.extend({
 });
 
 module.exports = CharacterView;
-},{"backbone":1,"jquery":3,"underscore":4}],12:[function(require,module,exports){
+},{"./characterView.html":16,"backbone":1,"jquery":3,"underscore":4}],12:[function(require,module,exports){
 var Backbone = require('backbone');
 var _ = require('underscore');
 var $ = require('jquery');
@@ -13893,17 +13883,7 @@ var radarGraph = require('./utility').radarGraph;
 var DetailView = Backbone.View.extend({
     className: 'detailView',
 
-    template: _.template(`
-        <img class="thumbnail" src="<%= thumbnail.path + '.' + thumbnail.extension %>">
-        <h2 class="name"> <%= name %> </h2>
-        <div class="description"> <%= description %> </div>
-        <div class="appearances"> <%= comics.available %> appearances </div>
-        <div id="container"></div>
-        <div class="detailNav">
-        <button class="select"> select </button>
-        <button class="back"> characters </button>
-        </div>
-    `),
+    template: _.template(require('./detailView.html')),
 
     initialize: function (options) {
         // var stats = options.stats;
@@ -13932,17 +13912,13 @@ var DetailView = Backbone.View.extend({
 });
 
 module.exports = DetailView;
-},{"./utility":17,"backbone":1,"jquery":3,"underscore":4}],13:[function(require,module,exports){
+},{"./detailView.html":17,"./utility":22,"backbone":1,"jquery":3,"underscore":4}],13:[function(require,module,exports){
 var Backbone = require('backbone');
 var _ = require('underscore');
 var $ = require('jquery');
 
 var NavView = Backbone.View.extend({
-    template: _.template(`
-        <button class='home'> home </button>
-        <button class= 'characters'> characters </button>
-        <button class= 'battle'> battle </button>
-        `),
+    template: _.template(require('./navView.html')),
     render: function () {
         this.$el.html(this.template());
     },
@@ -13963,7 +13939,7 @@ var NavView = Backbone.View.extend({
 });
 
 module.exports = NavView;
-},{"backbone":1,"jquery":3,"underscore":4}],14:[function(require,module,exports){
+},{"./navView.html":19,"backbone":1,"jquery":3,"underscore":4}],14:[function(require,module,exports){
 var Backbone = require('backbone');
 var _ = require('underscore');
 var $ = require('jquery');
@@ -13972,10 +13948,7 @@ var dispatch = require('./dispatcher');
 
 var SearchView = Backbone.View.extend({
     className: 'searchView',
-    template: _.template(`
-        <input class="search" placeHolder="Name Starts With">
-        <button class="submit">Search</button>
-    `),
+    template: _.template(require('./searchView.html')),
     events: {
         'click .submit': 'search',
         'keydown': 'onKeydown'
@@ -13996,14 +13969,29 @@ var SearchView = Backbone.View.extend({
 });
 
 module.exports = SearchView;
-},{"./dispatcher":15,"backbone":1,"jquery":3,"underscore":4}],15:[function(require,module,exports){
+},{"./dispatcher":18,"./searchView.html":20,"backbone":1,"jquery":3,"underscore":4}],15:[function(require,module,exports){
+module.exports = "<div class='navView'></div>\n<div class='pageView'></div>\n<div class='footerView'></div>";
+
+},{}],16:[function(require,module,exports){
+module.exports = "<img class=\"charImage\" src=\"<%= character.thumbnail.path + '.' + character.thumbnail.extension %>\">\n<div class=\"charName\"> <%= character.name %> </div>\n<% if (!stats) { %>\n    No data available.\n<% } %>";
+
+},{}],17:[function(require,module,exports){
+module.exports = "<img class=\"thumbnail\" src=\"<%= thumbnail.path + '.' + thumbnail.extension %>\">\n<h2 class=\"name\"> <%= name %> </h2>\n<div class=\"description\"> <%= description %> </div>\n<div class=\"appearances\"> <%= comics.available %> appearances </div>\n<div id=\"container\"></div>\n<div class=\"detailNav\">\n<button class=\"select\"> select </button>\n<button class=\"back\"> characters </button>\n</div>";
+
+},{}],18:[function(require,module,exports){
 var Backbone = require('backbone');
 var _ = require('underscore');
 
 var dispatcher = _.extend({}, Backbone.Events);
 
 module.exports = dispatcher;
-},{"backbone":1,"underscore":4}],16:[function(require,module,exports){
+},{"backbone":1,"underscore":4}],19:[function(require,module,exports){
+module.exports = "<button class='home'> Home </button>\n<button class= 'characters'> Characters </button>\n<button class= 'battle'> Battle </button>";
+
+},{}],20:[function(require,module,exports){
+module.exports = "<input class='search' placeHolder='Name Starts With'>\n<button class='submit'>Search</button>";
+
+},{}],21:[function(require,module,exports){
 var $ = require('jquery');
 var cache = window.localStorage.statsCache
     ? JSON.parse(window.localStorage.statsCache)
@@ -14039,7 +14027,7 @@ module.exports = {
 };
 
 // statsCache.get(102394, function (stats) {})
-},{"jquery":3}],17:[function(require,module,exports){
+},{"jquery":3}],22:[function(require,module,exports){
 var $ = require('jquery');
 var Highcharts = require('highcharts');
 
@@ -14123,7 +14111,7 @@ var radarGraph = function (el, stats1, stats2) {
 };
 
 module.exports = { radarGraph: radarGraph };
-},{"../../vendor/highcharts-more":19,"highcharts":2,"jquery":3}],18:[function(require,module,exports){
+},{"../../vendor/highcharts-more":24,"highcharts":2,"jquery":3}],23:[function(require,module,exports){
 var $ = require('jquery');
 var Backbone = require('backbone');
 var SearchView = require('./components/SearchView');
@@ -14147,7 +14135,7 @@ document.body.appendChild(appView.el);
 // document.body.appendChild(characterListView.el);
 
 Backbone.history.start();
-},{"./components/AppRouter":5,"./components/AppView":6,"./components/CharacterCollection":8,"./components/CharacterListView":9,"./components/SearchView":14,"backbone":1,"jquery":3}],19:[function(require,module,exports){
+},{"./components/AppRouter":5,"./components/AppView":6,"./components/CharacterCollection":8,"./components/CharacterListView":9,"./components/SearchView":14,"backbone":1,"jquery":3}],24:[function(require,module,exports){
 /*
  Highcharts JS v4.2.3 (2016-02-08)
 
@@ -14204,4 +14192,4 @@ c=["M",i,f]}else c=a.call(this,b,c,d);return c});v(b,"translate",function(a){var
 1))});v(b,"animate",a);if(k.column)d=k.column.prototype,v(d,"animate",a),v(d,"translate",function(a){var b=this.xAxis,c=this.yAxis.len,d=b.center,i=b.startAngleRad,f=this.chart.renderer,h,k;this.preventPostTranslate=!0;a.call(this);if(b.isRadial){b=this.points;for(k=b.length;k--;)h=b[k],a=h.barX+i,h.shapeType="path",h.shapeArgs={d:f.symbols.arc(d[0],d[1],c-h.plotY,null,{start:a,end:a+h.pointWidth,innerR:c-q(h.yBottom,c)})},this.toXY(h),h.tooltipPos=[h.plotX,h.plotY],h.ttBelow=h.plotY>d[1]}}),v(d,
 "alignDataLabel",function(a,c,d,l,i,f){if(this.chart.polar){a=c.rectPlotX/Math.PI*180;if(l.align===null)l.align=a>20&&a<160?"left":a>200&&a<340?"right":"center";if(l.verticalAlign===null)l.verticalAlign=a<45||a>315?"bottom":a>135&&a<225?"top":"middle";b.alignDataLabel.call(this,c,d,l,i,f)}else a.call(this,c,d,l,i,f)});v(c,"getCoordinates",function(a,b){var c=this.chart,d={xAxis:[],yAxis:[]};c.polar?s(c.axes,function(a){var f=a.isXAxis,g=a.center,k=b.chartX-g[0]-c.plotLeft,g=b.chartY-g[1]-c.plotTop;
 d[f?"xAxis":"yAxis"].push({axis:a,value:a.translate(f?Math.PI-Math.atan2(k,g):Math.sqrt(Math.pow(k,2)+Math.pow(g,2)),!0)})}):d=a.call(this,b);return d})})()});
-},{}]},{},[18]);
+},{}]},{},[23]);
