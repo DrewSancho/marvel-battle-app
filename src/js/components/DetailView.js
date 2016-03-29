@@ -2,11 +2,13 @@ var Backbone = require('backbone');
 var _ = require('underscore');
 var $ = require('jquery');
 
+var radarGraph = require('./utility').radarGraph;
+
 var DetailView = Backbone.View.extend({
     className: 'detailView',
 
     template: _.template(`
-        <img class="thumbnail" src="<%= thumbnail.path %>.jpg">
+        <img class="thumbnail" src="<%= thumbnail.path + '.' + thumbnail.extension %>">
         <h2 class="name"> <%= name %> </h2>
         <div class="description"> <%= description %> </div>
         <div class="appearances"> <%= comics.available %> appearances </div>
@@ -20,13 +22,14 @@ var DetailView = Backbone.View.extend({
     initialize: function (options) {
         // var stats = options.stats;
         // this.child = new StatsView({ stats: [stats.durability, stats.energy, stats.fighting] })
-        // this.stats = options.stats;
+        this.stats = options.stats;
         this.listenTo(this.model, 'sync', this.render);
     },
 
     render: function () {
         this.$el.html(this.template(this.model.attributes));
-        this.$('#container').append(JSON.stringify(this.stats));
+        // this.$('#container').append(JSON.stringify(this.stats));
+        radarGraph(this.el.querySelector('#container'), this.stats);
     },
 
     events: {

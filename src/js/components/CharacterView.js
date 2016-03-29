@@ -12,11 +12,9 @@ var CharacterView = Backbone.View.extend({
     },
 
     template: _.template(`
-        <img class="charImage" src="<%= character.thumbnail.path %>.jpg">
+        <img class="charImage" src="<%= character.thumbnail.path + '.' + character.thumbnail.extension %>">
         <div class="charName"> <%= character.name %> </div>
-        <% if (stats) { %>
-            Strength: <%= stats.strength %>
-        <% } else { %>
+        <% if (!stats) { %>
             No data available.
         <% } %>
     `),

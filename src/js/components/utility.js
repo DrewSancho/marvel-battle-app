@@ -1,19 +1,24 @@
 var $ = require('jquery');
+var Highcharts = require('highcharts');
 
-var radarGraph = $(function () {
-    $('#container').highcharts({
+require('../../vendor/highcharts-more')(Highcharts);
+
+var radarGraph = function (el, stats1, stats2) {
+    console.log(el);
+    var chart = new Highcharts.Chart({
         chart: {
+            renderTo: el,
             polar: true,
             type: 'line'
         },
 
         title: {
-            text: 'Abomination vs Absorbing Man',
+            text: stats1.name,
             x: -80
         },
 
         pane: {
-            size: '80%'
+            size: '85%'
         },
 
         xAxis: {
@@ -27,7 +32,8 @@ var radarGraph = $(function () {
         yAxis: {
             gridLineInterpolation: 'polygon',
             lineWidth: 0,
-            min: 0
+            min: 0,
+            max: 7
         },
 
         tooltip: {
@@ -42,16 +48,36 @@ var radarGraph = $(function () {
             layout: 'vertical'
         },
 
-        series: [{
-            name: 'Abomination',
-            data: [6, 1, 2, 2, 2, 7],
-            pointPlacement: 'on'
-        }, {
-            name: 'Absorbing Man',
-            data: [6, 4, 6, 2, 3, 6],
-            pointPlacement: 'on'
-        }]
-    });
-});
+        plotOptions: {
+            series: {
+                dataLabels: {
+                    enabled: true,
+                    format: '{y}',
+                    style: {
+                        'fontSize': '11px',
+                        'fontWeight': 'bold',
+                        'textShadow': '0 0 6px contrast, 0 0 3px contrast',
+                        'opacity': '1',
+                        'visibility': 'visible'
+                    }
+                }
+            }
+        },
 
-module.exports = radarGraph;
+        series: [{
+            name: stats1.name,
+            data: [stats1.durability, stats1.energy, stats1.fighting, stats1.intelligence, stats1.speed, stats1.strength],
+            pointPlacement: 'on'
+        }
+            // {
+            //     name: 'stats2.name',
+            //     data: [stats2.durability, stats2.energy, stats2.fighting, stats2.intelligence, stats2.speed, stats2.strength],
+            //     pointPlacement: 'on'
+            // }
+        ]
+    });
+
+    return chart;
+};
+
+module.exports = { radarGraph: radarGraph };
