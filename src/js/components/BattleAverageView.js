@@ -7,6 +7,10 @@ var BattleAverageView = Backbone.View.extend({
 
     template: _.template(require('./battleAverageView.html')),
 
+    initialize: function () {
+        this.render();
+    },
+
     render: function () {
         this.$el.html(this.template());
     }

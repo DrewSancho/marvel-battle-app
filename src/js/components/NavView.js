@@ -19,7 +19,7 @@ var NavView = Backbone.View.extend({
         window.location.hash = 'character';
     },
     battleView: function () {
-        window.location.hash = 'battle/:id/:id';
+        window.location.hash = 'battle';
     }
 });
 
