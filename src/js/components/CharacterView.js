@@ -1,5 +1,6 @@
 var Backbone = require('backbone');
 var _ = require('underscore');
+var $ = require('jquery');
 
 var CharacterView = Backbone.View.extend({
     events: {
@@ -11,12 +12,24 @@ var CharacterView = Backbone.View.extend({
     },
 
     template: _.template(`
-        <img class="charImage" src="<%= thumbnail.path %>.jpg">
-        <div class="charName"> <%= name %> </div>
+        <img class="charImage" src="<%= character.thumbnail.path %>.jpg">
+        <div class="charName"> <%= character.name %> </div>
+        <% if (stats) { %>
+            Strength: <%= stats.strength %>
+        <% } else { %>
+            No data available.
+        <% } %>
     `),
 
-    render: function () {
-        this.$el.html(this.template(this.model.attributes));
+    initialize: function () {
+
+    },
+
+    render: function (stats) {
+        this.$el.html(this.template({
+            character: this.model.attributes,
+            stats: stats
+        }));
     }
 
 });

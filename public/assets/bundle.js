@@ -13318,6 +13318,7 @@ return jQuery;
 
 },{}],4:[function(require,module,exports){
 var Backbone = require('backbone');
+var $ = require('jquery');
 
 var CharacterListView = require('./CharacterListView');
 var dispatcher = require('./dispatcher');
@@ -13326,6 +13327,8 @@ var CharacterModel = require('./CharacterModel');
 var characterCollection = require('./CharacterCollection');
 var CharacterView = require('./CharacterView');
 var BattleView = require('./BattleView');
+
+var statsCache = require('./statsCache');
 
 var AppRouter = Backbone.Router.extend({
     routes: {
@@ -13343,18 +13346,22 @@ var AppRouter = Backbone.Router.extend({
     },
     index: function () {
         characterCollection.fetch();
-        dispatcher.trigger('app:show', new CharacterView({ collection: characterCollection }));
+        dispatcher.trigger('app:show', new CharacterListView({ collection: characterCollection }));
     },
     search: function () {
         characterCollection.fetch();
         dispatcher.trigger('app:show', characterCollection({ collection: characterCollection }));
     },
     detail: function (id) {
+        id = parseInt(id);
+
         var model = new CharacterModel({ id: id });
 
         model.fetch({
             success: function () {
-                dispatcher.trigger('app:show', new DetailView({ model: model }));
+                statsCache.get(id, function (stats) {
+                    dispatcher.trigger('app:show', new DetailView({ model: model, stats: stats }));
+                });
             }
         });
     },
@@ -13383,6 +13390,7 @@ var AppRouter = Backbone.Router.extend({
                 dispatcher.trigger('app:show', new BattleView({ model: model }));
             }
         });
+<<<<<<< HEAD
 
         model2.fetch({
             success: function () {
@@ -13400,11 +13408,13 @@ var AppRouter = Backbone.Router.extend({
     battleSearch: function () {
         characterCollection.fetch();
         dispatcher.trigger('app:show', characterCollection({ collection: characterCollection }));
+=======
+>>>>>>> 304b10d8662ca365f03fd443e74b6f79d83ae49b
     }
 });
 
 module.exports = AppRouter;
-},{"./BattleView":6,"./CharacterCollection":7,"./CharacterListView":8,"./CharacterModel":9,"./CharacterView":10,"./DetailView":11,"./dispatcher":14,"backbone":1}],5:[function(require,module,exports){
+},{"./BattleView":6,"./CharacterCollection":7,"./CharacterListView":8,"./CharacterModel":9,"./CharacterView":10,"./DetailView":11,"./dispatcher":14,"./statsCache":15,"backbone":1,"jquery":2}],5:[function(require,module,exports){
 var Backbone = require('backbone');
 var _ = require('underscore');
 var $ = require('jquery');
@@ -13535,6 +13545,8 @@ var Backbone = require('backbone');
 var _ = require('underscore');
 var $ = require('jquery');
 
+var statsCache = require('./statsCache');
+
 var CharacterView = require('./CharacterView');
 var SearchView = require('./SearchView');
 
@@ -13542,7 +13554,7 @@ var CharacterListView = Backbone.View.extend({
     className: 'CharacterView',
 
     initialize: function () {
-        this.children = [];
+        this.characterViews = [];
         this.render();
         this.listenTo(this.collection, 'sync', this.render);
     },
@@ -13552,31 +13564,34 @@ var CharacterListView = Backbone.View.extend({
 
         this.removeChildren();
 
-        this.children = this.collection.map(function (model) {
+        this.characterViews = this.collection.map(function (model) {
             return new CharacterView({ model: model });
         });
 
-        var searchView = new SearchView({ collection: this.collection });
+        this.searchView = new SearchView({ collection: this.collection });
 
-        searchView.render();
+        this.searchView.render();
 
-        this.children.unshift(searchView);
+        this.$el.append(this.searchView.$el);
 
-        this.children.forEach(function (view) {
+        this.characterViews.forEach(function (view) {
             that.$el.append(view.$el);
-            view.render();
+            statsCache.get(view.model.get('id'), view.render.bind(view));
         });
     },
 
     removeChildren: function () {
-        this.children.forEach(function (view) {
+        if (this.searchView) {
+            this.searchView.remove();
+        }
+        this.characterViews.forEach(function (view) {
             view.remove();
         });
     }
 });
 
 module.exports = CharacterListView;
-},{"./CharacterView":10,"./SearchView":13,"backbone":1,"jquery":2,"underscore":3}],9:[function(require,module,exports){
+},{"./CharacterView":10,"./SearchView":13,"./statsCache":15,"backbone":1,"jquery":2,"underscore":3}],9:[function(require,module,exports){
 var Backbone = require('backbone');
 
 var CharacterModel = Backbone.Model.extend({
@@ -13592,6 +13607,7 @@ module.exports = CharacterModel;
 },{"backbone":1}],10:[function(require,module,exports){
 var Backbone = require('backbone');
 var _ = require('underscore');
+var $ = require('jquery');
 
 var CharacterView = Backbone.View.extend({
     events: {
@@ -13603,18 +13619,30 @@ var CharacterView = Backbone.View.extend({
     },
 
     template: _.template(`
-        <img class="charImage" src="<%= thumbnail.path %>.jpg">
-        <div class="charName"> <%= name %> </div>
+        <img class="charImage" src="<%= character.thumbnail.path %>.jpg">
+        <div class="charName"> <%= character.name %> </div>
+        <% if (stats) { %>
+            Strength: <%= stats.strength %>
+        <% } else { %>
+            No data available.
+        <% } %>
     `),
 
-    render: function () {
-        this.$el.html(this.template(this.model.attributes));
+    initialize: function () {
+
+    },
+
+    render: function (stats) {
+        this.$el.html(this.template({
+            character: this.model.attributes,
+            stats: stats
+        }));
     }
 
 });
 
 module.exports = CharacterView;
-},{"backbone":1,"underscore":3}],11:[function(require,module,exports){
+},{"backbone":1,"jquery":2,"underscore":3}],11:[function(require,module,exports){
 var Backbone = require('backbone');
 var _ = require('underscore');
 var $ = require('jquery');
@@ -13627,18 +13655,23 @@ var DetailView = Backbone.View.extend({
         <h2 class="name"> <%= name %> </h2>
         <div class="description"> <%= description %> </div>
         <div class="appearances"> <%= comics.available %> appearances </div>
+        <div id="container"></div>
         <div class="detailNav">
         <button class="select"> select </button>
         <button class="back"> characters </button>
         </div>
     `),
 
-    initialize: function () {
+    initialize: function (options) {
+        // var stats = options.stats;
+        // this.child = new StatsView({ stats: [stats.durability, stats.energy, stats.fighting] })
+        // this.stats = options.stats;
         this.listenTo(this.model, 'sync', this.render);
     },
 
     render: function () {
         this.$el.html(this.template(this.model.attributes));
+        this.$('#container').append(JSON.stringify(this.stats));
     },
 
     events: {
@@ -13730,6 +13763,42 @@ var dispatcher = _.extend({}, Backbone.Events);
 module.exports = dispatcher;
 },{"backbone":1,"underscore":3}],15:[function(require,module,exports){
 var $ = require('jquery');
+var cache = window.localStorage.statsCache
+    ? JSON.parse(window.localStorage.statsCache)
+    : {};
+
+function set (id, stats) {
+    cache[id] = stats;
+    window.localStorage.statsCache = JSON.stringify(cache);
+}
+
+function get (id, callback) {
+    var cached = cache[id];
+
+    if (cached === undefined) {
+        $.get({
+            url: '/api/stats/' + id,
+            success: function (stats) {
+                set(id, stats);
+                callback(stats);
+            },
+            error: function () {
+                set(id, null);
+                callback(null);
+            }
+        });
+    } else {
+        callback(cached);
+    }
+}
+
+module.exports = {
+    get: get
+};
+
+// statsCache.get(102394, function (stats) {})
+},{"jquery":2}],16:[function(require,module,exports){
+var $ = require('jquery');
 var Backbone = require('backbone');
 var SearchView = require('./components/SearchView');
 var CharacterListView = require('./components/CharacterListView');
@@ -13752,4 +13821,4 @@ document.body.appendChild(appView.el);
 // document.body.appendChild(characterListView.el);
 
 Backbone.history.start();
-},{"./components/AppRouter":4,"./components/AppView":5,"./components/CharacterCollection":7,"./components/CharacterListView":8,"./components/SearchView":13,"backbone":1,"jquery":2}]},{},[15]);
+},{"./components/AppRouter":4,"./components/AppView":5,"./components/CharacterCollection":7,"./components/CharacterListView":8,"./components/SearchView":13,"backbone":1,"jquery":2}]},{},[16]);
