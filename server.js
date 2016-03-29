@@ -24,6 +24,11 @@ app.get('/api/stats/:id', function (req, res) {
     res.json(stat);
 });
 
+app.get('/api/battles', function (req, res) {
+    // Get all battles, could be ordered by `order` query parameter, or filtered by a specific character
+    // eg. /api/battles?order=desc&limit=5&characterId=130813
+});
+
 app.get('/api/searches', function (req, res) {
     var result = searches;
     if (req.query.order === 'desc') {
@@ -37,7 +42,7 @@ app.get('/api/searches', function (req, res) {
 app.post('/api/searches', function (req, res) {
     var search = {
         time: new Date(),
-        characterId: req.body.id,
+        characterId: req.body.characterId,
         thumbnail: req.body.thumbnail,
         name: req.body.name,
         id: ++searchesIds

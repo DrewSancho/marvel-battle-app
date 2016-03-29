@@ -4,7 +4,7 @@ var Highcharts = require('highcharts');
 require('../../vendor/highcharts-more')(Highcharts);
 
 var radarGraph = function (el, stats1, stats2) {
-    console.log(el);
+    // console.log(el);
     var chart = new Highcharts.Chart({
         chart: {
             renderTo: el,

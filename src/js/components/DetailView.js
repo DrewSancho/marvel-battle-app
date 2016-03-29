@@ -12,8 +12,6 @@ var DetailView = Backbone.View.extend({
     template: _.template(require('./detailView.html')),
 
     initialize: function (options) {
-        // var stats = options.stats;
-        // this.child = new StatsView({ stats: [stats.durability, stats.energy, stats.fighting] })
         var _this = this;
         this.stats = options.stats;
         this.listenTo(this.model, 'sync', function () {

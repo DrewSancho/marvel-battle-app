@@ -9,13 +9,6 @@ var CharacterView = Backbone.View.extend({
 
     onClick: function () {
         window.location.hash = 'detail/' + this.model.get('id');
-        // var name = this.model.get('name');
-        // var characterId = this.model.get('id');
-        // this.model.save({
-        //     name: name,
-        //     characterId: characterId
-        // });
-        // console.log(characterId);
     },
 
     template: _.template(require('./characterView.html')),
