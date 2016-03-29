@@ -6,7 +6,7 @@ var dispatcher = require('./dispatcher');
 var DetailView = require('./DetailView');
 var CharacterModel = require('./CharacterModel');
 var characterCollection = require('./CharacterCollection');
-var CharacterView = require('./CharacterView');
+// var CharacterView = require('./CharacterView');
 var BattleView = require('./BattleView');
 var PopUpSearch = require('./PopUpSearch');
 var statsCache = require('./statsCache');
@@ -16,7 +16,7 @@ var AppRouter = Backbone.Router.extend({
         '': 'dashboard',
         'index': 'index',
         'character': 'character',
-        'character/filter': 'filter',
+        'character/:filter': 'filter',
         'detail/:id': 'detail',
         'battle': 'battle', // no characters selected
         'battle/:id1': 'battle', // one character selected
@@ -54,10 +54,10 @@ var AppRouter = Backbone.Router.extend({
         });
     },
 
-    filter: function () {
-        characterCollection.fetch({
-            success: function () {
-                dispatcher.trigger('app:show', new CharacterListView({collection: characterCollection}));
+    filter: function (filter) {
+        characterCollection.fetch({ data: { nameStartsWith: filter },
+            success: function (view) {
+                dispatcher.trigger('app:show', new CharacterListView({ collection: characterCollection }));
             }
         });
     },
