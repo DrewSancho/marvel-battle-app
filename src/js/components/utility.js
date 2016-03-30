@@ -3,6 +3,40 @@ var Highcharts = require('highcharts');
 require('../../vendor/highcharts-more')(Highcharts);
 
 var radarGraph = function (el, stats1, stats2) {
+    var series = [];
+
+    if (stats1) {
+        series.push({
+            name: stats1.name,
+            data: [stats1.durability, stats1.energy, stats1.fighting, stats1.intelligence, stats1.speed, stats1.strength],
+            color: '#ed1b24',
+            dataLabels: {
+                enabled: true,
+                show: '{y}',
+                style: {
+                    visibility: 'visible',
+                    opacity: 1
+                }
+            }
+        });
+    }
+
+    if (stats2) {
+        series.push({
+            name: stats2.name,
+            data: [stats2.durability, stats2.energy, stats2.fighting, stats2.intelligence, stats2.speed, stats2.strength],
+            color: 'blue',
+            dataLabels: {
+                enabled: true,
+                show: '{y}',
+                style: {
+                    visibility: 'visible',
+                    opacity: 1
+                }
+            }
+        });
+    }
+
     var chart = new Highcharts.Chart({
         chart: {
             renderTo: el,
@@ -37,34 +71,15 @@ var radarGraph = function (el, stats1, stats2) {
         },
 
         legend: {
-            enabled: false
+            enabled: true
         },
 
         tooltip: {
-            shared: false,
-            pointFormat: '<span style="color:{series.color}"><b>{point.y}</b><br/>'
+            shared: true,
+            pointFormat: '<span style="color:{series.color}">{series.name}: <b>{point.y:,.0f}</b><br/>'
         },
 
-        series: [{
-            name: stats1.name,
-            data: [stats1.durability, stats1.energy, stats1.fighting, stats1.intelligence, stats1.speed, stats1.strength],
-            // pointPlacement: 'on',
-            color: '#ed1b24',
-            dataLabels: {
-                enabled: true,
-                show: 'y.value',
-                style: {
-                    visibility: 'visible',
-                    opacity: 1
-                }
-            }
-        }
-            // {
-            //     name: 'stats2.name',
-            //     data: [stats2.durability, stats2.energy, stats2.fighting, stats2.intelligence, stats2.speed, stats2.strength],
-            //     pointPlacement: 'on'
-            // }
-        ]
+        series: series
     });
 
     return chart;

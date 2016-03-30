@@ -36,10 +36,12 @@ var DetailView = Backbone.View.extend({
     },
 
     select: function (id) {
-        if ('battle/:id/') {
-            window.location.hash = 'battle/:id/' + this.model.get('id');
+        if (!$('.characterSelect-1').html() && !$('.characterSelect-2').html()) {
+            window.location.hash = 'battle/' + this.model.get('id');
         }
-        window.location.hash = 'battle/' + this.model.get('id');
+        if ($('.characterSelect-1').html() && !$('.characterSelect-2').html()) {
+            window.location.hash = 'battle/:id/:' + this.model.get('id');
+        }
     },
     back: function () {
         window.history.back();

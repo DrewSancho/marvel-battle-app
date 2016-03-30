@@ -5,7 +5,8 @@ var _ = require('underscore');
 var $ = require('jquery');
 
 var CharacterSelectView = require('./CharacterSelectView');
-
+var radarGraph = require('./utility').radarGraph;
+var statsCache = require('./statsCache');
 var dispatcher = require('./dispatcher');
 
 var BattleView = Backbone.View.extend({
@@ -19,6 +20,8 @@ var BattleView = Backbone.View.extend({
         this.character2 = options.character2;
         this.characterSelect1 = new CharacterSelectView({ model: this.character1 });
         this.characterSelect2 = new CharacterSelectView({ model: this.character2 });
+        this.listenTo(this.characterSelect1, 'select', this.updateBattle1);
+        this.listenTo(this.characterSelect2, 'select', this.updateBattle2);
     },
 
     render: function () {
@@ -27,6 +30,17 @@ var BattleView = Backbone.View.extend({
         this.characterSelect2.render();
         this.$('.characterSelect-1').append(this.characterSelect1.$el);
         this.$('.characterSelect-2').append(this.characterSelect2.$el);
+        if (this.character1) {
+            this.updateBattle1(this.character1);
+        }
+
+        if (this.character2) {
+            this.updateBattle2(this.character2);
+        }
+    },
+
+    renderGraph: function () {
+        radarGraph(this.$('#container')[0], this.stats1, this.stats2);
     },
 
     events: {
@@ -38,23 +52,58 @@ var BattleView = Backbone.View.extend({
     },
 
     selectLeft: function () {
-        window.location.hash = '/battle/search';
+        // window.location.hash = '/battle/search';
     },
 
     selectRight: function () {
-        window.location.hash = '/battle/search2';
+
+        // window.location.hash = '/battle/search';
     },
 
-    battle1: function () {
-        // average battle view
+    // battle1: function () {
+    //     // average battle view
+    // },
+
+    // battle2: function () {
+    //     // single battle view
+    //     window.location.hash = '/battle/battle2';
+    // },
+
+    updateBattle1: function (model) {
+        var _this = this;
+        this.character1 = model;
+        this.updateUrl();
+        statsCache.get(model.get('id'), function (stats) {
+            _this.stats1 = stats;
+            _this.renderGraph();
+        });
     },
 
-    battle2: function () {
-        // single battle view
-        window.location.hash = '/battle/battle2';
+    updateBattle2: function (model) {
+        var _this = this;
+        this.character2 = model;
+        this.updateUrl();
+        statsCache.get(model.get('id'), function (stats) {
+            _this.stats2 = stats;
+            _this.renderGraph();
+        });
     },
+
     random: function () {
-        
+
+    },
+    updateUrl: function () {
+        var url = 'battle/';
+
+        if (this.character1) {
+            url += this.character1.get('id') + '/';
+        }
+
+        if (this.character2) {
+            url += this.character2.get('id');
+        }
+
+        Backbone.history.navigate(url);
     }
 
 });

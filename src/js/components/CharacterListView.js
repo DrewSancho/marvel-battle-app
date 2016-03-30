@@ -3,7 +3,6 @@ var _ = require('underscore');
 var $ = require('jquery');
 
 var statsCache = require('./statsCache');
-
 var CharacterView = require('./CharacterView');
 var SearchView = require('./SearchView');
 
