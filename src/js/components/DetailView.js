@@ -36,6 +36,9 @@ var DetailView = Backbone.View.extend({
     },
 
     select: function (id) {
+        if ('battle/:id/') {
+            window.location.hash = 'battle/:id/' + this.model.get('id');
+        }
         window.location.hash = 'battle/' + this.model.get('id');
     },
     back: function () {

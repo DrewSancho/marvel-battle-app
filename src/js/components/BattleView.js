@@ -33,7 +33,8 @@ var BattleView = Backbone.View.extend({
         'click .select-left': 'selectLeft',
         'click .select-right': 'selectRight',
         'click .battle1': 'battle1',
-        'click .battle2': 'battle2'
+        'click .battle2': 'battle2',
+        'click .randomizer': 'random'
     },
 
     selectLeft: function () {
@@ -41,7 +42,7 @@ var BattleView = Backbone.View.extend({
     },
 
     selectRight: function () {
-        window.location.hash = '/battle/search';
+        window.location.hash = '/battle/search2';
     },
 
     battle1: function () {
@@ -51,6 +52,9 @@ var BattleView = Backbone.View.extend({
     battle2: function () {
         // single battle view
         window.location.hash = '/battle/battle2';
+    },
+    random: function () {
+        
     }
 
 });
