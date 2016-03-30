@@ -13,7 +13,6 @@ var statsCache = require('./statsCache');
 
 var AppRouter = Backbone.Router.extend({
     routes: {
-        '': 'dashboard',
         'index': 'index',
         'character': 'character',
         'character/:filter': 'filter',
