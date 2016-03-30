@@ -6,7 +6,7 @@ var dispatcher = require('./dispatcher');
 var DetailView = require('./DetailView');
 var CharacterModel = require('./CharacterModel');
 var characterCollection = require('./CharacterCollection');
-// var CharacterView = require('./CharacterView');
+// var SearchesCollection = require('./SearchesCollection');
 var BattleView = require('./BattleView');
 var PopUpSearch = require('./PopUpSearch');
 var statsCache = require('./statsCache');
@@ -16,7 +16,7 @@ var AppRouter = Backbone.Router.extend({
         '': 'dashboard',
         'index': 'index',
         'character': 'character',
-        'character/:filter': 'filter',
+        'character/:filter': 'character',
         'detail/:id': 'detail',
         'battle': 'battle', // no characters selected
         'battle/:id1': 'battle', // one character selected
@@ -25,14 +25,14 @@ var AppRouter = Backbone.Router.extend({
         'battle/:id/:id/battle-average': 'battleAverageView',
         'battle/:id/:id/battle2': 'battle2'
     },
-    index: function () {
-        characterCollection.fetch();
-        dispatcher.trigger('app:show', new CharacterListView({ collection: characterCollection }));
-    },
-    search: function () {
-        characterCollection.fetch();
-        dispatcher.trigger('app:show', characterCollection({ collection: characterCollection }));
-    },
+    // index: function () {
+    //     characterCollection.fetch();
+    //     dispatcher.trigger('app:show', new SearchesCollection({ collection: window.searchesCollection }));
+    // },
+    // search: function () {
+    //     characterCollection.fetch();
+    //     dispatcher.trigger('app:show', new CharacterListView({ collection: characterCollection }));
+    // },
     detail: function (id) {
         id = parseInt(id);
 
@@ -46,21 +46,23 @@ var AppRouter = Backbone.Router.extend({
             }
         });
     },
-    character: function () {
+    character: function (filter) {
+        var data = filter ? { nameStartsWith: filter } : {};
         characterCollection.fetch({
+            data: data,
             success: function () {
-                dispatcher.trigger('app:show', new CharacterListView({collection: characterCollection}));
-            }
-        });
-    },
-
-    filter: function (filter) {
-        characterCollection.fetch({ data: { nameStartsWith: filter },
-            success: function (view) {
                 dispatcher.trigger('app:show', new CharacterListView({ collection: characterCollection }));
             }
         });
     },
+
+    // filter: function (filter) {
+    //     characterCollection.fetch({ data: { nameStartsWith: filter },
+    //         success: function (view) {
+    //             dispatcher.trigger('app:show', new CharacterListView({ collection: characterCollection }));
+    //         }
+    //     });
+    // },
 
     battle: function (id1, id2) {
         var model1, model2;

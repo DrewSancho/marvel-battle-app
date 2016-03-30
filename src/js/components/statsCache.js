@@ -19,7 +19,7 @@ function get (id, callback) {
                 callback(stats);
             },
             error: function () {
-                set(id, null);
+                // set(id, null);
                 callback(null);
             }
         });
