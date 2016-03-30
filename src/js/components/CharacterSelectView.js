@@ -16,11 +16,24 @@ var CharacterSelectView = Backbone.View.extend({
         }
     },
     events: {
-        'click .select': 'onSelect'
+        'click .select': 'onClick'
     },
 
-    onSelect: function () {
-        window.location.hash = 'character';
+    onClick: function () {
+        var _this = this;
+        var popUpSearch = new PopUpSearch();
+        popUpSearch.render();
+        this.$('.searchSlot').append(popUpSearch.$el);
+        popUpSearch.on('select', function (model) {
+            _this.select(model);
+        });
+        // window.location.hash = 'character';
+    },
+
+    select: function (model) {
+        this.model = model;
+        this.render();
+        this.trigger('select', model);
     }
 });
 
