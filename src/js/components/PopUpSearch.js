@@ -10,9 +10,10 @@ var PopUpSearchCharacterView = require('./PopUpSearchCharacterView');
 var PopUpSearchView = Backbone.View.extend({
     className: 'hidden',
 
-    template: _.template(require('./searchView.html')),
+    template: _.template(require('./popUpSearch.html')),
     events: {
         'click .submit': 'search',
+        'click .random': 'random',
         'keydown': 'onKeydown'
     },
     search: function () {
