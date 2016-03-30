@@ -14,6 +14,4 @@ var SearchesCollection = Backbone.Collection.extend({
     url: '/api/searches?sort=desc'
 });
 
-window.searchesCollection = new SearchesCollection();
-
-module.exports = window.searchesCollection;
+module.exports = new SearchesCollection();

@@ -6,10 +6,11 @@ var dispatcher = require('./dispatcher');
 var DetailView = require('./DetailView');
 var CharacterModel = require('./CharacterModel');
 var characterCollection = require('./CharacterCollection');
-// var SearchesCollection = require('./SearchesCollection');
+var SearchesCollection = require('./SearchesCollection');
 var BattleView = require('./BattleView');
 var PopUpSearch = require('./PopUpSearch');
 var statsCache = require('./statsCache');
+var DashboardView = require('./DashboardView');
 
 var AppRouter = Backbone.Router.extend({
     routes: {
@@ -24,10 +25,13 @@ var AppRouter = Backbone.Router.extend({
         'battle/:id/:id/battle-average': 'battleAverageView',
         'battle/:id/:id/battle2': 'battle2'
     },
-    // index: function () {
-    //     characterCollection.fetch();
-    //     dispatcher.trigger('app:show', new SearchesCollection({ collection: window.searchesCollection }));
-    // },
+    index: function () {
+        SearchesCollection.fetch({
+            success: function () {
+                dispatcher.trigger('app:show', new DashboardView({ collection: SearchesCollection }));
+            }
+        });
+    },
     // search: function () {
     //     characterCollection.fetch();
     //     dispatcher.trigger('app:show', new CharacterListView({ collection: characterCollection }));
