@@ -13,6 +13,12 @@ app.use(bodyParser());
 
 app.use(express.static(__dirname + '/public'));
 
+app.get('/api/stats/random', function (req, res) {
+    var index = Math.floor(Math.random() * stats.length);
+
+    res.json(stats[index]);
+});
+
 app.get('/api/stats/:id', function (req, res) {
     var id = parseInt(req.params.id);
     var stat = stats.find(function (x) { return x.id === id; });
@@ -33,7 +39,7 @@ app.get('/api/searches', function (req, res) {
     var result = searches;
     if (req.query.order === 'desc') {
         result = searches.slice().sort(function (a, b) {
-            return a.date < b.date;
+            return a.date - b.date;
         });
     }
     res.json(result.slice(0, req.query.limit || 15));

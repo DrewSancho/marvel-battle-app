@@ -25,7 +25,7 @@ var radarGraph = function (el, stats1, stats2) {
         series.push({
             name: stats2.name,
             data: [stats2.durability, stats2.energy, stats2.fighting, stats2.intelligence, stats2.speed, stats2.strength],
-            color: 'blue',
+            color: '#3a405a',
             dataLabels: {
                 enabled: true,
                 show: '{y}',
