@@ -14,6 +14,13 @@ var CharacterSelectView = Backbone.View.extend({
                 name: 'Select a character!'
             }));
         }
+    },
+    events: {
+        'click .select': 'onSelect'
+    },
+
+    onSelect: function () {
+        window.location.hash = 'character';
     }
 });
 
