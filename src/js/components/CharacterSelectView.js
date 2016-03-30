@@ -27,7 +27,6 @@ var CharacterSelectView = Backbone.View.extend({
         popUpSearch.on('select', function (model) {
             _this.select(model);
         });
-        // window.location.hash = 'character';
     },
 
     select: function (model) {

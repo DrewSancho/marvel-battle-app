@@ -19,6 +19,10 @@ appView.render();
 
 var router = new AppRouter();
 
+// router.navigate('battle/091238/29308')
+// will update without triggering a hashchange event, meaning the route won't
+// fire.
+
 document.body.appendChild(appView.el);
 // document.body.appendChild(characterListView.el);
 
