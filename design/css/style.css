@@ -1,0 +1,357 @@
+.grid-1 {
+  width: 100.00%; }
+  @media screen and (min-width: 400px) {
+    .grid-1 {
+      width: 50.00%; } }
+  @media screen and (min-width: 600px) {
+    .grid-1 {
+      width: 25.00%; } }
+  @media screen and (min-width: 800px) {
+    .grid-1 {
+      width: 8.33%; } }
+  @media screen and (min-width: 1000px) {
+    .grid-1 {
+      width: 8.33%; } }
+  @media screen and (min-width: 1200px) {
+    .grid-1 {
+      width: 8.33%; } }
+
+.grid-2 {
+  width: 100.00%; }
+  @media screen and (min-width: 400px) {
+    .grid-2 {
+      width: 50%; } }
+  @media screen and (min-width: 600px) {
+    .grid-2 {
+      width: 25.00%; } }
+  @media screen and (min-width: 800px) {
+    .grid-2 {
+      width: 16.66%; } }
+  @media screen and (min-width: 1000px) {
+    .grid-2 {
+      width: 16.66%; } }
+  @media screen and (min-width: 1200px) {
+    .grid-2 {
+      width: 16.66%; } }
+
+.grid-3 {
+  width: 100.00%; }
+  @media screen and (min-width: 400px) {
+    .grid-3 {
+      width: 50.00%; } }
+  @media screen and (min-width: 600px) {
+    .grid-3 {
+      width: 25.00%; } }
+  @media screen and (min-width: 800px) {
+    .grid-3 {
+      width: 25.00%; } }
+  @media screen and (min-width: 1000px) {
+    .grid-3 {
+      width: 25.00%; } }
+  @media screen and (min-width: 1200px) {
+    .grid-3 {
+      width: 25.00%; } }
+
+.grid-4 {
+  width: 100.00%; }
+  @media screen and (min-width: 400px) {
+    .grid-4 {
+      width: 50.00%; } }
+  @media screen and (min-width: 600px) {
+    .grid-4 {
+      width: 33.33%; } }
+  @media screen and (min-width: 800px) {
+    .grid-4 {
+      width: 33.33%; } }
+  @media screen and (min-width: 1000px) {
+    .grid-4 {
+      width: 33.33%; } }
+  @media screen and (min-width: 1200px) {
+    .grid-4 {
+      width: 33.33%; } }
+
+.grid-5 {
+  width: 100.00%; }
+  @media screen and (min-width: 400px) {
+    .grid-5 {
+      width: 50.00%; } }
+  @media screen and (min-width: 600px) {
+    .grid-5 {
+      width: 50.00%; } }
+  @media screen and (min-width: 800px) {
+    .grid-5 {
+      width: 41.66%; } }
+  @media screen and (min-width: 1000px) {
+    .grid-5 {
+      width: 41.66%; } }
+  @media screen and (min-width: 1200px) {
+    .grid-5 {
+      width: 41.66%; } }
+
+.grid-6 {
+  width: 100.00%; }
+  @media screen and (min-width: 400px) {
+    .grid-6 {
+      width: 100.00%; } }
+  @media screen and (min-width: 600px) {
+    .grid-6 {
+      width: 50.00%; } }
+  @media screen and (min-width: 800px) {
+    .grid-6 {
+      width: 50.00%; } }
+  @media screen and (min-width: 1000px) {
+    .grid-6 {
+      width: 50.00%; } }
+  @media screen and (min-width: 1200px) {
+    .grid-6 {
+      width: 50.00%; } }
+
+.grid-7 {
+  width: 100.00%; }
+  @media screen and (min-width: 400px) {
+    .grid-7 {
+      width: 100.00%; } }
+  @media screen and (min-width: 600px) {
+    .grid-7 {
+      width: 50.00%; } }
+  @media screen and (min-width: 800px) {
+    .grid-7 {
+      width: 58.33%; } }
+  @media screen and (min-width: 1000px) {
+    .grid-7 {
+      width: 58.33%; } }
+  @media screen and (min-width: 1200px) {
+    .grid-7 {
+      width: 58.33%; } }
+
+.grid-8 {
+  width: 100.00%; }
+  @media screen and (min-width: 400px) {
+    .grid-8 {
+      width: 100.00%; } }
+  @media screen and (min-width: 600px) {
+    .grid-8 {
+      width: 66.66%; } }
+  @media screen and (min-width: 800px) {
+    .grid-8 {
+      width: 66.66%; } }
+  @media screen and (min-width: 1000px) {
+    .grid-8 {
+      width: 66.66%; } }
+  @media screen and (min-width: 1200px) {
+    .grid-8 {
+      width: 66.66%; } }
+
+.grid-9 {
+  width: 100.00%; }
+  @media screen and (min-width: 400px) {
+    .grid-9 {
+      width: 100.00%; } }
+  @media screen and (min-width: 600px) {
+    .grid-9 {
+      width: 75.00%; } }
+  @media screen and (min-width: 800px) {
+    .grid-9 {
+      width: 75.00%; } }
+  @media screen and (min-width: 1000px) {
+    .grid-9 {
+      width: 75.00%; } }
+  @media screen and (min-width: 1200px) {
+    .grid-9 {
+      width: 75.00%; } }
+
+.grid-10 {
+  width: 100.00%; }
+  @media screen and (min-width: 400px) {
+    .grid-10 {
+      width: 100.00%; } }
+  @media screen and (min-width: 600px) {
+    .grid-10 {
+      width: 100%; } }
+  @media screen and (min-width: 800px) {
+    .grid-10 {
+      width: 83.33%; } }
+  @media screen and (min-width: 1000px) {
+    .grid-10 {
+      width: 83.33%; } }
+  @media screen and (min-width: 1200px) {
+    .grid-10 {
+      width: 83.33%; } }
+
+.grid-11 {
+  width: 100.00%; }
+  @media screen and (min-width: 400px) {
+    .grid-11 {
+      width: 100.00%; } }
+  @media screen and (min-width: 600px) {
+    .grid-11 {
+      width: 100.00%; } }
+  @media screen and (min-width: 800px) {
+    .grid-11 {
+      width: 91.66%; } }
+  @media screen and (min-width: 1000px) {
+    .grid-11 {
+      width: 91.66%; } }
+  @media screen and (min-width: 1200px) {
+    .grid-11 {
+      width: 91.66%; } }
+
+.grid-12 {
+  width: 100.00%; }
+  @media screen and (min-width: 400px) {
+    .grid-12 {
+      width: 100.00%; } }
+  @media screen and (min-width: 600px) {
+    .grid-12 {
+      width: 100.00%; } }
+  @media screen and (min-width: 800px) {
+    .grid-12 {
+      width: 100.00%; } }
+  @media screen and (min-width: 1000px) {
+    .grid-12 {
+      width: 100%; } }
+  @media screen and (min-width: 1200px) {
+    .grid-12 {
+      width: 100.00%; } }
+
+.hide-mobile {
+  display: none !important; }
+  @media screen and (min-width: 400px) {
+    .hide-mobile {
+      display: none !important; } }
+  @media screen and (min-width: 600px) {
+    .hide-mobile {
+      display: inline !important; } }
+  @media screen and (min-width: 800px) {
+    .hide-mobile {
+      display: inline !important; } }
+  @media screen and (min-width: 1000px) {
+    .hide-mobile {
+      display: inline !important; } }
+  @media screen and (min-width: 1200px) {
+    .hide-mobile {
+      display: inline !important; } }
+
+.hide-tablet {
+  display: none !important; }
+  @media screen and (min-width: 400px) {
+    .hide-tablet {
+      display: none !important; } }
+  @media screen and (min-width: 600px) {
+    .hide-tablet {
+      display: none !important; } }
+  @media screen and (min-width: 800px) {
+    .hide-tablet {
+      display: inline !important; } }
+  @media screen and (min-width: 1000px) {
+    .hide-tablet {
+      display: inline !important; } }
+  @media screen and (min-width: 1200px) {
+    .hide-tablet {
+      display: inline !important; } }
+
+.hide-desktop {
+  display: none !important; }
+  @media screen and (min-width: 400px) {
+    .hide-desktop {
+      display: inline !important; } }
+  @media screen and (min-width: 600px) {
+    .hide-desktop {
+      display: inline !important; } }
+  @media screen and (min-width: 800px) {
+    .hide-desktop {
+      display: none !important; } }
+  @media screen and (min-width: 1000px) {
+    .hide-desktop {
+      display: none !important; } }
+  @media screen and (min-width: 1200px) {
+    .hide-desktop {
+      display: none !important; } }
+
+* {
+  margin: 0%;
+  padding: 0%; }
+
+html {
+  height: auto;
+  width: 100vw;
+  background-color: #3a405a; }
+
+body {
+  height: auto;
+  width: 90%;
+  margin: 0% auto;
+  background-color: rgba(255, 255, 255, 0.9);
+  box-shadow: 0px 0px 6px #333333; }
+
+#content-wrapper {
+  height: auto;
+  width: auto; }
+
+.clearfix {
+  zoom: 1; }
+  .clearfix:before, .clearfix:after {
+    content: "";
+    display: table; }
+  .clearfix:after {
+    clear: both; }
+
+.clear {
+  clear: both; }
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: Cinzel;
+  font-weight: 400;
+  line-height: 1.25;
+  margin-bottom: 8%; }
+
+p {
+  font-weight: 400;
+  font-size: 1.00em;
+  line-height: 1.50;
+  color: #666666;
+  margin-bottom: 5%; }
+
+a {
+  text-decoration: none; }
+
+#header-bar {
+  height: auto;
+  width: 100%;
+  padding: 4% 10%;
+  box-sizing: border-box;
+  font-family: Cinzel;
+  font-weight: 400;
+  font-size: 1.25em; }
+
+#header-logo {
+  height: auto;
+  width: 15%;
+  display: inline-block; }
+  #header-logo a {
+    display: block; }
+  #header-logo img {
+    height: auto;
+    width: 100%;
+    display: block; }
+
+#header-nav {
+  height: 100%;
+  width: 70%;
+  display: inline-block;
+  float: right; }
+
+#header-menu {
+  display: block;
+  list-style: none; }
+  #header-menu li {
+    display: inline-block; }
+  #header-menu a {
+    display: inline-block;
+    padding: 3% 6%;
+    box-sizing: border-box;
+    border: 1px solid #0a122a;
+    text-align: center;
+    color: #0a122a; }
+
+/*# sourceMappingURL=style.css.map */

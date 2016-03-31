@@ -1,8 +1,13 @@
-// PAGE TEMPLATE SITE
+// MARVEL BATTLEAPP
 // TEXT STYLING
 
 // HEADERS
-h1, h2, h3, h4, h5, h6 {}
+h1, h2, h3, h4, h5, h6 {
+	font-family: Cinzel;
+	font-weight: 400;
+	line-height: 1.25;
+	margin-bottom: 8%;
+}
 
 h1 {}
 h2 {}
@@ -12,5 +17,13 @@ h5 {}
 h6 {}
 
 // BODY TEXT
-p {}
-a {}
+p {
+	font-weight: 400;
+	font-size: 1.00em;
+	line-height: 1.50;
+	color: #666666;
+	margin-bottom: 5%;
+}
+a {
+	text-decoration: none;
+}

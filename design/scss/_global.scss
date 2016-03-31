@@ -1,4 +1,4 @@
-// PAGE TEMPLATE SITE
+// MARVEL BATTLE APP
 // GLOBAL STYLING
 
 * {
@@ -15,6 +15,7 @@
 html {
 	height: auto;
 	width: 100vw;
+	background-color: #3a405a;
 
 	@media screen and (min-width: 400px) {}
 	@media screen and (min-width: 600px) {}
@@ -24,6 +25,12 @@ html {
 }
 
 body {
+	height: auto;
+	width: 90%;
+	margin: 0% auto;
+	background-color: rgba(255,255,255,0.90);
+	box-shadow: 0px 0px 6px #333333;
+
 	@media screen and (min-width: 400px) {}
 	@media screen and (min-width: 600px) {}
 	@media screen and (min-width: 800px) {}
@@ -40,4 +47,20 @@ body {
 	@media screen and (min-width: 800px) {}
 	@media screen and (min-width: 1000px) {}
 	@media screen and (min-width: 1200px) {}
+}
+
+.clearfix {
+	zoom: 1;
+
+	&:before, &:after {
+		content: "";
+		display: table;
+	}
+	&:after {
+		clear: both;
+	}
+}
+
+.clear {
+	clear: both;
 }
