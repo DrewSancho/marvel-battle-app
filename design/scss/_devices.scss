@@ -1,0 +1,65 @@
+// PAGE TEMPLATE SITE
+// DEVICE DISPLAY PROPERTIES
+
+// HIDE ON MOBILE DEVICES
+.hide-mobile {
+	display: none !important;
+
+	@media screen and (min-width: 400px) {
+		display: none !important;
+	}
+	@media screen and (min-width: 600px) {
+		display: inline !important;
+	}
+	@media screen and (min-width: 800px) {
+		display: inline !important;
+	}
+	@media screen and (min-width: 1000px) {
+		display: inline !important;
+	}
+	@media screen and (min-width: 1200px) {
+		display: inline !important;
+	}
+}
+
+// HIDE ON TABLETS
+.hide-tablet {
+	display: none !important;
+
+	@media screen and (min-width: 400px) {
+		display: none !important;
+	}
+	@media screen and (min-width: 600px) {
+		display: none !important;
+	}
+	@media screen and (min-width: 800px) {
+		display: inline !important;
+	}
+	@media screen and (min-width: 1000px) {
+		display: inline !important;
+	}
+	@media screen and (min-width: 1200px) {
+		display: inline !important;
+	}
+}
+
+// HIDE ON DESKTOP
+.hide-desktop {
+	display: none !important;
+
+	@media screen and (min-width: 400px) {
+		display: inline !important;
+	}
+	@media screen and (min-width: 600px) {
+		display: inline !important;
+	}
+	@media screen and (min-width: 800px) {
+		display: none !important;
+	}
+	@media screen and (min-width: 1000px) {
+		display: none !important;
+	}
+	@media screen and (min-width: 1200px) {
+		display: none !important;
+	}
+}
