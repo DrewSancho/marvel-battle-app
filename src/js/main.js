@@ -9,6 +9,15 @@ var AppRouter = require('./components/AppRouter');
 
 var searchesCollection = require('./components/Dashboard/SearchesCollection');
 
+$.fn.extend({
+    animateCss: function (animationName) {
+        var animationEnd = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend';
+        $(this).addClass('animated ' + animationName).one(animationEnd, function () {
+            $(this).removeClass('animated ' + animationName);
+        });
+    }
+});
+
 var appView = new AppView();
 // var searchView = new SearchView();
 // var characterListView = new CharacterListView({ collection: CharacterCollection });

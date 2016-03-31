@@ -1,9 +1,22 @@
 .thumbnail, .charImage, img {
-    height: 400px;
-    width: auto;
+    width: 300px;
+    height: auto;
     margin: 0 auto;
 }
 
-div {
-    border: 5px solid black;
+.characterVsSelect {
+    text-align: center;
+    .characterSelect-1, .characterSelect-2 {
+        height: 400px;
+        width: auto;
+        display: inline-block;
+        position: relative;
+    }
+    h1 {
+        position: absolute;
+        top: 340px;
+        left: 420px;
+        color: red;
+        z-index: 2;
+    }
 }

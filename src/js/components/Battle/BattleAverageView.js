@@ -1,7 +1,10 @@
 var Backbone = require('backbone');
 var _ = require('underscore');
+var CharacterModel = require('../Characters/CharacterModel');
 
 var BattleAverageView = Backbone.View.extend({
+
+    model: CharacterModel,
 
     className: 'battle-average-view',
 
@@ -12,7 +15,10 @@ var BattleAverageView = Backbone.View.extend({
     },
 
     render: function () {
-        this.$el.html(this.template());
+        this.$el.html(this.template({
+            character1: this.model.attributes,
+            character2: this.model.attributes
+        }));
     }
 });
 

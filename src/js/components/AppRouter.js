@@ -7,10 +7,12 @@ var DetailView = require('./Characters/DetailView');
 var CharacterModel = require('./Characters/CharacterModel');
 var characterCollection = require('./Characters/CharacterCollection');
 var SearchesCollection = require('./Dashboard/SearchesCollection');
+// var SearchesCharacterModel = require('./Dashboard/SearchesCharacterModel');
 var BattleView = require('./Battle/BattleView');
 var PopUpSearch = require('./PopUpSearch/PopUpSearch');
 var statsCache = require('./Utilities/statsCache');
 var DashboardView = require('./Dashboard/DashboardView');
+var BattleAverageView = require('./Battle/BattleAverageView');
 
 var AppRouter = Backbone.Router.extend({
     routes: {
@@ -22,13 +24,13 @@ var AppRouter = Backbone.Router.extend({
         'battle/:id1': 'battle', // one character selected
         'battle/:id1/:id2': 'battle', // both characters selected
         'battle/search': 'battleSearch',
-        'battle/:id/:id/battle-average': 'battleAverageView',
+        'battle/:id1/:id2/battle-average': 'battleAverage',
         'battle/:id/:id/battle2': 'battle2'
     },
     index: function () {
         SearchesCollection.fetch({
             success: function () {
-                dispatcher.trigger('app:show', new DashboardView({ collection: SearchesCollection }));
+                dispatcher.trigger('app:show', new DashboardView({ searchesCollection: SearchesCollection }));
             }
         });
     },
@@ -104,9 +106,21 @@ var AppRouter = Backbone.Router.extend({
         });
     },
 
-    battleSearch: function () {
-        characterCollection.fetch();
-        dispatcher.trigger('app:show', new PopUpSearch({ collection: characterCollection }));
+    battleAverage: function (id1, id2) {
+        var model1 = new CharacterModel({ id: id1 });
+        var model2 = new CharacterModel({ id: id2 });
+        model1.fetch({
+            success: function () {
+                model2.fetch({
+                    success: function () {
+                        dispatcher.trigger('app:show', new BattleAverageView({
+                            character1: model1,
+                            character2: model2
+                        }));
+                    }
+                });
+            }
+        });
     }
 });
 
