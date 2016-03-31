@@ -1,3 +1,15 @@
+.textbanner-blue {
+  height: auto;
+  width: 100%;
+  display: block;
+  padding: 2% 0%;
+  box-sizing: border-box;
+  background-color: #3a405a;
+  text-align: center;
+  color: #ffffff; }
+  .textbanner-blue h2 {
+    margin-bottom: 0%; }
+
 .grid-1 {
   width: 100.00%; }
   @media screen and (min-width: 400px) {
@@ -302,8 +314,12 @@ body {
 h1, h2, h3, h4, h5, h6 {
   font-family: Cinzel;
   font-weight: 400;
-  line-height: 1.25;
-  margin-bottom: 8%; }
+  line-height: 1.25; }
+
+h2 {
+  font-size: 2.00em; }
+  h2 .supersize {
+    font-size: 1.50em; }
 
 p {
   font-weight: 400;
@@ -325,33 +341,67 @@ a {
   font-size: 1.25em; }
 
 #header-logo {
-  height: auto;
-  width: 15%;
-  display: inline-block; }
+  max-height: 76px;
+  width: auto;
+  display: inline-block;
+  vertical-align: middle; }
   #header-logo a {
     display: block; }
   #header-logo img {
-    height: auto;
-    width: 100%;
+    max-height: 76px;
+    width: auto;
     display: block; }
 
 #header-nav {
-  height: 100%;
-  width: 70%;
-  display: inline-block;
+  width: 80%;
+  display: block;
   float: right; }
 
 #header-menu {
   display: block;
-  list-style: none; }
+  vertical-align: middle;
+  list-style: none;
+  text-align: right; }
   #header-menu li {
-    display: inline-block; }
-  #header-menu a {
     display: inline-block;
-    padding: 3% 6%;
+    margin-right: 10px; }
+    #header-menu li:last-child {
+      margin-right: 0px; }
+  #header-menu a {
+    height: 76px;
+    width: auto;
+    display: block;
+    padding: 24px;
     box-sizing: border-box;
     border: 1px solid #0a122a;
     text-align: center;
     color: #0a122a; }
+    #header-menu a:hover {
+      background-color: #0a122a;
+      color: #ffffff;
+      cursor: pointer; }
+
+.page-titlebar {
+  height: auto;
+  width: 100%;
+  display: block; }
+
+.pagehead-banner {
+  height: auto;
+  width: 80%;
+  display: block;
+  margin: 0% auto;
+  margin-bottom: 5%; }
+  .pagehead-banner img {
+    height: auto;
+    width: 100%; }
+
+.character-list {
+  height: auto;
+  width: 100%;
+  display: block;
+  padding: 5% 10%;
+  box-sizing: border-box;
+  background-color: #ff00ff; }
 
 /*# sourceMappingURL=style.css.map */

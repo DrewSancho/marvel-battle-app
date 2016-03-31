@@ -1,0 +1,30 @@
+// MARVEL BATTLE APP
+// DASHBOARD PAGE STYLING
+
+.page-titlebar {
+	height: auto;
+	width: 100%;
+	display: block;
+}
+
+.pagehead-banner {
+	height: auto;
+	width: 80%;
+	display: block;
+	margin: 0% auto;
+	margin-bottom: 5%;
+
+	img {
+		height: auto;
+		width: 100%;
+	}
+}
+
+.character-list {
+	height: auto;
+	width: 100%;
+	display: block;
+	padding: 5% 10%;
+	box-sizing: border-box;
+	background-color: #ff00ff;
+}
