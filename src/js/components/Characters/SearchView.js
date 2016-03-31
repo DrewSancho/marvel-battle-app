@@ -2,7 +2,7 @@ var Backbone = require('backbone');
 var _ = require('underscore');
 var $ = require('jquery');
 
-var dispatcher = require('./dispatcher');
+var dispatcher = require('../Events/dispatcher');
 
 var SearchView = Backbone.View.extend({
     className: 'searchView',

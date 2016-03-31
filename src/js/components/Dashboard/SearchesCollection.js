@@ -1,5 +1,5 @@
 var Backbone = require('backbone');
-var dispatcher = require('./dispatcher');
+var dispatcher = require('../Events/dispatcher');
 
 var SearchesCollection = Backbone.Collection.extend({
 

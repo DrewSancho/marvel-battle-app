@@ -2,9 +2,9 @@ var Backbone = require('backbone');
 var _ = require('underscore');
 var $ = require('jquery');
 
-var dispatcher = require('./dispatcher');
+var dispatcher = require('../Events/dispatcher');
 
-var radarGraph = require('./utility').radarGraph;
+var radarGraph = require('../Utilities/utility').radarGraph;
 
 var DetailView = Backbone.View.extend({
     className: 'detailView',

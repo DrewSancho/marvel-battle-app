@@ -6,7 +6,7 @@ var PopUpSearchCharacterView = Backbone.View.extend({
         this.popUpSearchView = options.popUpSearchView;
     },
 
-    template: _.template(require('./characterView.html')),
+    template: _.template(require('../Characters/characterView.html')),
 
     render: function (stats) {
         if (stats) {

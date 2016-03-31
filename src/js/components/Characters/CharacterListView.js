@@ -2,7 +2,7 @@ var Backbone = require('backbone');
 var _ = require('underscore');
 var $ = require('jquery');
 
-var statsCache = require('./statsCache');
+var statsCache = require('../Utilities/statsCache');
 var CharacterView = require('./CharacterView');
 var SearchView = require('./SearchView');
 
@@ -11,12 +11,11 @@ var CharacterListView = Backbone.View.extend({
 
     initialize: function () {
         this.characterViews = [];
-        this.render();
         this.listenTo(this.collection, 'sync', this.render);
     },
 
     render: function () {
-        var that = this;
+        var _this = this;
 
         this.removeChildren();
 
@@ -31,7 +30,7 @@ var CharacterListView = Backbone.View.extend({
         this.$el.append(this.searchView.$el);
 
         this.characterViews.forEach(function (view) {
-            that.$el.append(view.$el);
+            _this.$el.append(view.$el);
             statsCache.get(view.model.get('id'), view.render.bind(view));
         });
     },

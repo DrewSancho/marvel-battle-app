@@ -3,7 +3,7 @@ var _ = require('underscore');
 var $ = require('jquery');
 
 var NavView = require('./NavView');
-var dispatcher = require('./dispatcher');
+var dispatcher = require('../Events/dispatcher');
 
 var AppView = Backbone.View.extend({
     clssName: 'app',

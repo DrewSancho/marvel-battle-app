@@ -1,13 +1,13 @@
 var $ = require('jquery');
 var Backbone = require('backbone');
-var SearchView = require('./components/SearchView');
-var CharacterListView = require('./components/CharacterListView');
-var CharacterCollection = require('./components/CharacterCollection');
+var SearchView = require('./components/Characters/SearchView');
+var CharacterListView = require('./components/Characters/CharacterListView');
+var CharacterCollection = require('./components/Characters/CharacterCollection');
 
-var AppView = require('./components/AppView');
+var AppView = require('./components/App/AppView');
 var AppRouter = require('./components/AppRouter');
 
-var searchesCollection = require('./components/SearchesCollection');
+var searchesCollection = require('./components/Dashboard/SearchesCollection');
 
 var appView = new AppView();
 // var searchView = new SearchView();

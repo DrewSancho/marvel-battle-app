@@ -1,6 +1,6 @@
 var Highcharts = require('highcharts');
 
-require('../../vendor/highcharts-more')(Highcharts);
+require('../../../vendor/highcharts-more')(Highcharts);
 
 var radarGraph = function (el, stats1, stats2) {
     var series = [];

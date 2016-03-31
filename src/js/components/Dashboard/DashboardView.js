@@ -2,8 +2,7 @@ var Backbone = require('backbone');
 var _ = require('underscore');
 var $ = require('jquery');
 var SearchesCollection = require('./SearchesCollection');
-var CharacterView = require('./CharacterView');
-var dispatcher = require('./dispatcher');
+var dispatcher = require('../Events/dispatcher');
 
 var DashboardView = Backbone.View.extend({
 

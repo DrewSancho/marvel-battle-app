@@ -7,7 +7,7 @@ var searchesIds = 0;
 
 var searches = [];
 
-var stats = require('./src/js/components/stats.json');
+var stats = require('./src/js/components/Utilities/stats.json');
 
 app.use(bodyParser());
 

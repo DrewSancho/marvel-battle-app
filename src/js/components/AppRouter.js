@@ -1,16 +1,16 @@
 var Backbone = require('backbone');
 var $ = require('jquery');
 
-var CharacterListView = require('./CharacterListView');
-var dispatcher = require('./dispatcher');
-var DetailView = require('./DetailView');
-var CharacterModel = require('./CharacterModel');
-var characterCollection = require('./CharacterCollection');
-var SearchesCollection = require('./SearchesCollection');
-var BattleView = require('./BattleView');
-var PopUpSearch = require('./PopUpSearch');
-var statsCache = require('./statsCache');
-var DashboardView = require('./DashboardView');
+var CharacterListView = require('./Characters/CharacterListView');
+var dispatcher = require('./Events/dispatcher');
+var DetailView = require('./Characters/DetailView');
+var CharacterModel = require('./Characters/CharacterModel');
+var characterCollection = require('./Characters/CharacterCollection');
+var SearchesCollection = require('./Dashboard/SearchesCollection');
+var BattleView = require('./Battle/BattleView');
+var PopUpSearch = require('./PopUpSearch/PopUpSearch');
+var statsCache = require('./Utilities/statsCache');
+var DashboardView = require('./Dashboard/DashboardView');
 
 var AppRouter = Backbone.Router.extend({
     routes: {
@@ -102,21 +102,6 @@ var AppRouter = Backbone.Router.extend({
                 });
             }
         });
-
-        // var model = new CharacterModel({id: id});
-        // var model2 = new CharacterModel({id: id});
-
-        // model.fetch({
-        //     success: function () {
-        //         dispatcher.trigger('app:show', new BattleView({ model: model }));
-        //     }
-        // });
-
-        // model2.fetch({
-        //     success: function () {
-        //         dispatcher.trigger('app:show', new BattleView({ model: model2 }));
-        //     }
-        // });
     },
 
     battleSearch: function () {

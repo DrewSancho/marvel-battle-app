@@ -1,11 +1,11 @@
 var Backbone = require('backbone');
-var CharacterCollection = require('./CharacterCollection');
 var _ = require('underscore');
 var $ = require('jquery');
 
-var statsCache = require('./statsCache');
-
+var statsCache = require('../Utilities/statsCache');
+var CharacterCollection = require('../Characters/CharacterCollection');
 var PopUpSearchCharacterView = require('./PopUpSearchCharacterView');
+var CharacterModel = require('../Characters/CharacterModel');
 
 var PopUpSearchView = Backbone.View.extend({
     className: 'hidden',
@@ -52,6 +52,17 @@ var PopUpSearchView = Backbone.View.extend({
         this.children.forEach(function (view) {
             statsCache.get(view.model.get('id'), view.render.bind(view));
             _this.$('.resultsSlot').append(view.$el);
+        });
+    },
+    random: function () {
+        var _this = this;
+        $.get('api/stats/random', function (stats) {
+            var model = new CharacterModel({ id: stats.id });
+            model.fetch({
+                success: function () {
+                    _this.trigger('select', model);
+                }
+            });
         });
     }
 });

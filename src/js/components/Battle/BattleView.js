@@ -5,9 +5,9 @@ var _ = require('underscore');
 var $ = require('jquery');
 
 var CharacterSelectView = require('./CharacterSelectView');
-var radarGraph = require('./utility').radarGraph;
-var statsCache = require('./statsCache');
-var dispatcher = require('./dispatcher');
+var radarGraph = require('../Utilities/utility').radarGraph;
+var statsCache = require('../Utilities/statsCache');
+var dispatcher = require('../Events/dispatcher');
 
 var BattleView = Backbone.View.extend({
     className: 'battle-view',
@@ -87,10 +87,6 @@ var BattleView = Backbone.View.extend({
             _this.stats2 = stats;
             _this.renderGraph();
         });
-    },
-
-    random: function () {
-
     },
     updateUrl: function () {
         var url = 'battle/';
