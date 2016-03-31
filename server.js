@@ -2,6 +2,7 @@ var express = require('express');
 var $ = require('jquery');
 var bodyParser = require('body-parser');
 var app = express();
+var randomFavorites = require('./src/js/components/Utilities/randomFavorites');
 
 var searchesIds = 0;
 
@@ -17,6 +18,15 @@ app.get('/api/stats/random', function (req, res) {
     var index = Math.floor(Math.random() * stats.length);
 
     res.json(stats[index]);
+});
+
+app.get('/api/stats/random/favs', function (req, res) {
+    var randomArray = [];
+    for (var i = 0; i < 3; i++) {
+        randomArray.push(randomFavorites[ Math.floor(Math.random() * randomFavorites.length) ]);
+    }
+
+    res.json(randomArray);
 });
 
 app.get('/api/stats/:id', function (req, res) {
