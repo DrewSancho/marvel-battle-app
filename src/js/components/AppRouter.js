@@ -7,6 +7,7 @@ var DetailView = require('./Characters/DetailView');
 var CharacterModel = require('./Characters/CharacterModel');
 var characterCollection = require('./Characters/CharacterCollection');
 var SearchesCollection = require('./Dashboard/SearchesCollection');
+// var SearchesCharacterModel = require('./Dashboard/SearchesCharacterModel');
 var BattleView = require('./Battle/BattleView');
 var PopUpSearch = require('./PopUpSearch/PopUpSearch');
 var statsCache = require('./Utilities/statsCache');
@@ -28,7 +29,7 @@ var AppRouter = Backbone.Router.extend({
     index: function () {
         SearchesCollection.fetch({
             success: function () {
-                dispatcher.trigger('app:show', new DashboardView({ collection: SearchesCollection }));
+                dispatcher.trigger('app:show', new DashboardView({ searchesCollection: SearchesCollection }));
             }
         });
     },
