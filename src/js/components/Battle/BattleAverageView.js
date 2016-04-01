@@ -1,9 +1,19 @@
 var Backbone = require('backbone');
 var _ = require('underscore');
-var CharacterModel = require('../Characters/CharacterModel');
+var $ = require('jquery');
+
+var statsCache = require('../Utilities/statsCache.js');
 
 var BattleAverageView = Backbone.View.extend({
 
+<<<<<<< HEAD
+=======
+    events: {
+        'click .fight': 'fight',
+        'keydown': 'onKeyDown'
+    },
+
+>>>>>>> 1874a5178c23908735a9bdd49da1be12e359c091
     className: 'battle-average-view',
 
     template: _.template(require('./battleAverageView.html')),
@@ -19,6 +29,27 @@ var BattleAverageView = Backbone.View.extend({
             character1: this.character1.attributes,
             character2: this.character2.attributes
         }));
+    },
+
+    fight: function () {
+        var _this = this;
+        statsCache.get(this.character1.get('id'), function (stats1) {
+            statsCache.get(_this.character2.get('id'), function (stats2) {
+                var results = window.BattleManager.statBattle(stats1, stats2, $('.fight-num').val());
+                $('.character1-wins').append(results.fighter1.wins);
+                $('.character1-draws').append(results.fighter1.draws);
+                $('.character1-losses').append(results.fighter2.wins);
+                $('.character2-wins').append(results.fighter2.wins);
+                $('.character2-draws').append(results.fighter2.draws);
+                $('.character2-losses').append(results.fighter1.wins);
+            });
+        });
+        $('input').val('');
+    },
+    onKeyDown: function (e) {
+        if (e.keyCode === 13) {
+            this.fight();
+        }
     }
 });
 

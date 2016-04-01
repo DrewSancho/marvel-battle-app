@@ -1,8 +1,8 @@
 var Backbone = require('backbone');
-var CharacterModel = require('../Characters/CharacterModel');
+var SearchesCharacterModel = require('../Dashboard/SearchesCharacterModel');
 
 var FavoriteCharacterCollection = Backbone.Collection.extend({
-    model: CharacterModel,
+    model: SearchesCharacterModel,
     url: '/api/stats/random/favs'
 });
 
