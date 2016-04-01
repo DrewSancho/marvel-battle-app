@@ -1,5 +1,6 @@
 var Backbone = require('backbone');
 var _ = require('underscore');
+var $ = require('jquery');
 
 var statsCache = require('../Utilities/statsCache.js');
 
@@ -30,8 +31,11 @@ var BattleAverageView = Backbone.View.extend({
         var _this = this;
         statsCache.get(this.character1.get('id'), function (stats1) {
             statsCache.get(_this.character2.get('id'), function (stats2) {
-                var x = window.BattleManager.statBattle(stats1, stats2, 10);
-                console.log(x);
+                var results = window.BattleManager.statBattle(stats1, stats2, $('.fight-num').val());
+                $('.character1-wins').append(results.fighter1.wins);
+                $('.character1-draws').append(results.fighter1.draws);
+                $('.character2-wins').append(results.fighter2.wins);
+                $('.character2-draws').append(results.fighter2.draws);
             });
         });
     }

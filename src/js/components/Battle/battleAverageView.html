@@ -1,7 +1,15 @@
-<img class="thumbnail" src="<%= character1.thumbnail.path + '.' + character1.thumbnail.extension %>">
-<div><%= character1.name %></div>
-
-
-<img class="thumbnail" src="<%= character2.thumbnail.path + '.' + character2.thumbnail.extension %>">
-<div><%= character2.name %></div>
+<div class="header">See the outcome of a ten round battle.</div>
+<div class="character1">
+    <img class="thumbnail" src="<%= character1.thumbnail.path + '.' + character1.thumbnail.extension %>">
+    <div><%= character1.name %></div>
+    <div class="character1-wins">Wins: </div>
+    <div class="character1-draws">Draws: </div>
+</div>
+<div class="character2">
+    <img class="thumbnail" src="<%= character2.thumbnail.path + '.' + character2.thumbnail.extension %>">
+    <div><%= character2.name %></div>
+    <div class="character2-wins">Wins: </div>
+    <div class="character2-draws">Draws: </div>
+</div>
+<input class="fight-num" type="number">
 <button class="fight">Fight!</button>
