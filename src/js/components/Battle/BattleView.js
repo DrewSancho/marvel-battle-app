@@ -62,14 +62,12 @@ var BattleView = Backbone.View.extend({
 
     battle1: function (e) {
         window.location.hash = 'battle/' + this.character1.get('id') + '/' + this.character2.get('id') + '/battle-average';
-        // this.$('.characterSelect-1').append(this.characterSelect1.$el);
-        // this.$('.characterSelect-2').append(this.characterSelect2.$el);
     },
 
-    // battle2: function () {
-    //     // single battle view
-    //     window.location.hash = '/battle/battle2';
-    // },
+    battle2: function () {
+        // single battle view
+        window.location.hash = 'battle/' + this.character1.get('id') + '/' + this.character2.get('id') + '/battle-once';
+    },
 
     updateBattle1: function (model) {
         var _this = this;
