@@ -6,8 +6,8 @@ var dispatcher = require('./Events/dispatcher');
 var DetailView = require('./Characters/DetailView');
 var CharacterModel = require('./Characters/CharacterModel');
 var characterCollection = require('./Characters/CharacterCollection');
-var SearchesCollection = require('./Dashboard/SearchesCollection');
-// var SearchesCharacterModel = require('./Dashboard/SearchesCharacterModel');
+var searchesCollection = require('./Dashboard/SearchesCollection');
+var FavoriteCharacterCollection = require('./Dashboard/FavoriteCharacterCollection');
 var BattleView = require('./Battle/BattleView');
 var PopUpSearch = require('./PopUpSearch/PopUpSearch');
 var statsCache = require('./Utilities/statsCache');
@@ -27,16 +27,16 @@ var AppRouter = Backbone.Router.extend({
         'battle/:id/:id/battle2': 'battle2'
     },
     index: function () {
-        SearchesCollection.fetch({
-            success: function () {
-                dispatcher.trigger('app:show', new DashboardView({ searchesCollection: SearchesCollection }));
-            }
-        });
+        var favoriteCharacterCollection = new FavoriteCharacterCollection();
+
+        favoriteCharacterCollection.fetch();
+        searchesCollection.fetch();
+        
+        dispatcher.trigger('app:show', new DashboardView({
+            searchesCollection: searchesCollection,
+            favoriteCharacterCollection: favoriteCharacterCollection
+        }));
     },
-    // search: function () {
-    //     characterCollection.fetch();
-    //     dispatcher.trigger('app:show', new CharacterListView({ collection: characterCollection }));
-    // },
     detail: function (id) {
         id = parseInt(id);
 
@@ -60,17 +60,8 @@ var AppRouter = Backbone.Router.extend({
         });
     },
 
-    // filter: function (filter) {
-    //     characterCollection.fetch({ data: { nameStartsWith: filter },
-    //         success: function (view) {
-    //             dispatcher.trigger('app:show', new CharacterListView({ collection: characterCollection }));
-    //         }
-    //     });
-    // },
-
     battle: function (id1, id2) {
         var model1, model2;
-        // characterCollection.fetch();
 
         // If the route was triggered with no character ids
         if (!id1 && !id2) {

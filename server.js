@@ -22,8 +22,14 @@ app.get('/api/stats/random', function (req, res) {
 
 app.get('/api/stats/random/favs', function (req, res) {
     var randomArray = [];
+    var character;
     for (var i = 0; i < 3; i++) {
-        randomArray.push(randomFavorites[ Math.floor(Math.random() * randomFavorites.length) ]);
+        character = randomFavorites[ Math.floor(Math.random() * randomFavorites.length) ];
+        if (randomArray.indexOf(character) > -1) {
+            i--;
+        } else {
+            randomArray.push(character);
+        }
     }
 
     res.json(randomArray);
@@ -47,17 +53,41 @@ app.get('/api/battles', function (req, res) {
 
 app.get('/api/searches', function (req, res) {
     var result = searches;
+
+    result = result.reduce(function (a, x) {
+        // Find a search with the same character
+        var contains = a.filter(function (y) {
+            return x.characterId === y.characterId;
+        })[0];
+
+        // If we found a search with the same character
+        if (contains) {
+            // and if the search date is before x's search date
+            if (contains.date < x.date) {
+                // overwrite with the newer search
+                a[a.indexOf(contains)] = x;
+            }
+        } else {
+            a.push(x);
+        }
+
+        // return the current version of the array
+        return a;
+    }, []);
+
+    // Order the results
     if (req.query.order === 'desc') {
-        result = searches.slice().sort(function (a, b) {
-            return a.date - b.date;
+        result = result.slice().sort(function (a, b) {
+            return b.date - a.date;
         });
     }
+
     res.json(result.slice(0, req.query.limit || 15));
 });
 
 app.post('/api/searches', function (req, res) {
     var search = {
-        time: new Date(),
+        date: new Date(),
         characterId: req.body.characterId,
         thumbnail: req.body.thumbnail,
         name: req.body.name,
