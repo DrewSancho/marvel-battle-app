@@ -2,7 +2,7 @@ var Backbone = require('backbone');
 var _ = require('underscore');
 var $ = require('jquery');
 var SearchesView = require('./SearchesView');
-// var dispatcher = require('../Events/dispatcher');
+var FavoriteCharacterView = require('./FavoriteCharacterView');
 
 var DashboardView = Backbone.View.extend({
 
@@ -12,10 +12,11 @@ var DashboardView = Backbone.View.extend({
 
     initialize: function (options) {
         this.searchesCollection = options.searchesCollection;
+        this.favoriteCharacterCollection = options.favoriteCharacterCollection;
+        this.listenTo(this.searchesCollection, 'sync', this.render);
+        this.listenTo(this.favoriteCharacterCollection, 'sync', this.render);
 
-        // this.listenTo(this.model, 'sync', function () {
-        //     dispatcher.trigger();
-        // }, this);
+        this.favoriteCharacterView = new FavoriteCharacterView({ collection: this.favoriteCharacterCollection });
 
         this.searchesView = new SearchesView({ collection: this.searchesCollection });
     },
@@ -23,17 +24,10 @@ var DashboardView = Backbone.View.extend({
     render: function () {
         this.$el.html(this.template());
         this.searchesView.render();
+        this.favoriteCharacterView.render();
         this.$('.searches-slot').append(this.searchesView.$el);
-    },
-
-    events: {
-        'click img': 'onClick'
-    },
-
-    onClick: function () {
-        window.location.hash = 'detail/' + this.model.get('id');
+        this.$('.random-favorites-slot').append(this.favoriteCharacterView.$el);
     }
-
 });
 
 module.exports = DashboardView;
