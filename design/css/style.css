@@ -346,34 +346,55 @@ a {
     margin-bottom: 0%; }
 
 .battle-scene {
-  height: 590px;
-  width: 100%;
-  background-color: #ff00ff;
+  background-color: #0a122a;
   border-top: 10px solid #ed1b24;
-  position: relative; }
+  position: relative;
+  overflow: hidden; }
+  .battle-scene .frame {
+    width: 130%;
+    position: relative;
+    left: -15%; }
   .battle-scene .battle-player-left {
     height: 100%;
     width: 50%;
-    display: inline-block;
-    background-color: #333333;
+    display: block;
+    float: left;
     border-right: 1px solid #ffffff;
-    box-sizing: border-box; }
+    box-sizing: border-box;
+    transform: skewX(-10deg);
+    overflow: hidden; }
+    .battle-scene .battle-player-left img {
+      display: block;
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      transform: skewX(10deg);
+      position: relative;
+      right: -10%; }
   .battle-scene .battle-player-right {
     height: 100%;
     width: 50%;
-    display: inline-block;
+    display: block;
     float: right;
-    background-color: #333333;
     border-left: 1px solid #ffffff;
-    box-sizing: border-box; }
+    box-sizing: border-box;
+    transform: skewX(-10deg);
+    overflow: hidden; }
+    .battle-scene .battle-player-right img {
+      display: block;
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      transform: skewX(10deg);
+      position: relative;
+      left: -10%; }
   .battle-scene .battle-scene-footer {
     height: auto;
     width: 100%;
     padding: 1% 10%;
     box-sizing: border-box;
     background-color: #0a122a;
-    position: absolute;
-    bottom: 0%; }
+    clear: both; }
   .battle-scene .button {
     height: auto;
     width: 25%;
@@ -463,9 +484,15 @@ a {
   height: auto;
   width: 100%;
   padding: 4% 10%;
-  box-sizing: border-box; }
+  box-sizing: border-box;
+  text-align: center; }
   .battle-playlog .playlog {
     margin: 5% 0%;
     list-style: none; }
+    .battle-playlog .playlog li {
+      display: block;
+      margin-bottom: 1%;
+      line-height: 1.50;
+      color: #666666; }
 
 /*# sourceMappingURL=style.css.map */

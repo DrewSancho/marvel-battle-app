@@ -15,36 +15,56 @@
 }
 
 .battle-scene {
-	height: 590px;
-	width: 100%;
-	background-color: #ff00ff;
+	background-color: #0a122a;
 	border-top: 10px solid #ed1b24;
 	position: relative;
+	overflow: hidden;
+
+	.frame{
+		width: 130%;
+		position: relative;
+		left: -15%;
+	}
 
 	.battle-player-left {
 		height: 100%;
 		width: 50%;
-		display: inline-block;
-		// background-image: url("https://i.annihil.us/u/prod/marvel/i/mg/c/60/55b6a28ef24fa.jpg");
-		// background-size: cover;
-		// background-position: 50% 50%;
-		// background-repeat: no-repeat;
-		background-color: #333333;
+		display: block;
+		float: left;
 		border-right: 1px solid #ffffff;
 		box-sizing: border-box;
+		transform: skewX( -10deg );
+	    overflow: hidden;
+
+		img{
+			display: block;
+			margin: 0;
+			padding: 0;
+			width: 100%;
+			transform: skewX( 10deg );
+			position: relative;
+			right: -10%;
+		}
 	}
 	.battle-player-right {
 		height: 100%;
 		width: 50%;
-		display: inline-block;
+		display: block;
 		float: right;
-		// background-image: url("http://i.annihil.us/u/prod/marvel/i/mg/9/30/537bb3f94d3b0.jpg");
-		// background-size: cover;
-		// background-position: 50% 50%;
-		// background-repeat: no-repeat;
-		background-color: #333333;
 		border-left: 1px solid #ffffff;
 		box-sizing: border-box;
+	 	transform: skewX( -10deg );
+	    overflow: hidden;
+
+		 img{
+		  	display: block;
+		  	margin: 0;
+		  	padding: 0;
+		  	width: 100%;
+		  	transform: skewX( 10deg );
+		  	position: relative;
+		  	left: -10%;
+		 }
 	}
 	.battle-scene-footer {
 		height: auto;
@@ -52,8 +72,9 @@
 		padding: 1% 10%;
 		box-sizing: border-box;
 		background-color: #0a122a;
-		position: absolute;
-		bottom: 0%;
+		clear: both;
+		// position: absolute;
+		// bottom: 0%;
 	}
 	.button {
 		height: auto;
@@ -169,11 +190,18 @@
 	width: 100%;
 	padding: 4% 10%;
 	box-sizing: border-box;
+	text-align: center;
 
 	.playlog {
 		margin: 5% 0%;
 		list-style: none;
 
-		
+		li {
+			display: block;
+			margin-bottom: 1%;
+			line-height: 1.50;
+			color: #666666;
+		}
+
 	}
 }
