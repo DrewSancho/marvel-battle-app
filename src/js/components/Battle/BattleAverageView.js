@@ -6,14 +6,11 @@ var statsCache = require('../Utilities/statsCache.js');
 
 var BattleAverageView = Backbone.View.extend({
 
-<<<<<<< HEAD
-=======
     events: {
         'click .fight': 'fight',
         'keydown': 'onKeyDown'
     },
 
->>>>>>> 1874a5178c23908735a9bdd49da1be12e359c091
     className: 'battle-average-view',
 
     template: _.template(require('./battleAverageView.html')),
