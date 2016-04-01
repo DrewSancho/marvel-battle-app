@@ -4,6 +4,10 @@ var FavoriteView = require('./FavoriteView');
 
 var FavoriteCharacterView = Backbone.View.extend({
 
+    className: 'character-list',
+
+    tagName: 'ul',
+
     initialize: function () {
         this.children = [];
     },

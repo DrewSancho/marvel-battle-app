@@ -4,6 +4,10 @@ var SearchesCharacterView = require('./SearchesCharacterView');
 
 var SearchesView = Backbone.View.extend({
 
+    tagName: 'ul',
+
+    className: 'search-results',
+
     initialize: function () {
         this.children = [];
     },

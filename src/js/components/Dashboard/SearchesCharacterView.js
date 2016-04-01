@@ -3,6 +3,9 @@ var _ = require('underscore');
 var $ = require('jquery');
 
 var SearchesCharacterView = Backbone.View.extend({
+
+    tagName: 'li',
+
     events: {
         'click': 'onClick'
     },
@@ -15,7 +18,8 @@ var SearchesCharacterView = Backbone.View.extend({
 
     render: function () {
         this.$el.html(this.template(this.model.attributes));
-    }
+    },
+    limit: 4
 
 });
 

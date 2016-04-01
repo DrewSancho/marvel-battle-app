@@ -18,6 +18,17 @@ $.fn.extend({
     }
 });
 
+// intercepts click events to work with button.
+$(window).on('click', function (e) {
+    e.preventDefault();
+
+    var $el = $(e.target);
+
+    if ($el.is('[data-route]')) {
+        Backbone.history.navigate($el.data('route'), { trigger: true });
+    }
+});
+
 var appView = new AppView();
 // var searchView = new SearchView();
 // var characterListView = new CharacterListView({ collection: CharacterCollection });
