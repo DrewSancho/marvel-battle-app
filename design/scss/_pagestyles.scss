@@ -15,3 +15,23 @@
 		margin-bottom: 0%;
 	}
 }
+
+.button {
+	height: auto;
+	width: auto;
+	display: block;
+	padding: 2% 0%;
+	box-sizing: border-box;
+	background-color: transparent;
+	border: 1px solid #2e3348;
+	font-family: Cinzel;
+	font-weight: 400;
+	font-size: 1.25em;
+	text-align: center;
+	color: #2e3348;
+
+	&:hover {
+		background-color: #2e3348;
+		color: #ffffff;
+	}
+}

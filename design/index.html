@@ -48,7 +48,7 @@
 		</header> <!-- END HEADER -->
 
 		<!-- PAGE CONTENT -->
-		<div id="content-wrapper">
+		<div id="content-wrapper" class="clearfix">
 
 			<!-- TITLE SECTION -->
 			<div class="page-titlebar">
@@ -66,21 +66,125 @@
 			</div> <!-- END TITLE SECTION -->
 
 			<!-- CHARACTER LIST -->
-			<div class="character-list">
+			<div class="characters">
 				
 				<!-- TEXT HEADING -->
 				<h3>The fate of the Marvel Universe is in your hands.</h3>
+
 				<p>Finally you hold the power to decide the true, ultimate super hero. Pit together two of your favorite characters for an all-out, duel to the death cage match!</p>
+
 				<h5>The epic battle begins and ends here. Are you ready?</h5>
 
 				<!-- CHARACTER PROFILE LINKS -->
-			</div>
+				<ul class="character-list">
+					
+					<!-- CHARACTER 1 -->
+					<li><a href="character.html"><img src="http://i.annihil.us/u/prod/marvel/i/mg/9/30/538cd33e15ab7/standard_xlarge.jpg" alt="Spider-Man"/>
+					</a></li>
+
+					<!-- CHARACTER 2 -->
+					<li><a href="character.html"><img src="https://i.annihil.us/u/prod/marvel/i/mg/c/10/537ba5ff07aa4/standard_xlarge.jpg" alt="Captain Marvel"/></a></li>
+
+					<!-- CHARACTER 3 -->
+					<li><a href="character.html"><img src="http://i.annihil.us/u/prod/marvel/i/mg/5/a0/538615ca33ab0/standard_xlarge.jpg" alt:"Hulk"/></a></li>
+
+				</ul> <!-- END CHARACTER-LIST -->
+
+				<!-- CHARACTER SEARCH BUTTON -->
+				<a href="search.html" class="button">
+					Choose Your Favorite Character
+				</a>
+
+			</div> <!-- END CHARACTERS -->
+
+			<!-- STATS PANEL -->
+			<div class="stats-panel-parent clearfix">
+				
+				<!-- RECENT BATTLES -->
+				<div class="stats-panel-child">
+					<h2>Recent Battles</h2>
+
+					<div class="recent-battles">
+						
+						<!-- BATTLE 1 -->
+						<div class="battle-row">
+							<!-- WINNER -->
+							<a href="character.html">
+								<img src="http://x.annihil.us/u/prod/marvel/i/mg/5/a0/537bc7036ab02/standard_xlarge.jpg" class="winner"/>
+							</a>
+							<!-- LOSER -->
+							<a href="character.html">
+								<img src="http://x.annihil.us/u/prod/marvel/i/mg/2/03/537bc76411307/standard_xlarge.jpg"/>
+							</a>
+						</div> <!-- END BATTLE-1 -->
+
+						<!-- BATTLE 2 -->
+						<div class="battle-row">
+							<!-- WINNER -->
+							<a href="character.html">
+								<img src="https://i.annihil.us/u/prod/marvel/i/mg/6/60/537bc3039f4e3/standard_xlarge.jpg" class="winner"/>
+							</a>
+							<!-- LOSER -->
+							<a href="character.html">
+								<img src="http://i.annihil.us/u/prod/marvel/i/mg/9/50/537bb3780cfd2/standard_xlarge.jpg"/>
+							</a>
+						</div> <!-- END BATTLE-2 -->
+
+						<!-- BATTLE 3 -->
+						<div class="battle-row">
+							<!-- WINNER -->
+							<a href="character.html">
+								<img src="http://i.annihil.us/u/prod/marvel/i/mg/3/60/537bad8219731/standard_xlarge.jpg" class="winner"/>
+							</a>
+							<!-- LOSER -->
+							<a href="character.html">
+								<img src="http://i.annihil.us/u/prod/marvel/i/mg/6/e0/537ba82e8e465/standard_xlarge.jpg"/>
+							</a>
+						</div> <!-- END BATTLE-3 -->
+
+					</div> <!-- END RECENT-BATTLES -->
+
+				</div> <!-- END LEFT PANEL -->
+
+				<!-- RECENT SEARCHES -->
+				<div class="stats-panel-child">
+					<h2>Recent Searches</h2>
+					<ul class="search-results">
+
+					 	<!-- SEARCH RESULT 1 -->
+						<li><a href="character.html">
+							<img src="http://x.annihil.us/u/prod/marvel/i/mg/1/c0/537ba2bfd6bab/standard_xlarge.jpg"/>
+							<h6>Black Panther</h6>
+						</a></li>
+
+						<!-- SEARCH RESULT 2 -->
+						<li><a href="character.html">
+							<img src="http://x.annihil.us/u/prod/marvel/i/mg/f/80/537bbeb8de8a3/standard_xlarge.jpg"/>
+							<h6>Nova</h6>
+						</a></li>
+
+						<!-- SEARCH RESULT 3 -->
+						<li><a href="character.html">
+							<img src="http://x.annihil.us/u/prod/marvel/i/mg/5/b0/537bc0124d6b3/standard_xlarge.jpg"/>
+							<h6>Quicksilver</h6>
+						</a></li>
+
+					</ul>
+				</div> <!-- END RIGHT PANEL -->
+
+			</div> <!-- END STATS-PANEL -->
 
 		</div> <!-- END CONTENT-WRAPPER -->
 
+		<!-- FOOTER -->
+		<footer id="footer-bar">
+			<h6 class="supersize">&copy; 2016 | Marvel BattleApp</h6>
+			<h6>Insert the Marvel disclaimer message here.</h6>
+		</footer>
+
 		<!-- JQUERY LINK -->
 		<!-- JAVASCRIPT LINK -->
-		<script src="js/script.js"></script>"
+		<script src="js/script.js"></script>
 	</body>
 
 </html>

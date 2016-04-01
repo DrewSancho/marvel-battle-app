@@ -20,11 +20,102 @@
 	}
 }
 
+.characters {
+	height: auto;
+	width: 80%;
+	margin: 0% auto;
+	display: block;
+	padding: 8% 10%;
+	box-sizing: border-box;
+	text-align: center;
+
+	h3 {
+		margin-bottom: 2%;
+	}
+}
+
 .character-list {
 	height: auto;
 	width: 100%;
 	display: block;
-	padding: 5% 10%;
+	margin: 5% 0%;
+	list-style: none;
+
+	li {
+		display: inline-block;
+		margin-right: 2%;
+
+		&:last-child {
+			margin-right: 0%;
+		}
+	}
+}
+
+.stats-panel-parent {
+	height: auto;
+	width: 80%;
+	margin: 0% auto;
+	margin-bottom: 10%;
+	display: block;
+	padding: 5%;
 	box-sizing: border-box;
-	background-color: #ff00ff;
+	background-color: #ffffff;
+	border: 1px solid #2e3348;
+
+	.stats-panel-child {
+		height: 100%;
+		width: 50%;
+		display: inline;
+		padding: 4%;
+		box-sizing: border-box;
+		float: left;
+
+		h2 {
+			text-align: center;
+			color: #333333;
+			margin-bottom: 10%;
+		}
+		ul {
+			display: block;
+			margin: 4% 0%;
+			list-style: none;
+		}
+		li {
+			display: block;
+			vertical-align: middle;
+			margin-bottom: 4%;
+		}
+		a {
+			color: #333333;
+			vertical-align: middle;
+		}
+		img {
+			height: auto;
+			width: 25%;
+			display: inline-block;
+			margin-right: 5%;
+			vertical-align: middle;
+		}
+		h6 {
+			font-size: 1.50em;
+			display: inline-block;
+			vertical-align: middle;
+		}
+	}
+}
+
+.recent-battles {
+	.battle-row {
+		height: auto;
+		width: 100%;
+		display: block;
+		margin-bottom: 4%;
+		text-align: center;
+		display: block;
+
+		.winner {
+			border: 4px solid #ed1b24;
+			box-sizing: border-box;
+		}
+	}
 }

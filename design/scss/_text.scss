@@ -16,10 +16,25 @@ h2 {
 		font-size: 1.50em;
 	}
 }
-h3 {}
+h3 {
+	font-family: Roboto, Helvetica, Arial, sans-serif;
+	font-weight: 900;
+	font-size: 1.75em;
+	color: #333333;
+	margin-bottom: 5%;
+}
 h4 {}
-h5 {}
-h6 {}
+h5 {
+	font-family: Roboto, Helvetica, Arial, sans-serif;
+	font-weight: 700;
+	font-size: 1.25em;
+	color: #333333;
+}
+h6 {
+	.supersize {
+		font-size: 1.50em;
+	}
+}
 
 // BODY TEXT
 p {
