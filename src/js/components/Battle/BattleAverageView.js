@@ -8,7 +8,7 @@ var BattleAverageView = Backbone.View.extend({
 
     events: {
         'click .fight': 'fight',
-        'keydown': 'onKeydown'
+        'keydown': 'onKeyDown'
     },
 
     className: 'battle-average-view',
@@ -33,11 +33,12 @@ var BattleAverageView = Backbone.View.extend({
         statsCache.get(this.character1.get('id'), function (stats1) {
             statsCache.get(_this.character2.get('id'), function (stats2) {
                 var results = window.BattleManager.statBattle(stats1, stats2, $('.fight-num').val());
-                console.log(results);
                 $('.character1-wins').append(results.fighter1.wins);
                 $('.character1-draws').append(results.fighter1.draws);
+                $('.character1-losses').append(results.fighter2.wins);
                 $('.character2-wins').append(results.fighter2.wins);
                 $('.character2-draws').append(results.fighter2.draws);
+                $('.character2-losses').append(results.fighter1.wins);
             });
         });
         $('input').val('');
