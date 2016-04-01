@@ -7,7 +7,7 @@
     "dev": "npm run serve & npm run watch",
     "serve": "node server.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "postinstall": "cp node_modules/battlemanager/js/battlemanager.js node_modules/battlemanager/data/messages.js public/assets && cp node_modules/normalize.css/normalize.css src/scss/components/_normalize.scss",
+    "postinstall": "cp node_modules/battlemanager/js/battlemanager.js public/assets && cp node_modules/normalize.css/normalize.css src/scss/components/_normalize.scss",
     "watch:js": "watchify src/js/main.js -t -o public/assets/bundle.js",
     "watch:css": "sass --watch src/scss:public/assets",
     "build:js": "browserify src/js/main.js -t -o public/assets/bundle.js",
@@ -19,7 +19,7 @@
   "license": "ISC",
   "dependencies": {
     "backbone": "^1.3.2",
-    "battlemanager": "^1.0.1",
+    "battlemanager": "git+https://github.com/giodif/battlemanager.git",
     "body-parser": "^1.15.0",
     "browserify": "^13.0.0",
     "express": "^4.13.4",
