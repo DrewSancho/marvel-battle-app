@@ -25,7 +25,7 @@
 	width: 80%;
 	margin: 0% auto;
 	display: block;
-	padding: 8% 10%;
+	padding: 4% 10%;
 	box-sizing: border-box;
 	text-align: center;
 
@@ -54,10 +54,9 @@
 .stats-panel-parent {
 	height: auto;
 	width: 80%;
-	margin: 0% auto;
-	margin-bottom: 10%;
+	margin: 5% auto;
 	display: block;
-	padding: 5%;
+	padding: 3%;
 	box-sizing: border-box;
 	background-color: #ffffff;
 	border: 1px solid #2e3348;
@@ -66,7 +65,7 @@
 		height: 100%;
 		width: 50%;
 		display: inline;
-		padding: 4%;
+		padding: 2%;
 		box-sizing: border-box;
 		float: left;
 
@@ -88,6 +87,11 @@
 		a {
 			color: #333333;
 			vertical-align: middle;
+
+			&:hover {
+				background-color: #ffffff;
+				opacity: 0.80;
+			}
 		}
 		img {
 			height: auto;
@@ -101,9 +105,11 @@
 			display: inline-block;
 			vertical-align: middle;
 		}
+		&:first-child {
+			position: relative;
+		}
 	}
 }
-
 .recent-battles {
 	.battle-row {
 		height: auto;
@@ -111,11 +117,9 @@
 		display: block;
 		margin-bottom: 4%;
 		text-align: center;
-		display: block;
-
-		.winner {
-			border: 4px solid #ed1b24;
-			box-sizing: border-box;
-		}
+	}
+	.winner {
+		border: 4px solid #ed1b24;
+		box-sizing: border-box;
 	}
 }
