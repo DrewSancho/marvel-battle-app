@@ -1,4 +1,4 @@
-<div>Battle ONCE view</div>
+<!-- <div>Battle ONCE view</div>
 <div class="character1"></div>
     <img class="thumbnail" src="<%= character1.thumbnail.path + '.' + character1.thumbnail.extension %>">
     <div><%= character1.name %></div>
@@ -9,4 +9,40 @@
     <div><%= character2.name %></div>
 </div>
 <button class="fight-once">Fight!</button>
-<ul class="battle-messages"></ul>
+<ul class="battle-messages"></ul> -->
+
+<div class="battle-scene">
+    <div class="frame">
+        <div class="battle-player-left character1">
+            <div class="character1"></div>
+                <img class="thumbnail" src="<%= character1.thumbnail.path + '.' + character1.thumbnail.extension %>">
+                <div><%= character1.name %></div>
+        </div>
+        <div class="battle-player-right character2">
+            <img class="thumbnail" src="<%= character2.thumbnail.path + '.' + character2.thumbnail.extension %>">
+            <div><%= character2.name %></div>
+        </div>
+        <div class="battle-scene-footer">
+            <a href="battle-view.html" class="button fight-once">
+                Fight
+            </a>
+        </div>
+    </div>
+</div> 
+
+    <div class="battle-playlog">
+        <h1>Battle Results</h1>
+
+        <div class="playlog-container">
+            <ul class="playlog battle-messages">
+<!--                 <li>Iron Man thumps Loki in the head.</li>
+                <li>Loki pulls out Iron Man's chair and he falls on floor.</li>
+                <li>Iron Man talks about Loki's mama.</li>
+                <li>Loki gives Iron Man a wedgie.</li>
+                <li>Iron Man overdoses Loki with roofies and Loki passes out.</li>
+                <li><strong>Iron Man Wins!</strong></li> -->
+            </ul>
+        </div>
+    </div> <!-- END BATTLE PLAYLOG -->
+    
+</div>
