@@ -29,16 +29,22 @@ var BattleAverageView = Backbone.View.extend({
     },
 
     fight: function () {
+        $('.character1-wins').empty();
+        $('.character1-draws').empty();
+        $('.character1-losses').empty();
+        $('.character2-wins').empty();
+        $('.character2-draws').empty();
+        $('.character2-losses').empty();
         var _this = this;
         statsCache.get(this.character1.get('id'), function (stats1) {
             statsCache.get(_this.character2.get('id'), function (stats2) {
                 var results = window.BattleManager.statBattle(stats1, stats2, $('.fight-num').val());
-                $('.character1-wins').append(results.fighter1.wins);
-                $('.character1-draws').append(results.fighter1.draws);
-                $('.character1-losses').append(results.fighter2.wins);
-                $('.character2-wins').append(results.fighter2.wins);
-                $('.character2-draws').append(results.fighter2.draws);
-                $('.character2-losses').append(results.fighter1.wins);
+                $('.character1-wins').append('Wins: ' + results.fighter1.wins);
+                $('.character1-draws').append('Draws: ' + results.fighter1.draws);
+                $('.character1-losses').append('Losses: ' + results.fighter2.wins);
+                $('.character2-wins').append('Wins: ' + results.fighter2.wins);
+                $('.character2-draws').append('Draws: ' + results.fighter2.draws);
+                $('.character2-losses').append('Losses: ' + results.fighter1.wins);
             });
         });
         $('input').val('');

@@ -27,21 +27,29 @@ var BattleOnceView = Backbone.View.extend({
     },
 
     fight: function () {
+        $('.battle-messages').empty();
         var _this = this;
         statsCache.get(this.character1.get('id'), function (stats1) {
             statsCache.get(_this.character2.get('id'), function (stats2) {
                 var results = window.BattleManager.narrativeBattle(stats1, stats2, $('.fight-num').val());
-                console.log(results.fightData[0].message);
-                for (var i = 0; i < results.fightData.length; i++) {
-                    $('.battle-messages').append('<li>' + results.fightData[i].message + '</li>');
+                var i = 0;
+                function battleTimeout () {
+                    setTimeout(function () {
+                        $('.battle-messages').prepend('<li>' + results.fightData[i].message + '</li>');
+                        i++;
+                        if (i < results.fightData.length) {
+                            battleTimeout();
+                        }
+                    }, 1500);
                 }
-                
+                battleTimeout();
+            });
+        });
+
                 // $('.character1-wins').append(results.fighter1.wins);
                 // $('.character1-draws').append(results.fighter1.draws);
                 // $('.character2-wins').append(results.fighter2.wins);
                 // $('.character2-draws').append(results.fighter2.draws);
-            });
-        });
     }
 });
 
