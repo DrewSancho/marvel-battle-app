@@ -16,6 +16,8 @@ var BattleOnceView = Backbone.View.extend({
     initialize: function (options) {
         this.character1 = options.character1;
         this.character2 = options.character2;
+        $('.character1').animateCss('slideInLeft');
+        $('.character2').animateCss('slideInRight');
         this.render();
     },
 
@@ -37,6 +39,7 @@ var BattleOnceView = Backbone.View.extend({
                     setTimeout(function () {
                         $('.battle-messages').prepend('<li>' + results.fightData[i].message + '</li>');
                         i++;
+                        $('li:first-child').animateCss('fadeInDown');
                         if (i < results.fightData.length) {
                             battleTimeout();
                         }

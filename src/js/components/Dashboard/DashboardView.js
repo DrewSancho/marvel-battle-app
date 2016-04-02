@@ -10,6 +10,10 @@ var DashboardView = Backbone.View.extend({
 
     template: _.template(require('./dashboardView.html')),
 
+    events: {
+        'click .button': 'characterView'
+    },
+
     initialize: function (options) {
         this.searchesCollection = options.searchesCollection;
         this.favoriteCharacterCollection = options.favoriteCharacterCollection;
@@ -27,6 +31,10 @@ var DashboardView = Backbone.View.extend({
         this.favoriteCharacterView.render();
         this.$('.searches-slot').append(this.searchesView.$el);
         this.$('.random-favorites-slot').append(this.favoriteCharacterView.$el);
+    },
+
+    characterView: function () {
+        window.location.hash = 'character';
     }
 });
 

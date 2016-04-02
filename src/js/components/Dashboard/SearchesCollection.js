@@ -6,7 +6,7 @@ var SearchesCollection = Backbone.Collection.extend({
 
     model: SearchesCharacterModel,
 
-    parse: function(response) {
+    parse: function (response) {
         return response.slice(0, 3);
     },
 
