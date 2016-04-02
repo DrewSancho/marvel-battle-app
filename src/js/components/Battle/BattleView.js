@@ -30,6 +30,8 @@ var BattleView = Backbone.View.extend({
         this.characterSelect2.render();
         this.$('.characterSelect-1').append(this.characterSelect1.$el);
         this.$('.characterSelect-2').append(this.characterSelect2.$el);
+        // this.$('.characterName-1').append(this.character1.get('name'));
+        // this.$('.characterName-2').append(this.character2.get('name'));
         if (this.character1) {
             this.updateBattle1(this.character1);
         }
@@ -52,11 +54,9 @@ var BattleView = Backbone.View.extend({
     },
 
     selectLeft: function () {
-        // window.location.hash = '/battle/search';
     },
 
     selectRight: function () {
-
         // window.location.hash = '/battle/search';
     },
 
@@ -76,6 +76,8 @@ var BattleView = Backbone.View.extend({
         statsCache.get(model.get('id'), function (stats) {
             _this.stats1 = stats;
             _this.renderGraph();
+            _this.$('.characterName-1').empty();
+            _this.$('.characterName-1').append(model.get('name'));
         });
     },
 
@@ -87,6 +89,8 @@ var BattleView = Backbone.View.extend({
         statsCache.get(model.get('id'), function (stats) {
             _this.stats2 = stats;
             _this.renderGraph();
+            _this.$('.characterName-2').empty();
+            _this.$('.characterName-2').append(model.get('name'));
         });
     },
     updateUrl: function () {

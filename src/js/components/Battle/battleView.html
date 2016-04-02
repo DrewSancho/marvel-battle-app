@@ -1,4 +1,4 @@
-<h2 class="heading">The fate of the Marvel Universe is in <em>your</em> hands.</h2>
+<!-- <h2 class="heading">The fate of the Marvel Universe is in <em>your</em> hands.</h2>
 <div>Finally you hold the power to decide the true, ultimate super hero. Pit together
     two of your favorite characters for an all-out, duel to the death cage match!
 </div>
@@ -10,4 +10,54 @@
 </div>
 <div id="container"></div>
 <button class="battle1">Battle</button>
-<button class="battle2">Battle2</button>
+<button class="battle2">Battle2</button> -->
+
+<div id="battle-select content-wrapper">
+
+            <!-- PAGE BANNER -->
+            <div class="battle-banner">
+                <h1>Pick Your Battle</h1>
+            </div> <!-- END BATTLE-BANNER -->
+
+            <!-- BATTLE SCENE BANNER -->
+            <div class="battle-scene">
+                <div class="frame">
+                    <div class="battle-player-left characterSelect-1">
+                    </div>
+                    <div class="battle-player-right characterSelect-2">
+                    </div>
+                </div>
+                <div class="battle-scene-footer">
+                    <div class="battle-scene-search">
+                    </div>
+                    <div class="battle-scene-search">
+                    </div>
+                </div> <!-- END BATTLE SCENE FOOTER -->
+            </div> <!-- END BATTLE-SCENE BANNER -->
+
+            <!-- BATTLE SCENE STATS -->
+            <div class="matchup-comparison clearfix">
+                
+                <!-- MATCHUP NAMES -->
+                <div class="matchup-names clearfix">
+                    <div class="matchup-player">
+                        <h1 class="characterName-1"> <%= name %> </h1>
+                    </div>
+                    <div class="matchup-player">
+                        <h1 class="characterName-2"> <%= name %> </h1>
+                    </div>
+                </div> <!-- END MATCHUP-NAMES -->
+
+                <!-- MATCHUP CHART -->
+                <div class="matchup-chart" id="container">
+                    
+                </div> <!-- END MATCHUP-CHART -->
+
+                <!-- BATTLE BUTTON -->
+                <a href="battleOnce.html" class="button battle2">
+                    Take This Matchup to BattleGround
+                </a>
+
+            </div> <!-- END MATCHUP-COMPARISON -->
+            
+        </div> <!-- END CONTENT-WRAPPER -->
