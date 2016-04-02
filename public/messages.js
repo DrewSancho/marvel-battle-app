@@ -19,7 +19,7 @@ var messages = {
         draw : [
             [ "The combatants stare across the broken and devistated landscape. They have fought to a standstill. 'This isn't over', says ", 0, ". ", 1, " nods and turns away, teeth gritted in frustration. 'I'll get you next time.' The fight is a draw!"  ],
             [ "Damaged and beaten, ", 0, " and ", 1, " have fought until neither combatant can continue. The fight is a draw!" ],
-            [ "Neither fighter thought that the fight would last this long. ", 0, " glares across the battlefield at ", 1, ". 'I've finally met my match' ", 0, " says. The fight is a draw!" ]
+            [ "Neither fighter thought that the fight would last this long. ", 0, " glares across the battlefield at ", 1, ". 'I've finally met my match' ", 0, " says. 'Alright, we'll call it a draw!'" ]
         ]
     },
     shoot : {
