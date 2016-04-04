@@ -1,0 +1,93 @@
+// MARVEL BATTLE APP
+// CHARACTER DETAIL STYLING
+
+#character-detail {
+	.page-titlebar {
+		width: 80%;
+		margin: 5% auto;
+
+		.character-description {
+			height: auto;
+			width: 70%;
+			display: inline-block;
+			padding-right: 2%;
+			box-sizing: border-box;
+			float: left;
+
+			h1 {
+				font-size: 3.00em;
+				color: #333333;
+				margin-bottom: 4%;
+			}
+		}
+		.character-summary {
+			height: auto;
+			width: 30%;
+			display: inline-block;
+			padding-left: 2%;
+			box-sizing: border-box;
+			float: right;
+
+			.character-score {
+				background-color: #ed1b24;
+				padding: 5%;
+				box-sizing: border-box;
+				margin-bottom: 5%;
+
+				h1 {
+					font-family: Roboto, Helvetica, Arial, sans-serif;
+					color: #ffffff;
+					font-size: 3.00em;
+					text-align: center;
+				}
+				h4 {
+					font-family: Roboto, Helvetica, Arial, sans-serif;
+					font-weight: 300;
+					color: #ffffff;
+					text-align: center;
+					text-transform: uppercase;
+				}
+			}
+		}
+	}
+	.hero-banner {
+		height: 400px;
+		width: 100%;
+		display: block;
+		position: relative;
+		margin: 10% 0%;
+		background-color: #3a405a;
+
+		img {
+			height: auto;
+			width: 80%;
+			display: block;
+			position: absolute;
+			margin: 0% auto;
+			left: 10%;
+			top: -15%;
+			text-align: center;
+			box-shadow: 0px 0px 6px #333333;
+		}
+	}
+	.characterdetail-stats {
+		height: auto;
+		width: 80%;
+		margin: 0% auto;
+		margin-bottom: 5%;
+
+		h1 {
+			font-size: 3.00em;
+			margin-bottom: 5%;
+		}
+
+		.character-radargraph {
+			height: 400px;
+			width: 100%;
+			padding: 4%;
+			box-sizing: border-box;
+			background-color: #ffffff;
+			border: 1px solid #0a122a;
+		}
+	}
+}
