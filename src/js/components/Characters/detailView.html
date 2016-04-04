@@ -10,7 +10,7 @@
 </div> -->
 
 
-<div id="character-detail" class="content-wrapper">
+<div id="character-detail">
 
     <!-- PAGE TITLE BANNER -->
     <div class="page-titlebar clearfix">
@@ -35,8 +35,10 @@
 
     <!-- HERO IMAGE BANNER -->
     <div class="hero-banner">
-        <img class="thumbnail" src="<%= thumbnail.path + '.' + thumbnail.extension %>">
-    </div> <!-- END HERO-BANNER -->
+        <!-- <img class="testtt" src="<%= thumbnail.path + '.' + thumbnail.extension %>"> -->
+        <div class="hero-banner-image" style="background-image: url(<%= thumbnail.path + '/landscape_incredible' + '.' + thumbnail.extension %>)"> </div>
+    </div>
+    <!-- END HERO-BANNER -->
 
     <!-- CHARACTER STATS -->
     <div class="characterdetail-stats">

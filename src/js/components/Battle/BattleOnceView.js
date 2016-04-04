@@ -42,17 +42,18 @@ var BattleOnceView = Backbone.View.extend({
         var _this = this;
         statsCache.get(this.character1.get('id'), function (stats1) {
             statsCache.get(_this.character2.get('id'), function (stats2) {
+
                 var results = window.BattleManager.narrativeBattle(stats1, stats2, $('.fight-num').val());
                 var i = 0;
                 function battleTimeout () {
                     setTimeout(function () {
-                        $('.battle-messages').prepend('<li>' + results.fightData[i].message + '</li>');
+                        $('.battle-messages').prepend('<li class="">' + results.fightData[i].message + '</li>');
                         i++;
                         $('li:first-child').animateCss('fadeInDown');
                         if (i < results.fightData.length) {
                             battleTimeout();
                         }
-                    }, 3500);
+                    }, 2500);
                 }
                 battleTimeout();
             });

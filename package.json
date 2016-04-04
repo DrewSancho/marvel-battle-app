@@ -11,7 +11,7 @@
     "watch:js": "watchify src/js/main.js -t -o public/assets/bundle.js",
     "watch:css": "sass --watch design/scss:public/assets",
     "build:js": "browserify src/js/main.js -t -o public/assets/bundle.js",
-    "build:css": "sass design/scss/base.scss public/assets/main.css",
+    "build:css": "sass design/scss/base.scss public/assets/base.css",
     "build": "npm run build:js && npm run build:css",
     "watch": "npm run watch:js & npm run watch:css"
   },
