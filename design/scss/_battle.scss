@@ -273,13 +273,28 @@
 	}
 }
 
-#battle-simulate
-.battlelog-frame {
-	.character-names {
-		.player-name {
-			h4 {
-				font-size: 1.25em;
-				color: #666666;
+#battle-simulate {
+	.battle-scene-footer {
+		input[type="text"] {
+			height: auto;
+			width: 40%;
+			padding: 0.5% 2%;
+			margin-right: 2%;
+			box-sizing: border-box;
+			font-size: 0.90em;
+			color: #999999;
+		}
+		input[type="submit"] {
+			width: 20%;
+		}	
+	}
+	.battlelog-frame {
+		.character-names {
+			.player-name {
+				h4 {
+					font-size: 1.25em;
+					color: #666666;
+				}
 			}
 		}
 	}

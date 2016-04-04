@@ -1,6 +1,7 @@
 var Backbone = require('backbone');
 var _ = require('underscore');
 var $ = require('jquery');
+var radarGraph = require('../Utilities/utility');
 
 var statsCache = require('../Utilities/statsCache.js');
 
@@ -19,6 +20,7 @@ var BattleAverageView = Backbone.View.extend({
         this.character1 = options.character1;
         this.character2 = options.character2;
         this.render();
+        // this.renderGraph(this.character1, this.character2);
     },
 
     render: function () {
@@ -27,6 +29,10 @@ var BattleAverageView = Backbone.View.extend({
             character2: this.character2.attributes
         }));
     },
+
+    // renderGraph: function () {
+    //     radarGraph(this.$('#container')[0], this.stats1, this.stats2);
+    // },
 
     fight: function () {
         $('.character1-wins').empty();

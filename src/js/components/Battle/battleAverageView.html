@@ -29,14 +29,14 @@
         
         <!-- PLAYERS PANEL -->
         <div class="players-panel clearfix">
-            <div class="character1">
-                <img class="thumbnail" src="<%= character1.thumbnail.path + '/standard_fantastic' + '.' + character1.thumbnail.extension %>">
-            <div class="character2">
-                <img class="thumbnail" src="<%= character2.thumbnail.path + '/standard_fantastic' + '.' + character2.thumbnail.extension %>">
+            <img class="thumbnail player-card" src="<%= character1.thumbnail.path + '/landscape_incredible' + '.' + character1.thumbnail.extension %>">
+            <img class="thumbnail player-card" src="<%= character2.thumbnail.path + '/landscape_incredible' + '.' + character2.thumbnail.extension %>">
         </div> <!-- END PLAYERS-PANEL -->
 
         <!-- BATTLE FOOTER BAR -->
         <div class="battle-scene-footer clearfix">
+            <input class="fight-num" type="text"/>
+            
             <input class="fight" type="submit" value="Fight"/>
         </div>
 
@@ -49,23 +49,23 @@
         <div class="character-names clearfix">
             <div class="player-name">
                 <h1><%= character1.name %></h1>
-                <h4 class="character1-wins">Wins:</h4>
-                <h4 class="character1-losses">Losses:</h4>
-                <h4 class="character2-draws">Draws:</h4>
+                <h4 class="character1-wins"></h4>
+                <h4 class="character1-losses"></h4>
+                <h4 class="character1-draws"></h4>
             </div>
             <div class="player-name">
-                <h1>Loki</h1>
-                <h4 class="character2-wins">Wins:</h4>
-                <h4 class="character2-losses">Losses:</h4>
-                <h4 class="character2-draws">Draws:</h4>
+                <h1><%= character2.name %></h1>
+                <h4 class="character2-wins"></h4>
+                <h4 class="character2-losses"></h4>
+                <h4 class="character2-draws"></h4>
             </div>
         </div> <!-- END CHARACTER NAMES -->
 
         <!-- MATCHUP CHART -->
-        <div class="matchup-radar-chart">
+        <div id="container" class="matchup-radar-chart">
             
         </div> <!-- END MATCHUP-RADAR-CHART -->
 
     </div> <!-- END BATTLELOG-FRAME -->
     
-</div> 
+</div>  
