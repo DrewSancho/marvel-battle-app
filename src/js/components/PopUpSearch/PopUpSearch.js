@@ -8,7 +8,7 @@ var PopUpSearchCharacterView = require('./PopUpSearchCharacterView');
 var CharacterModel = require('../Characters/CharacterModel');
 
 var PopUpSearchView = Backbone.View.extend({
-    className: 'hidden',
+    // className: 'hidden',
 
     template: _.template(require('./popUpSearch.html')),
     events: {
@@ -26,7 +26,7 @@ var PopUpSearchView = Backbone.View.extend({
                 _this.renderSearchResults();
             }
         });
-        $('input').val('');
+        this.$('.search').val('');
     },
     onKeydown: function (e) {
         if (e.keyCode === 13) {

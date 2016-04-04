@@ -13,69 +13,60 @@
 <button class="battle2">Battle2</button> -->
 <!-- PAGE CONTENT -->
 <!-- PAGE CONTENT -->
-        <div id="battle-select" class="content-wrapper">
+<div id="battle-select" class="content-wrapper">
+    
+    <!-- PAGE TITLE BANNER -->
+    <div class="battlepage-title-banner">
+        <h1>Pick Your Battle</h1>
+    </div> <!-- END PAGE-TITLE-BANNER -->
+
+    <!-- BATTLE SCENE BANNER -->
+    <div class="battle-scene">
+        
+        <!-- PLAYERS PANEL -->
+        <div class="players-panel clearfix">
+            <div class="player-card characterPortrait-1"></div>
+            <div class="player-card characterPortrait-2"></div>
+        </div> <!-- END PLAYERS-PANEL -->
+
+        <!-- BATTLE FOOTER BAR -->
+        <div class="battle-scene-footer clearfix">
+
+            <!-- PLAYER 1 SEARCH -->
+            <div class="battle-scene-search characterSelect-1"></div>
+
+            <!-- PLAYER 2 SEARCH -->
+            <div class="battle-scene-search characterSelect-2"></div>
+
+        </div> <!-- END BATTLE-SCENE-FOOTER -->
+
+    </div> <!-- END BATTLE-SCENE -->
+
+    <!-- BATTLE SCENE STATS -->
+    <div class="battlelog-frame">
+
+        <!-- BATTLEGROUND BUTTON -->
+        <div class="battleground-buttons">
+            <a href="#" class="button battle2">Turn-by-Turn Fight</a>
+            <a href="#" class="button battle1">Simulate Fight</a>
+        </div>
+        
+        <!-- CHARACTER NAMES -->
+        <div class="character-names clearfix">
+            <div class="player-name">
+                <h1 class="characterName-1"></h1>
+            </div>
+            <div class="player-name">
+                <h1 class="characterName-2"></h1>
+            </div>
+        </div> <!-- END CHARACTER NAMES -->
+
+        <!-- MATCHUP CHART -->
+        <div class="matchup-radar-chart">
             
-            <!-- PAGE TITLE BANNER -->
-            <div class="battlepage-title-banner">
-                <h1>Pick Your Battle</h1>
-            </div> <!-- END PAGE-TITLE-BANNER -->
+        </div> <!-- END MATCHUP-RADAR-CHART -->
 
-            <!-- BATTLE SCENE BANNER -->
-            <div class="battle-scene">
-<<<<<<< HEAD
-                
-                <!-- PLAYERS PANEL -->
-                <div class="players-panel clearfix">
-                    <div class="player-card"></div>
-                    <div class="player-card"></div>
-                </div> <!-- END PLAYERS-PANEL -->
+    </div> <!-- END BATTLELOG-FRAME -->
 
-                <!-- BATTLE FOOTER BAR -->
-                <div class="battle-scene-footer clearfix">
+</div> <!-- END PAGE CONTENT -->
 
-                    <!-- PLAYER 1 SEARCH -->
-                    <div class="battle-scene-search">
-                        <input type="text" name="charactersearch-battleselect1" id="charactersearch-battleselect1" placeholder="Search by keyword or character name"/>
-
-                        <input type="submit" value="Search" class="submit select-left"/>
-
-                        <input type="submit" value="Random" class="random randomizer"/>
-                    </div>
-
-                    <!-- PLAYER 2 SEARCH -->
-                    <div class="battle-scene-search">
-                        <input type="text" name="charactersearch-battleselect1" id="charactersearch-battleselect1" placeholder="Search by keyword or character name"/>
-
-                        <input type="submit" value="Search" class="submit select-right"/>
-
-                        <input type="submit" value="Random" class="random randomizer"/>
-                    </div>
-
-                </div> <!-- END BATTLE-SCENE-FOOTER -->
-
-            </div> <!-- END BATTLE-SCENE -->
-
-            <!-- BATTLE SCENE STATS -->
-            <div class="battlelog-frame">
-
-                <!-- BATTLEGROUND BUTTON -->
-                <div class="battleground-buttons">
-                    <a href="#" class="button battle2">Turn-by-Turn Fight</a>
-                    <a href="#" class="button battle1">Simulate Fight</a>
-                </div>
-                
-                <!-- CHARACTER NAMES -->
-                <div class="character-names clearfix">
-                    <div class="player-name">
-                        <h1><%= name %></h1>
-                    </div>
-                    <div class="player-name">
-                        <h1><%= name %></h1>
-                    </div>
-                </div> <!-- END CHARACTER NAMES -->
-
-                <!-- MATCHUP CHART -->
-                <div class="matchup-radar-chart">
-                    
-                </div> <!-- END MATCHUP-RADAR-CHART -->
-        </div> <!-- END PAGE CONTENT -->
