@@ -1,4 +1,4 @@
-<div class="header">See the outcome of a battle.</div>
+<!-- <div class="header">See the outcome of a battle.</div>
 <div class="character1">
     <img class="thumbnail" src="<%= character1.thumbnail.path + '/standard_fantastic' + '.' + character1.thumbnail.extension %>">
     <div><%= character1.name %></div>
@@ -14,4 +14,58 @@
     <div class="character2-draws"></div>
 </div>
 <input class="fight-num" type="number">
-<button class="fight">Fight!</button>
+<button class="fight">Fight!</button> -->
+
+<!-- PAGE CONTENT -->
+<div id="battle-simulate" class="content-wrapper">
+
+    <!-- PAGE TITLE BANNER -->
+    <div class="battlepage-title-banner">
+        <h1>Get Your Fight On</h1>
+    </div> <!-- END PAGE-TITLE-BANNER -->
+
+    <!-- BATTLE SCENE BANNER -->
+    <div class="battle-scene">
+        
+        <!-- PLAYERS PANEL -->
+        <div class="players-panel clearfix">
+            <div class="character1">
+                <img class="thumbnail" src="<%= character1.thumbnail.path + '/standard_fantastic' + '.' + character1.thumbnail.extension %>">
+            <div class="character2">
+                <img class="thumbnail" src="<%= character2.thumbnail.path + '/standard_fantastic' + '.' + character2.thumbnail.extension %>">
+        </div> <!-- END PLAYERS-PANEL -->
+
+        <!-- BATTLE FOOTER BAR -->
+        <div class="battle-scene-footer clearfix">
+            <input class="fight" type="submit" value="Fight"/>
+        </div>
+
+    </div> <!-- END BATTLE-SCENE -->
+
+    <!-- BATTLE SCENE STATS -->
+    <div class="battlelog-frame">
+        
+        <!-- CHARACTER NAMES -->
+        <div class="character-names clearfix">
+            <div class="player-name">
+                <h1><%= character1.name %></h1>
+                <h4 class="character1-wins">Wins:</h4>
+                <h4 class="character1-losses">Losses:</h4>
+                <h4 class="character2-draws">Draws:</h4>
+            </div>
+            <div class="player-name">
+                <h1>Loki</h1>
+                <h4 class="character2-wins">Wins:</h4>
+                <h4 class="character2-losses">Losses:</h4>
+                <h4 class="character2-draws">Draws:</h4>
+            </div>
+        </div> <!-- END CHARACTER NAMES -->
+
+        <!-- MATCHUP CHART -->
+        <div class="matchup-radar-chart">
+            
+        </div> <!-- END MATCHUP-RADAR-CHART -->
+
+    </div> <!-- END BATTLELOG-FRAME -->
+    
+</div> 
