@@ -16,6 +16,8 @@ html {
 	height: auto;
 	width: 100vw;
 	background-color: #3a405a;
+	background-image: url("../img/background-pattern.png");
+	background-size: 2%;
 
 	@media screen and (min-width: 400px) {}
 	@media screen and (min-width: 600px) {}

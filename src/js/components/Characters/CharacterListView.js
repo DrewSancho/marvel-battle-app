@@ -7,6 +7,9 @@ var CharacterView = require('./CharacterView');
 var SearchView = require('./SearchView');
 
 var CharacterListView = Backbone.View.extend({
+
+    tagName: 'li',
+
     className: 'CharacterView',
 
     initialize: function () {

@@ -19,7 +19,6 @@
 		<!-- SITE STYLESHEET -->
 		<link rel="stylesheet" type="text/css" href="css/style.css">
 	</head>
-
 	<body>
 
 		<!-- HEADER -->
@@ -48,49 +47,67 @@
 		</header> <!-- END HEADER -->
 
 		<!-- PAGE CONTENT -->
-		<div id="content-wrapper battle-view">
+		<div id="battle-view" class="content-wrapper">
 
-			<!-- PAGE BANNER -->
-			<div class="battle-banner">
+			<!-- PAGE TITLE BANNER -->
+			<div class="battlepage-title-banner">
 				<h1>Get Your Fight On</h1>
-			</div> <!-- END BATTLE-BANNER -->
+			</div> <!-- END PAGE-TITLE-BANNER -->
 
 			<!-- BATTLE SCENE BANNER -->
 			<div class="battle-scene">
-				<div class="frame">
-					<div class="battle-player-left">
-					</div>
-					<div class="battle-player-right">
-					</div>
-					<div class="battle-scene-footer">
-						<a href="battle-view.html" class="button">
-							Fight
-						</a>
-					</div>
+				
+				<!-- PLAYERS PANEL -->
+				<div class="players-panel clearfix">
+					<div class="player-card"></div>
+					<div class="player-card"></div>
+				</div> <!-- END PLAYERS-PANEL -->
+
+				<!-- BATTLE FOOTER BAR -->
+				<div class="battle-scene-footer clearfix">
+					<input type="submit" value="Turn-by-Turn Fight"/>
+					<input type="submit" value="Simulate Fight"/>
 				</div>
-			</div> <!-- END BATTLE SCENE BANNER -->
 
-			<!-- BATTLE PLAYLOG -->
-			<div class="battle-playlog">
-				<h1>Battle Results</h1>
+			</div> <!-- END BATTLE-SCENE -->
 
-				<div class="playlog-container">
-					<ul class="playlog">
-						<li>Iron Man thumps Loki in the head.</li>
-						<li>Loki pulls out Iron Man's chair and he falls on floor.</li>
-						<li>Iron Man talks about Loki's mama.</li>
-						<li>Loki gives Iron Man a wedgie.</li>
-						<li>Iron Man overdoses Loki with roofies and Loki passes out.</li>
-						<li><strong>Iron Man Wins!</strong></li>
+			<!-- BATTLE SCENE STATS -->
+			<div class="battlelog-frame">
+				
+				<!-- CHARACTER NAMES -->
+				<div class="character-names clearfix">
+					<div class="player-name">
+						<h1>Iron Man</h1>
+						<h4>Favorite</h4>
+					</div>
+					<div class="player-name">
+						<h1>Loki</h1>
+						<h4></h4>
+					</div>
+				</div> <!-- END CHARACTER NAMES -->
+
+				<!-- BATTLELOG BATTLE RESULTS -->
+				<div class="battlelog-results">
+					<!-- INSERT TURN BY TURN RESULTS HERE. -->
+					<ul>
+						<li><i class="fa fa-bolt"></i>Iron Man thumps Loki in the head.</li>
+						<li><i class="fa fa-bolt"></i>Loki pulls out the chair from Iron Man and he falls on the ground.</li>
+						<li><i class="fa fa-bolt"></i>Iron Man talks about Loki's mama and Loki starts crying.</li>
+						<li><i class="fa fa-bolt"></i>Loki headbutts Iron Man.</li>
+						<li><i class="fa fa-bolt"></i>Iron Man overdoses Loki with roofies and Loki passes out.</li>
 					</ul>
-				</div>
-			</div> <!-- END BATTLE PLAYLOG -->
+
+				</div> <!-- END BATTLELOG-RESULTS -->
+
+			</div> <!-- END BATTLELOG-FRAME -->
 			
-		</div> <!-- END CONTENT-WRAPPER -->
+		</div> <!-- END PAGE CONTENT -->
 
-		<!-- JQUERY LINK -->
-		<!-- JAVASCRIPT LINK -->
-		<script src="js/script.js></script>"
+		<!-- FOOTER -->
+		<footer id="footer-bar">
+			<h6 class="supersize">&copy; 2016 | Marvel BattleApp</h6>
+			<h6>Data provided by Marvel. &copy; 2014 Marvel</h6>
+		</footer> <!-- END FOOTER -->
+
 	</body>
-
 </html>

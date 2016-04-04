@@ -27,6 +27,10 @@
     background-color: #2e3348;
     color: #ffffff; }
 
+a img:hover {
+  background-color: #ffffff;
+  opacity: 0.80; }
+
 .hide-mobile {
   display: none !important; }
   @media screen and (min-width: 400px) {
@@ -88,7 +92,9 @@
 html {
   height: auto;
   width: 100vw;
-  background-color: #3a405a; }
+  background-color: #3a405a;
+  background-image: url("../img/background-pattern.png");
+  background-size: 2%; }
 
 body {
   height: auto;
@@ -332,167 +338,278 @@ a {
 #character-list {
   height: auto;
   width: 100%;
-  padding: 10%;
+  padding: 5% 10%;
   box-sizing: border-box; }
+  #character-list h1 {
+    font-size: 3.00em;
+    text-align: center;
+    margin-bottom: 4%; }
+  #character-list ul {
+    list-style: none;
+    margin-bottom: 4%;
+    text-align: center; }
+  #character-list li {
+    display: inline-block;
+    margin-left: 2%;
+    margin-bottom: 2%; }
+  #character-list .button {
+    height: auto;
+    width: 60%;
+    margin: 0% auto; }
 
-.battle-banner {
-  width: 100%;
-  padding: 4% 10%;
-  box-sizing: border-box; }
-  .battle-banner h1 {
+.battlepage-title-banner {
+  height: auto;
+  width: 80%;
+  margin: 0% auto;
+  margin-top: 2%;
+  margin-bottom: 5%; }
+  .battlepage-title-banner h1 {
     font-size: 4.00em;
     text-align: center;
-    color: #333333;
-    margin-bottom: 0%; }
+    color: #333333; }
 
 .battle-scene {
-  background-color: #0a122a;
+  height: auto;
+  width: 100%;
+  display: block;
+  margin-bottom: 5%;
+  background-color: #333333;
   border-top: 10px solid #ed1b24;
-  position: relative;
-  overflow: hidden; }
-  .battle-scene .frame {
-    width: 130%;
-    position: relative;
-    left: -15%; }
-  .battle-scene .battle-player-left {
-    height: 100%;
-    width: 50%;
-    display: block;
-    float: left;
-    border-right: 1px solid #ffffff;
-    box-sizing: border-box;
-    transform: skewX(-10deg);
-    overflow: hidden; }
-    .battle-scene .battle-player-left img {
-      display: block;
-      margin: 0;
-      padding: 0;
+  box-sizing: border-box; }
+  .battle-scene .players-panel {
+    height: auto;
+    width: 100%;
+    display: block; }
+    .battle-scene .players-panel .player-card {
+      height: 300px;
+      width: 50%;
+      display: inline-block;
+      background-size: cover;
+      background-repeat: none;
+      background-position: 50% 50%;
+      box-sizing: border-box;
+      float: left; }
+      .battle-scene .players-panel .player-card:first-child {
+        border-right: 1px solid #ffffff; }
+      .battle-scene .players-panel .player-card:last-child {
+        border-left: 1px solid #ffffff; }
+    .battle-scene .players-panel .player-card-winner {
+      height: 300px;
       width: 100%;
-      transform: skewX(10deg);
-      position: relative;
-      right: -10%; }
-  .battle-scene .battle-player-right {
-    height: 100%;
-    width: 50%;
-    display: block;
-    float: right;
-    border-left: 1px solid #ffffff;
-    box-sizing: border-box;
-    transform: skewX(-10deg);
-    overflow: hidden; }
-    .battle-scene .battle-player-right img {
       display: block;
-      margin: 0;
-      padding: 0;
-      width: 100%;
-      transform: skewX(10deg);
-      position: relative;
-      left: -10%; }
+      background-size: cover;
+      background-repeat: none;
+      background-position: 50% 50%;
+      box-sizing: border-box; }
   .battle-scene .battle-scene-footer {
     height: auto;
     width: 100%;
-    padding: 1% 10%;
-    box-sizing: border-box;
+    display: block;
     background-color: #0a122a;
-    clear: both; }
-  .battle-scene .button {
-    height: auto;
-    width: 25%;
-    margin: 0% auto;
-    padding: 1%;
-    border: 1px solid #ffffff;
-    color: #ffffff; }
-    .battle-scene .button:hover {
-      background-color: #ed1b24;
-      cursor: pointer; }
-  .battle-scene i {
-    height: 100%;
-    width: 100%;
-    padding: 6%;
-    font-size: 30em;
-    text-align: center;
-    color: #666666; }
-  .battle-scene .battle-scene-search {
-    height: auto;
-    width: 50%;
-    display: inline-block;
-    padding: 2% 0%;
-    box-sizing: border-box;
-    float: left; }
-    .battle-scene .battle-scene-search:last-child {
-      text-align: right; }
-    .battle-scene .battle-scene-search input[type="text"] {
-      height: auto;
-      width: 65%;
-      margin-right: 1%;
-      padding: 1% 2%;
-      box-sizing: border-box;
-      border: 1px solid #080e22;
-      font-family: Roboto, Helvetica, Arial, sans-serif;
-      font-size: 0.90em;
-      color: #666666; }
-    .battle-scene .battle-scene-search input[type="submit"] {
-      height: auto;
-      width: auto;
-      padding: 1% 3%;
-      box-sizing: border-box;
-      border: 1px solid #ffffff;
-      background-color: transparent;
-      font-family: Cinzel;
-      font-size: 0.90em;
-      text-align: center;
-      color: #ffffff; }
-      .battle-scene .battle-scene-search input[type="submit"]:hover {
-        background-color: #364155;
-        cursor: pointer; }
+    padding: 2% 10%;
+    box-sizing: border-box; }
 
-.matchup-comparison {
+.battlelog-frame {
   height: auto;
-  width: 100%;
-  padding: 4% 10%;
-  box-sizing: border-box; }
-  .matchup-comparison .matchup-names {
+  width: 80%;
+  margin: 0% auto;
+  margin-bottom: 10%; }
+  .battlelog-frame .character-names {
     height: auto;
-    width: 100%; }
-    .matchup-comparison .matchup-names .matchup-player {
+    width: 100%;
+    margin-bottom: 3%; }
+    .battlelog-frame .character-names .player-name {
       height: auto;
       width: 50%;
       display: inline-block;
       float: left; }
-      .matchup-comparison .matchup-names .matchup-player:last-child {
+      .battlelog-frame .character-names .player-name:first-child {
+        text-align: left; }
+      .battlelog-frame .character-names .player-name:last-child {
         text-align: right; }
-      .matchup-comparison .matchup-names .matchup-player h1 {
+      .battlelog-frame .character-names .player-name h1 {
         font-size: 3.00em; }
-      .matchup-comparison .matchup-names .matchup-player h4 {
+      .battlelog-frame .character-names .player-name h4 {
         font-size: 1.50em;
         color: #ed1b24; }
-  .matchup-comparison .matchup-chart {
-    height: 460px;
-    width: 100%;
-    margin: 5% 0%;
-    padding: 2%;
-    background-color: #ffffff;
-    border: 1px solid #ed1b24;
-    box-sizing: border-box; }
-  .matchup-comparison .button {
+
+#battle-select .player-card:first-child {
+  background-image: url("../img/bl.jpg"); }
+#battle-select .player-card:last-child {
+  background-image: url("../img/bl.jpg"); }
+#battle-select .battle-scene-footer .battle-scene-search {
+  height: auto;
+  width: 50%;
+  display: inline-block;
+  float: left; }
+  #battle-select .battle-scene-footer .battle-scene-search:first-child {
+    text-align: left; }
+  #battle-select .battle-scene-footer .battle-scene-search:last-child {
+    text-align: right; }
+  #battle-select .battle-scene-footer .battle-scene-search input[type="text"] {
+    height: auto;
+    width: 55%;
+    margin-right: 1%;
+    padding: 1% 2%;
+    box-sizing: border-box;
+    border: 1px solid #080e22;
+    font-family: Roboto, Helvetica, Arial, sans-serif;
+    font-size: 0.80em;
+    color: #666666; }
+  #battle-select .battle-scene-footer .battle-scene-search input[type="submit"] {
+    height: auto;
+    width: auto;
+    padding: 1% 3%;
+    box-sizing: border-box;
+    border: 1px solid #ffffff;
+    background-color: transparent;
+    font-family: Cinzel;
+    font-size: 0.90em;
+    text-align: center;
+    color: #ffffff; }
+    #battle-select .battle-scene-footer .battle-scene-search input[type="submit"]:hover {
+      background-color: #364155;
+      cursor: pointer; }
+#battle-select .battlelog-frame .matchup-radar-chart {
+  height: 400px;
+  width: 100%;
+  background-color: #ffffff;
+  border: 1px solid #0a122a;
+  margin-bottom: 5%; }
+#battle-select .battlelog-frame .button {
+  height: auto;
+  width: 70%;
+  margin: 0% auto; }
+#battle-select .matchup-radar-chart {
+  height: 400px;
+  width: 100%;
+  background-color: #ffffff;
+  border: 1px solid #0a122a;
+  margin-bottom: 5%; }
+
+#battle-view .player-card:first-child, #battle-results .player-card:first-child {
+  background-image: url("https://i.annihil.us/u/prod/marvel/i/mg/c/60/55b6a28ef24fa.jpg"); }
+#battle-view .player-card:last-child, #battle-results .player-card:last-child {
+  background-image: url("http://i.annihil.us/u/prod/marvel/i/mg/9/30/537bb3f94d3b0.jpg"); }
+#battle-view .battle-scene-footer, #battle-results .battle-scene-footer {
+  text-align: center; }
+#battle-view input[type="submit"], #battle-results input[type="submit"] {
+  height: auto;
+  width: 40%;
+  margin: 0% auto;
+  margin-right: 4%;
+  padding: 1% 0%;
+  box-sizing: border-box;
+  border: 1px solid #ffffff;
+  background-color: #ed1b24;
+  font-family: Cinzel;
+  font-size: 0.90em;
+  text-align: center;
+  color: #ffffff; }
+  #battle-view input[type="submit"]:hover, #battle-results input[type="submit"]:hover {
+    background-color: #f14950;
+    cursor: pointer; }
+  #battle-view input[type="submit"]:last-child, #battle-results input[type="submit"]:last-child {
+    margin-right: 0%; }
+#battle-view .battlelog-frame .battlelog-results, #battle-results .battlelog-frame .battlelog-results {
+  height: 400px;
+  width: 100%;
+  display: block;
+  margin-bottom: 5%;
+  padding: 4%;
+  box-sizing: border-box;
+  background-color: #ffffff;
+  border: 1px solid #0a122a; }
+  #battle-view .battlelog-frame .battlelog-results ul, #battle-results .battlelog-frame .battlelog-results ul {
+    list-style: none;
+    font-size: 0.90em;
+    font-weight: 300;
+    line-height: 1.50;
+    color: #666666; }
+  #battle-view .battlelog-frame .battlelog-results li, #battle-results .battlelog-frame .battlelog-results li {
+    margin-bottom: 1%;
+    border-bottom: 1px solid #f2f2f2; }
+    #battle-view .battlelog-frame .battlelog-results li:last-child, #battle-results .battlelog-frame .battlelog-results li:last-child {
+      border-bottom: none; }
+    #battle-view .battlelog-frame .battlelog-results li i, #battle-results .battlelog-frame .battlelog-results li i {
+      color: #ed1b24;
+      margin-right: 20px; }
+#battle-view .battlelog-winner-reveal h1, #battle-results .battlelog-winner-reveal h1 {
+  font-size: 4.00em;
+  text-align: center;
+  color: #ed1b24; }
+
+#battle-results .player-card-winner {
+  background-image: url("https://i.annihil.us/u/prod/marvel/i/mg/c/60/55b6a28ef24fa.jpg"); }
+
+#character-detail .page-titlebar {
+  width: 80%;
+  margin: 5% auto; }
+  #character-detail .page-titlebar .character-description {
     height: auto;
     width: 70%;
-    margin: 0% auto;
-    margin-bottom: 5%; }
-
-.battle-playlog {
-  height: auto;
+    display: inline-block;
+    padding-right: 2%;
+    box-sizing: border-box;
+    float: left; }
+    #character-detail .page-titlebar .character-description h1 {
+      font-size: 3.00em;
+      color: #333333;
+      margin-bottom: 4%; }
+  #character-detail .page-titlebar .character-summary {
+    height: auto;
+    width: 30%;
+    display: inline-block;
+    padding-left: 2%;
+    box-sizing: border-box;
+    float: right; }
+    #character-detail .page-titlebar .character-summary .character-score {
+      background-color: #ed1b24;
+      padding: 5%;
+      box-sizing: border-box;
+      margin-bottom: 5%; }
+      #character-detail .page-titlebar .character-summary .character-score h1 {
+        font-family: Roboto, Helvetica, Arial, sans-serif;
+        color: #ffffff;
+        font-size: 3.00em;
+        text-align: center; }
+      #character-detail .page-titlebar .character-summary .character-score h4 {
+        font-family: Roboto, Helvetica, Arial, sans-serif;
+        font-weight: 300;
+        color: #ffffff;
+        text-align: center;
+        text-transform: uppercase; }
+#character-detail .hero-banner {
+  height: 400px;
   width: 100%;
-  padding: 4% 10%;
-  box-sizing: border-box;
-  text-align: center; }
-  .battle-playlog .playlog {
-    margin: 5% 0%;
-    list-style: none; }
-    .battle-playlog .playlog li {
-      display: block;
-      margin-bottom: 1%;
-      line-height: 1.50;
-      color: #666666; }
+  display: block;
+  position: relative;
+  margin: 10% 0%;
+  background-color: #3a405a; }
+  #character-detail .hero-banner img {
+    height: auto;
+    width: 80%;
+    display: block;
+    position: absolute;
+    margin: 0% auto;
+    left: 10%;
+    top: -15%;
+    text-align: center;
+    box-shadow: 0px 0px 6px #333333; }
+#character-detail .characterdetail-stats {
+  height: auto;
+  width: 80%;
+  margin: 0% auto;
+  margin-bottom: 5%; }
+  #character-detail .characterdetail-stats h1 {
+    font-size: 3.00em;
+    margin-bottom: 5%; }
+  #character-detail .characterdetail-stats .character-radargraph {
+    height: 400px;
+    width: 100%;
+    padding: 4%;
+    box-sizing: border-box;
+    background-color: #ffffff;
+    border: 1px solid #0a122a; }
 
 /*# sourceMappingURL=style.css.map */

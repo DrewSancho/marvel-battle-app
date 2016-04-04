@@ -3,6 +3,9 @@ var _ = require('underscore');
 var $ = require('jquery');
 
 var CharacterView = Backbone.View.extend({
+
+    tagName: 'li',
+
     events: {
         'click .charImage': 'onClick'
     },

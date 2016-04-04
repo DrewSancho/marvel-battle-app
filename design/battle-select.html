@@ -4,7 +4,7 @@
 		<meta charset="utf-8">
 		<meta http-equiv="x-ua-compatible" content="ie=edge">
 
-		<title>Select Your Battle</title>
+		<title>Pick Your Battle</title>
 
 		<meta name="description" content="">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -19,7 +19,6 @@
 		<!-- SITE STYLESHEET -->
 		<link rel="stylesheet" type="text/css" href="css/style.css">
 	</head>
-
 	<body>
 
 		<!-- HEADER -->
@@ -48,64 +47,75 @@
 		</header> <!-- END HEADER -->
 
 		<!-- PAGE CONTENT -->
-		<div id="battle-select content-wrapper">
-
-			<!-- PAGE BANNER -->
-			<div class="battle-banner">
+		<div id="battle-select" class="content-wrapper">
+			
+			<!-- PAGE TITLE BANNER -->
+			<div class="battlepage-title-banner">
 				<h1>Pick Your Battle</h1>
-			</div> <!-- END BATTLE-BANNER -->
+			</div> <!-- END PAGE-TITLE-BANNER -->
 
 			<!-- BATTLE SCENE BANNER -->
 			<div class="battle-scene">
-				<div class="frame">
-					<div class="battle-player-left">
-						<img src="img/bl.jpg">
-					</div>
-					<div class="battle-player-right">
-						<img src="img/bl.jpg">	
-					</div>
-				</div>
-				<div class="battle-scene-footer">
+				
+				<!-- PLAYERS PANEL -->
+				<div class="players-panel clearfix">
+					<div class="player-card"></div>
+					<div class="player-card"></div>
+				</div> <!-- END PLAYERS-PANEL -->
+
+				<!-- BATTLE FOOTER BAR -->
+				<div class="battle-scene-footer clearfix">
+
+					<!-- PLAYER 1 SEARCH -->
 					<div class="battle-scene-search">
 						<input type="text" name="charactersearch-battleselect1" id="charactersearch-battleselect1" placeholder="Search by keyword or character name"/>
 
 						<input type="submit" value="Search"/>
+
+						<input type="submit" value="Random"/>
 					</div>
+
+					<!-- PLAYER 2 SEARCH -->
 					<div class="battle-scene-search">
-						<input type="text" name="charactersearch-battleselect2" id="charactersearch-battleselect2" placeholder="Search by keyword or character name"/>
+						<input type="text" name="charactersearch-battleselect1" id="charactersearch-battleselect1" placeholder="Search by keyword or character name"/>
 
 						<input type="submit" value="Search"/>
+
+						<input type="submit" value="Random"/>
 					</div>
-				</div> <!-- END BATTLE SCENE FOOTER -->
-			</div> <!-- END BATTLE-SCENE BANNER -->
+
+				</div> <!-- END BATTLE-SCENE-FOOTER -->
+
+			</div> <!-- END BATTLE-SCENE -->
 
 			<!-- BATTLE SCENE STATS -->
-			<div class="matchup-comparison clearfix">
+			<div class="battlelog-frame">
 				
-				<!-- MATCHUP NAMES -->
-				<div class="matchup-names clearfix">
-					<div class="matchup-player">
+				<!-- CHARACTER NAMES -->
+				<div class="character-names clearfix">
+					<div class="player-name">
 						<h1>Iron Man</h1>
 						<h4>Favorite</h4>
 					</div>
-					<div class="matchup-player">
+					<div class="player-name">
 						<h1>Loki</h1>
+						<h4></h4>
 					</div>
-				</div> <!-- END MATCHUP-NAMES -->
+				</div> <!-- END CHARACTER NAMES -->
 
 				<!-- MATCHUP CHART -->
-				<div class="matchup-chart">
+				<div class="matchup-radar-chart">
 					
-				</div> <!-- END MATCHUP-CHART -->
+				</div> <!-- END MATCHUP-RADAR-CHART -->
 
-				<!-- BATTLE BUTTON -->
-				<a href="battle-view.html" class="button">
+				<!-- BATTLEGROUND BUTTON -->
+				<a href="battle-view" class="button">
 					Take This Matchup to BattleGround
 				</a>
 
-			</div> <!-- END MATCHUP-COMPARISON -->
-			
-		</div> <!-- END CONTENT-WRAPPER -->
+			</div> <!-- END BATTLELOG-FRAME -->
+
+		</div> <!-- END PAGE CONTENT -->
 
 		<!-- FOOTER -->
 		<footer id="footer-bar">
@@ -113,9 +123,5 @@
 			<h6>Data provided by Marvel. &copy; 2014 Marvel</h6>
 		</footer> <!-- END FOOTER -->
 
-		<!-- JQUERY LINK -->
-		<!-- JAVASCRIPT LINK -->
-		<script src="js/script.js></script>
 	</body>
-
 </html>

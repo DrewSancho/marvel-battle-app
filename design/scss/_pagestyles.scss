@@ -35,3 +35,11 @@
 		color: #ffffff;
 	}
 }
+a {
+	img {
+		&:hover {
+			background-color: #ffffff;
+			opacity: 0.80;
+		}
+	}
+}

@@ -17,7 +17,7 @@ var BattleOnceView = require('./Battle/BattleOnceView');
 
 var AppRouter = Backbone.Router.extend({
     routes: {
-        '': 'index',
+        'index': 'index',
         'character': 'character',
         'character/:filter': 'character',
         'detail/:id': 'detail',
