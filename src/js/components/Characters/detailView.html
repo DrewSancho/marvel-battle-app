@@ -1,4 +1,4 @@
-<img class="thumbnail" src="<%= thumbnail.path + '.' + thumbnail.extension %>">
+<!-- <img class="thumbnail" src="<%= thumbnail.path + '.' + thumbnail.extension %>">
 <h2 class="name"> <%= name %> </h2>
 <div class="description"> <%= description %> </div>
 <div class="appearances"> <%= comics.available + events.available + series.available + stories.available %> appearances </div>
@@ -7,4 +7,41 @@
 <div class="detailNav">
 <button class="select"> select </button>
 <button class="back"> back </button>
+</div> -->
+
+
+<div id="character-detail" class="content-wrapper">
+
+    <!-- PAGE TITLE BANNER -->
+    <div class="page-titlebar clearfix">
+        
+        <!-- LEFT PANEL -->
+        <div class="character-description">
+            <h1 class="name"><%= name %></h1>
+            <p class="description"> <%= description %></p>
+        </div> <!-- END LEFT PANEL -->
+
+        <!-- RIGHT PANEL -->
+        <div class="character-summary">
+
+            <!-- SELECT BUTTON -->
+            <a href="battle-select.html" class="button select">
+                Select
+            </a>
+
+        </div> <!-- END RIGHT PANEL -->
+
+    </div> <!-- END PAGE-TITLE BANNER -->
+
+    <!-- HERO IMAGE BANNER -->
+    <div class="hero-banner">
+        <img class="thumbnail" src="<%= thumbnail.path + '/landscape_large' + '.' + thumbnail.extension %>">
+    </div> <!-- END HERO-BANNER -->
+
+    <!-- CHARACTER STATS -->
+    <div class="characterdetail-stats">
+        <h1>Stats</h1>
+        <div id="container" class="character-radargraph"></div>
+    </div>
+
 </div>

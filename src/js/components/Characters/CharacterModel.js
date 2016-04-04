@@ -2,8 +2,6 @@ var Backbone = require('backbone');
 
 var CharacterModel = Backbone.Model.extend({
 
-    tagName: 'li',
-
     url: function () {
         return 'https://gateway.marvel.com/v1/public/characters/' + this.get('id') + '?apikey=b28b7b0839633aa9e5ec65ba74293318';
     },
