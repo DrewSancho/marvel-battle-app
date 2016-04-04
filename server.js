@@ -5,8 +5,10 @@ var app = express();
 var randomFavorites = require('./src/js/components/Utilities/randomFavorites');
 
 var searchesIds = 0;
-
 var searches = [];
+
+var recentBattles = [];
+var battlesIds = 0;
 
 var stats = require('./src/js/components/Utilities/stats.json');
 
@@ -47,8 +49,21 @@ app.get('/api/stats/:id', function (req, res) {
 });
 
 app.get('/api/battles', function (req, res) {
+    // var result = recentBattles;
+
     // Get all battles, could be ordered by `order` query parameter, or filtered by a specific character
     // eg. /api/battles?order=desc&limit=5&characterId=130813
+});
+
+app.post('/api/recentBattles', function (req, res) {
+    var battleCharInfo = {
+        characterId: req.body.characterId,
+        thumbnail: req.body.thumbnail,
+        name: req.body.name,
+        id: ++battlesIds
+    };
+    recentBattles.push(battleCharInfo);
+    res.json(recentBattles);
 });
 
 app.get('/api/searches', function (req, res) {

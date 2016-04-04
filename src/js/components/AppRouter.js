@@ -14,6 +14,7 @@ var statsCache = require('./Utilities/statsCache');
 var DashboardView = require('./Dashboard/DashboardView');
 var BattleAverageView = require('./Battle/BattleAverageView');
 var BattleOnceView = require('./Battle/BattleOnceView');
+var recentBattleCollection = require('./Dashboard/RecentBattleCollection');
 
 var AppRouter = Backbone.Router.extend({
     routes: {
@@ -34,10 +35,12 @@ var AppRouter = Backbone.Router.extend({
 
         favoriteCharacterCollection.fetch();
         searchesCollection.fetch();
-        
+        // recentBattleCollection.fetch();
+
         dispatcher.trigger('app:show', new DashboardView({
             searchesCollection: searchesCollection,
-            favoriteCharacterCollection: favoriteCharacterCollection
+            favoriteCharacterCollection: favoriteCharacterCollection,
+            // recentBattleCollection: recentBattleCollection
         }));
     },
     detail: function (id) {
