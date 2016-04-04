@@ -43,7 +43,7 @@ var BattleOnceView = Backbone.View.extend({
                         if (i < results.fightData.length) {
                             battleTimeout();
                         }
-                    }, 1500);
+                    }, 3500);
                 }
                 battleTimeout();
             });

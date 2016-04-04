@@ -30,8 +30,6 @@ var BattleView = Backbone.View.extend({
         this.characterSelect2.render();
         this.$('.characterSelect-1').append(this.characterSelect1.$el);
         this.$('.characterSelect-2').append(this.characterSelect2.$el);
-        // this.$('.characterName-1').append(this.character1.get('name'));
-        // this.$('.characterName-2').append(this.character2.get('name'));
         if (this.character1) {
             this.updateBattle1(this.character1);
         }

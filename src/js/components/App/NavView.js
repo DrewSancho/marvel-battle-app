@@ -13,7 +13,7 @@ var NavView = Backbone.View.extend({
         'click .battle': 'battleView'
     },
     goHome: function () {
-        window.location.hash = 'index';
+        window.location.hash = '';
     },
     characterView: function () {
         window.location.hash = 'character';

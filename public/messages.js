@@ -7,9 +7,10 @@ var messages = {
     round : {
         full : [
             [ "The two combatants stumble back, weary from battle. ", 0, " crouches in anticipation for the next attack. ", 1, " takes a fighting stance." ],
-            [ "Both fighters step back, breathing heavily. 'You can't win', says ", 0, ". 'We'll see about that', replies ", 1, " through gritted teeth."  ]
+            [ "Both fighters step back, breathing heavily. 'You can't win', says ", 0, ". 'We'll see about that', replies ", 1, " through gritted teeth." ]
         ],
         partial : [
+            [ 1, " drops slowly to the ground. ", 0, " says, almost as easy as fighting Eric McDaniel."],
             [ 1, " tumbles to the ground, unconscious and defeated. ", 0, " raises a fist to the sky, crying, 'Victory is mine!' ", 0, " wins!" ],
             [ "After the final blow, ", 0, " is weary, but standing. ", 1, " lies unmoving and defeated. ", 0, " wins!" ],
             [ "'No more...' says ", 1, " 'You win.' ", 0, " gazes down at ", 1, ", pitiless and victorious. ", 0, " wins!" ],
@@ -19,7 +20,8 @@ var messages = {
         draw : [
             [ "The combatants stare across the broken and devistated landscape. They have fought to a standstill. 'This isn't over', says ", 0, ". ", 1, " nods and turns away, teeth gritted in frustration. 'I'll get you next time.' The fight is a draw!"  ],
             [ "Damaged and beaten, ", 0, " and ", 1, " have fought until neither combatant can continue. The fight is a draw!" ],
-            [ "Neither fighter thought that the fight would last this long. ", 0, " glares across the battlefield at ", 1, ". 'I've finally met my match' ", 0, " says. 'Alright, we'll call it a draw!'" ]
+            [ "Neither fighter thought that the fight would last this long. ", 0, " glares across the battlefield at ", 1, ". 'I've finally met my match' ", 0, " says. 'Alright, we'll call it a draw!'" ],
+            [ "Both Combatants stare complacently at each other... ", 0, " says, 'we should conserve our energy'. ", 1, " agrees, saying, 'for our real enemy... Eric McDaniel!'" ]
         ]
     },
     shoot : {
@@ -65,6 +67,7 @@ var messages = {
             ]
         },
         success : [
+            [ 0, " takes a slice of pizza and grabs ", 1, " by the back of the head, saying, 'I'll give you the ole Eazy Mcdeezy!' ", 1, " grobes blindly in the air."],
             [ 0, " lunges forward and lashes out at close range. Caught off guard, ", 1, " stumbles as the blow lands." ],
             [ "Dodging into close range, ", 0, " lands a blow, knocking ", 1, " to the ground." ],
             [ 0, " smashes into ", 1 ],
