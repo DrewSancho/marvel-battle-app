@@ -5,6 +5,8 @@ var _ = require('underscore');
 var $ = require('jquery');
 
 var CharacterSelectView = require('./CharacterSelectView');
+var PopUpSearchView = require('../PopUpSearch/PopUpSearch');
+
 var radarGraph = require('../Utilities/utility').radarGraph;
 var statsCache = require('../Utilities/statsCache');
 var dispatcher = require('../Events/dispatcher');
@@ -18,8 +20,8 @@ var BattleView = Backbone.View.extend({
         options = options || {};
         this.character1 = options.character1;
         this.character2 = options.character2;
-        this.characterSelect1 = new CharacterSelectView({ model: this.character1 });
-        this.characterSelect2 = new CharacterSelectView({ model: this.character2 });
+        this.characterSelect1 = new PopUpSearchView({ model: this.character1 });
+        this.characterSelect2 = new PopUpSearchView({ model: this.character2 });
         this.listenTo(this.characterSelect1, 'select', this.updateBattle1);
         this.listenTo(this.characterSelect2, 'select', this.updateBattle2);
     },
@@ -40,7 +42,7 @@ var BattleView = Backbone.View.extend({
     },
 
     renderGraph: function () {
-        radarGraph(this.$('#container')[0], this.stats1, this.stats2);
+        radarGraph(this.$('.matchup-radar-chart')[0], this.stats1, this.stats2);
     },
 
     events: {
@@ -68,9 +70,13 @@ var BattleView = Backbone.View.extend({
     },
 
     updateBattle1: function (model) {
+        console.log(model);
         var _this = this;
         this.character1 = model;
-        $('.characterSelect-1').animateCss('slideInLeft');
+        this.$('.characterPortrait-1').css({
+            backgroundImage: 'url(' + model.get('thumbnail').path + '.' + model.get('thumbnail').extension + ')'
+        });
+        this.updateUrl();
         statsCache.get(model.get('id'), function (stats) {
             _this.stats1 = stats;
             _this.renderGraph();
@@ -82,7 +88,9 @@ var BattleView = Backbone.View.extend({
     updateBattle2: function (model) {
         var _this = this;
         this.character2 = model;
-        $('.characterSelect-2').animateCss('slideInRight');
+        this.$('.characterPortrait-2').css({
+            backgroundImage: 'url(' + model.get('thumbnail').path + '.' + model.get('thumbnail').extension + ')'
+        });
         this.updateUrl();
         statsCache.get(model.get('id'), function (stats) {
             _this.stats2 = stats;
@@ -95,11 +103,11 @@ var BattleView = Backbone.View.extend({
         var url = 'battle/';
 
         if (this.character1) {
-            url += this.character1.get('id') + '/';
+            url += this.character1.get('id');
         }
 
         if (this.character2) {
-            url += this.character2.get('id');
+            url += '/' + this.character2.get('id');
         }
         if (this.character1 && this.character2 || this.character2 && this.character1) {
             $('.vs').html('VS');
