@@ -28,6 +28,10 @@
 			box-sizing: border-box;
 			float: right;
 
+			.back {
+				margin-bottom: 4%;
+			}
+
 			.character-score {
 				background-color: #ed1b24;
 				padding: 5%;
@@ -63,14 +67,13 @@
 			width: 80%;
 			display: block;
 			position: absolute;
-			background-size: cover;
+			background-size: contain;
 			background-repeat: no-repeat;
 			background-position: 50% 50%;
 			margin: 0% auto;
 			left: 10%;
 			top: -50px;
 			text-align: center;
-			box-shadow: 0px 0px 6px #333333;
 		}
 	}
 	.characterdetail-stats {

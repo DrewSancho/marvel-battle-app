@@ -53,7 +53,7 @@ var BattleAverageView = Backbone.View.extend({
                 $('.character2-draws').append('Draw Percentage: ' + Math.floor((results.fighter2.draws / $('.fight-num').val()) * 100) + '%');
             });
         });
-        $('input').val('');
+        $('.fight-num').val('');
     },
     onKeyDown: function (e) {
         if (e.keyCode === 13) {
