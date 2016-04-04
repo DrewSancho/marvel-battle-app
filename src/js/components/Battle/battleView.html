@@ -11,53 +11,73 @@
 <div id="container"></div>
 <button class="battle1">Battle</button>
 <button class="battle2">Battle2</button> -->
-
-<div id="battle-select content-wrapper">
-
-            <!-- PAGE BANNER -->
-            <div class="battle-banner">
+<!-- PAGE CONTENT -->
+<!-- PAGE CONTENT -->
+        <div id="battle-select" class="content-wrapper">
+            
+            <!-- PAGE TITLE BANNER -->
+            <div class="battlepage-title-banner">
                 <h1>Pick Your Battle</h1>
-            </div> <!-- END BATTLE-BANNER -->
+            </div> <!-- END PAGE-TITLE-BANNER -->
 
             <!-- BATTLE SCENE BANNER -->
             <div class="battle-scene">
-                <div class="frame">
-                    <div class="battle-player-left characterSelect-1">
-                    </div>
-                    <div class="battle-player-right characterSelect-2">
-                    </div>
-                </div>
-                <div class="battle-scene-footer">
+                
+                <!-- PLAYERS PANEL -->
+                <div class="players-panel clearfix">
+                    <div class="player-card"></div>
+                    <div class="player-card"></div>
+                </div> <!-- END PLAYERS-PANEL -->
+
+                <!-- BATTLE FOOTER BAR -->
+                <div class="battle-scene-footer clearfix">
+
+                    <!-- PLAYER 1 SEARCH -->
                     <div class="battle-scene-search">
+                        <input type="text" name="charactersearch-battleselect1" id="charactersearch-battleselect1" placeholder="Search by keyword or character name"/>
+
+                        <input type="submit" value="Search" class="submit select-left"/>
+
+                        <input type="submit" value="Random" class="random randomizer"/>
                     </div>
+
+                    <!-- PLAYER 2 SEARCH -->
                     <div class="battle-scene-search">
+                        <input type="text" name="charactersearch-battleselect1" id="charactersearch-battleselect1" placeholder="Search by keyword or character name"/>
+
+                        <input type="submit" value="Search" class="submit select-right"/>
+
+                        <input type="submit" value="Random" class="random randomizer"/>
                     </div>
-                </div> <!-- END BATTLE SCENE FOOTER -->
-            </div> <!-- END BATTLE-SCENE BANNER -->
+
+                </div> <!-- END BATTLE-SCENE-FOOTER -->
+
+            </div> <!-- END BATTLE-SCENE -->
 
             <!-- BATTLE SCENE STATS -->
-            <div class="matchup-comparison clearfix">
+            <div class="battlelog-frame">
+
+                <!-- BATTLEGROUND BUTTON -->
+                <div class="battleground-buttons">
+                    <a href="#" class="button battle2">Turn-by-Turn Fight</a>
+                    <a href="#" class="button battle1">Simulate Fight</a>
+                </div>
                 
-                <!-- MATCHUP NAMES -->
-                <div class="matchup-names clearfix">
-                    <div class="matchup-player">
-                        <h1 class="characterName-1"> <%= name %> </h1>
+                <!-- CHARACTER NAMES -->
+                <div class="character-names clearfix">
+                    <div class="player-name">
+                        <h1><%= name %></h1>
                     </div>
-                    <div class="matchup-player">
-                        <h1 class="characterName-2"> <%= name %> </h1>
+                    <div class="player-name">
+                        <h1><%= name %></h1>
                     </div>
-                </div> <!-- END MATCHUP-NAMES -->
+                </div> <!-- END CHARACTER NAMES -->
 
                 <!-- MATCHUP CHART -->
-                <div class="matchup-chart" id="container">
+                <div class="matchup-radar-chart">
                     
-                </div> <!-- END MATCHUP-CHART -->
+                </div> <!-- END MATCHUP-RADAR-CHART -->
 
-                <!-- BATTLE BUTTON -->
-                <a href="battleOnce.html" class="button battle2">
-                    Take This Matchup to BattleGround
-                </a>
+            </div> <!-- END BATTLELOG-FRAME -->
 
-            </div> <!-- END MATCHUP-COMPARISON -->
-            
-        </div> <!-- END CONTENT-WRAPPER -->
+        </div> <!-- END PAGE CONTENT -->

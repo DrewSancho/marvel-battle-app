@@ -100,7 +100,7 @@
 	}
 }
 
-#battle-select {
+#battle-select, #battle-simulate {
 	.player-card {
 		&:first-child {
 			background-image: url("../img/bl.jpg");
@@ -160,10 +160,26 @@
 			border: 1px solid #0a122a;
 			margin-bottom: 5%;
 		}
-		.button {
+		.battleground-buttons {
 			height: auto;
-			width: 70%;
+			width: 80%;
 			margin: 0% auto;
+			margin-bottom: 5%;
+			text-align: center;
+		
+			.button {
+				height: auto;
+				width: 40%;
+				display: inline-block;
+				margin: 0% auto;
+				margin-left: 3%;
+				background-color: #ed1b24;
+				color: #ffffff;
+
+				&:hover {
+					background-color: #f14950;
+				}
+			}
 		}
 	}
 	.matchup-radar-chart {
@@ -175,7 +191,7 @@
 	}
 }
 
-#battle-view, #battle-results {
+#battle-view, #battle-results, #battle-simulate, #battle-turn {
 	.player-card {
 		&:first-child {
 			background-image: url("https://i.annihil.us/u/prod/marvel/i/mg/c/60/55b6a28ef24fa.jpg");
@@ -219,6 +235,7 @@
 			box-sizing: border-box;	
 			background-color: #ffffff;
 			border: 1px solid #0a122a;
+			overflow: scroll;
 
 			ul {
 				list-style: none;
@@ -253,5 +270,29 @@
 #battle-results {
 	.player-card-winner {
 		background-image: url("https://i.annihil.us/u/prod/marvel/i/mg/c/60/55b6a28ef24fa.jpg");
+	}
+}
+
+#battle-simulate
+.battlelog-frame {
+	.character-names {
+		.player-name {
+			h4 {
+				font-size: 1.25em;
+				color: #666666;
+			}
+		}
+	}
+}
+
+#battle-turn {
+	.battlelog-results {
+		ul {
+			overflow: scroll;
+
+			li {
+				text-align: center !important;
+			}
+		}
 	}
 }
