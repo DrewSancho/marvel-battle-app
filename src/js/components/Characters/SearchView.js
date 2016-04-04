@@ -6,8 +6,6 @@ var dispatcher = require('../Events/dispatcher');
 
 var SearchView = Backbone.View.extend({
 
-    tagName: 'ul',
-
     className: 'searchView',
     template: _.template(require('./searchView.html')),
     events: {

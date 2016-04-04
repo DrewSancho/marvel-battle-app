@@ -24,7 +24,7 @@ var AppView = Backbone.View.extend({
     remove: function () {
         this.navView.remove();
         this.pageView.remove();
-        this.footerView.remove();
+        // this.footerView.remove();
         Backbone.View.prototype.remove.call(this);
     },
 

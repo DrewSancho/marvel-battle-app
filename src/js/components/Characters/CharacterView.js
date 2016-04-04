@@ -4,8 +4,6 @@ var $ = require('jquery');
 
 var CharacterView = Backbone.View.extend({
 
-    tagName: 'li',
-
     events: {
         'click .charImage': 'onClick'
     },

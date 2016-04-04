@@ -8,19 +8,19 @@ var SearchView = require('./SearchView');
 
 var CharacterListView = Backbone.View.extend({
 
-    tagName: 'li',
-
-    className: 'CharacterView',
-
     initialize: function () {
         this.characterViews = [];
         this.listenTo(this.collection, 'sync', this.render);
     },
 
+    template: _.template(require('./characterListView.html')),
+
     render: function () {
         var _this = this;
 
         this.removeChildren();
+
+        this.$el.html(this.template());
 
         this.characterViews = this.collection.map(function (model) {
             return new CharacterView({ model: model });
@@ -30,10 +30,10 @@ var CharacterListView = Backbone.View.extend({
 
         this.searchView.render();
 
-        this.$el.append(this.searchView.$el);
+        this.$('.searchSlot').append(this.searchView.$el);
 
         this.characterViews.forEach(function (view) {
-            _this.$el.append(view.$el);
+            _this.$('.resultsSlot').append(view.$el);
             statsCache.get(view.model.get('id'), view.render.bind(view));
         });
     },
