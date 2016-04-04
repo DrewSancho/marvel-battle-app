@@ -11,7 +11,7 @@
 <button class="fight-once">Fight!</button>
 <ul class="battle-messages"></ul> -->
 
-<div class="battle-scene">
+<!-- <div class="battle-scene">
     <div class="frame">
         <div class="battle-player-left character1">
             <div class="character1"></div>
@@ -39,4 +39,53 @@
         </div>
     </div>
     
-</div>
+</div> -->
+
+<!-- PAGE CONTENT -->
+        <div id="battle-turn" class="content-wrapper">
+
+            <!-- PAGE TITLE BANNER -->
+            <div class="battlepage-title-banner">
+                <h1>Get Your Fight On</h1>
+            </div> <!-- END PAGE-TITLE-BANNER -->
+
+            <!-- BATTLE SCENE BANNER -->
+            <div class="battle-scene">
+                
+                <!-- PLAYERS PANEL -->
+                <div class="players-panel clearfix">
+                    <div class="player-card character1" style="background-image: url(<%= character1.image %>)"></div>
+                    <div class="player-card character2" style="background-image: url(<%= character2.image %>)"></div>
+                </div> <!-- END PLAYERS-PANEL -->
+
+                <!-- BATTLE FOOTER BAR -->
+                <div class="battle-scene-footer clearfix">
+                    <input type="submit" value="Fight"/>
+                </div>
+
+            </div> <!-- END BATTLE-SCENE -->
+
+            <!-- BATTLE SCENE STATS -->
+            <div class="battlelog-frame">
+                
+                <!-- CHARACTER NAMES -->
+                <div class="character-names clearfix">
+                    <div class="player-name">
+                        <h1> <%= character1.name %> </h1>
+                    </div>
+                    <div class="player-name">
+                        <h1> <%= character2.name %></h1>
+                    </div>
+                </div> <!-- END CHARACTER NAMES -->
+
+                <!-- BATTLELOG BATTLE RESULTS -->
+                <div class="battlelog-results">
+                    <!-- INSERT TURN BY TURN RESULTS HERE. -->
+                    <ul>
+                    </ul>
+
+                </div> <!-- END BATTLELOG-RESULTS -->
+
+            </div> <!-- END BATTLELOG-FRAME -->
+            
+        </div> <!-- END PAGE CONTENT -->

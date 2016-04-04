@@ -22,9 +22,18 @@ var BattleOnceView = Backbone.View.extend({
     },
 
     render: function () {
+        // Mix model attributes into new object with `image` property
+        var character1 = Object.assign({
+            image: this.character1.getImage()
+        }, this.character1.attributes);
+
+        var character2 = Object.assign({
+            image: this.character2.getImage()
+        }, this.character2.attributes);
+
         this.$el.html(this.template({
-            character1: this.character1.attributes,
-            character2: this.character2.attributes
+            character1: character1,
+            character2: character2
         }));
     },
 

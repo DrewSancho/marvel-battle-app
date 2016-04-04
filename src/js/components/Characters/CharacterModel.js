@@ -7,6 +7,11 @@ var CharacterModel = Backbone.Model.extend({
     },
     parse: function (response) {
         return response.data ? response.data.results[0] : response;
+    },
+
+    getImage: function () {
+        var thumbnail = this.get('thumbnail');
+        return thumbnail.path + '/landscape_incredible' + '.' + thumbnail.extension;
     }
 });
 
