@@ -48,22 +48,28 @@ app.get('/api/stats/:id', function (req, res) {
     res.json(stat);
 });
 
-app.get('/api/battles', function (req, res) {
-    // var result = recentBattles;
+app.get('/api/recentBattles', function (req, res) {
+    var result = recentBattles;
 
-    // Get all battles, could be ordered by `order` query parameter, or filtered by a specific character
-    // eg. /api/battles?order=desc&limit=5&characterId=130813
+    // Order the results
+    if (req.query.order === 'desc') {
+        result = result.slice().sort(function (a, b) {
+            return b.date - a.date;
+        });
+    }
+
+    res.json(result.slice(0, req.query.limit || 15));
 });
 
 app.post('/api/recentBattles', function (req, res) {
     var battleCharInfo = {
-        characterId: req.body.characterId,
-        thumbnail: req.body.thumbnail,
-        name: req.body.name,
+        winner: req.body.winner,
+        loser: req.body.loser,
+        draw: req.body.draw,
         id: ++battlesIds
     };
     recentBattles.push(battleCharInfo);
-    res.json(recentBattles);
+    res.json(battleCharInfo);
 });
 
 app.get('/api/searches', function (req, res) {

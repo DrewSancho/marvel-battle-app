@@ -1,4 +1,6 @@
- <a>
-<img src="<%= thumbnail.path + '/portrait_uncanny' + '.' + thumbnail.extension %>"/>
-<h6><%= name %></h6>
+<a data-route="detail/<%= winner.id %>">
+    <img src="<%= winner.thumbnail.path + '/portrait_uncanny' + '.' + winner.thumbnail.extension %>"/>
+</a>
+<a data-route="detail/<%= loser.id %>">
+    <img src="<%= loser.thumbnail.path + '/portrait_uncanny' + '.' + loser.thumbnail.extension %>"/>
 </a>
