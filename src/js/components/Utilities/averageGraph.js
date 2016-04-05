@@ -19,7 +19,7 @@ var averageGraph = function (el, results) {
         plotOptions: {
             pie: {
                 enableMouseTracking: false,
-                colors: ['#ed1b24', '#61667b', '#ed1b24'],
+                colors: ['#be161d', '#61667b', '#f14950'],
                 dataLabels: {
                     enabled: true,
                     distance: -50,
