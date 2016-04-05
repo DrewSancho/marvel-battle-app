@@ -2,6 +2,9 @@ var Backbone = require('backbone');
 var _ = require('underscore');
 
 var PopUpSearchCharacterView = Backbone.View.extend({
+
+    tagName: 'li',
+
     initialize: function (options) {
         this.popUpSearchView = options.popUpSearchView;
     },
@@ -13,6 +16,8 @@ var PopUpSearchCharacterView = Backbone.View.extend({
             this.$el.html(this.template({
                 character: this.model.attributes
             }));
+        } else {
+            this.$el.remove();
         }
     },
 
