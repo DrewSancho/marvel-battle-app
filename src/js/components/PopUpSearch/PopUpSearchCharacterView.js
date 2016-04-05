@@ -22,7 +22,6 @@ var PopUpSearchCharacterView = Backbone.View.extend({
 
     onClick: function () {
         this.popUpSearchView.trigger('select', this.model);
-        
     }
 });
 
