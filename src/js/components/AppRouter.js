@@ -14,7 +14,7 @@ var statsCache = require('./Utilities/statsCache');
 var DashboardView = require('./Dashboard/DashboardView');
 var BattleAverageView = require('./Battle/BattleAverageView');
 var BattleOnceView = require('./Battle/BattleOnceView');
-var recentBattleCollection = require('./Dashboard/RecentBattleCollection');
+var RecentBattleCollection = require('./Dashboard/RecentBattleCollection');
 
 var AppRouter = Backbone.Router.extend({
     routes: {
@@ -32,15 +32,26 @@ var AppRouter = Backbone.Router.extend({
     },
     index: function () {
         var favoriteCharacterCollection = new FavoriteCharacterCollection();
+        var recentBattleCollection = new RecentBattleCollection();
 
         favoriteCharacterCollection.fetch();
-        searchesCollection.fetch();
-        // recentBattleCollection.fetch();
+        searchesCollection.fetch({
+            data: {
+                limit: 3,
+                order: 'desc'
+            }
+        });
+        recentBattleCollection.fetch({
+            data: {
+                limit: 3,
+                order: 'desc'
+            }
+        });
 
         dispatcher.trigger('app:show', new DashboardView({
             searchesCollection: searchesCollection,
             favoriteCharacterCollection: favoriteCharacterCollection,
-            // recentBattleCollection: recentBattleCollection
+            recentBattleCollection: recentBattleCollection
         }));
     },
     detail: function (id) {

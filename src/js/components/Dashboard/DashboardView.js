@@ -18,24 +18,24 @@ var DashboardView = Backbone.View.extend({
     initialize: function (options) {
         this.searchesCollection = options.searchesCollection;
         this.favoriteCharacterCollection = options.favoriteCharacterCollection;
-        this.RecentBattleCollection = options.RecentBattleCollection;
+        this.recentBattleCollection = options.recentBattleCollection;
         this.listenTo(this.searchesCollection, 'sync', this.render);
         this.listenTo(this.favoriteCharacterCollection, 'sync', this.render);
-        this.listenTo(this.RecentBattleCollection, 'sync', this.render);
+        this.listenTo(this.recentBattleCollection, 'sync', this.render);
 
         this.favoriteCharacterView = new FavoriteCharacterView({ collection: this.favoriteCharacterCollection });
 
         this.searchesView = new SearchesView({ collection: this.searchesCollection });
 
-        // this.RecentBattleCollectionView = new recentBattleCollectionView({ collection: this.RecentBattleCollection });
+        this.recentBattleCollectionView = new RecentBattleCollectionView({ collection: this.recentBattleCollection });
     },
 
     render: function () {
         this.$el.html(this.template());
         this.searchesView.render();
         this.favoriteCharacterView.render();
-        // this.recentBattleCollectionView.render();
-        // this.$('.recent-battles-slot').append(this.recentBattleCollectionView.$el);
+        this.recentBattleCollectionView.render();
+        this.$('.recent-battles-slot').append(this.recentBattleCollectionView.$el);
         this.$('.searches-slot').append(this.searchesView.$el);
         this.$('.random-favorites-slot').append(this.favoriteCharacterView.$el);
     },

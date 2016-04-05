@@ -2,6 +2,7 @@ var Backbone = require('backbone');
 var _ = require('underscore');
 var statsCache = require('../Utilities/statsCache.js');
 var $ = require('jquery');
+var dispatcher = require('../Events/dispatcher');
 
 var BattleOnceView = Backbone.View.extend({
 
@@ -38,13 +39,39 @@ var BattleOnceView = Backbone.View.extend({
     },
 
     fight: function () {
-        $('.battle-messages').empty();
+
         var _this = this;
+
+        $('.battle-messages').empty();
+
+        // trigger 'battle' event on the dispatcher
+
         statsCache.get(this.character1.get('id'), function (stats1) {
             statsCache.get(_this.character2.get('id'), function (stats2) {
-
                 var results = window.BattleManager.narrativeBattle(stats1, stats2, $('.fight-num').val());
+                
+                var winnerModel = _this.character1;
+                var loserModel = _this.character2;
+
+                if (_this.character2.get('id') === results.winner.id) {
+                    winnerModel = _this.character2;
+                    loserModel = _this.character1;
+                }
+
+                dispatcher.trigger('battle', {
+                    winner: {
+                        id: results.winner.id,
+                        thumbnail: winnerModel.get('thumbnail')
+                    },
+                    loser: {
+                        id: results.winner.id,
+                        thumbnail: loserModel.get('thumbnail')
+                    },
+                    draw: results.winner === 'draw'
+                });
+
                 var i = 0;
+                
                 function battleTimeout () {
                     setTimeout(function () {
                         $('.battle-messages').prepend('<li class="">' + results.fightData[i].message + '</li>');

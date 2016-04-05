@@ -39,6 +39,7 @@ var BattleAverageView = Backbone.View.extend({
         statsCache.get(this.character1.get('id'), function (stats1) {
             statsCache.get(_this.character2.get('id'), function (stats2) {
                 var results = window.BattleManager.statBattle(stats1, stats2, $('.fight-num').val());
+                console.log(results);
 
                 _this.renderGraph(results);
                 // $('.character1-wins').append('Win Percentage: ' + Math.floor((results.fighter1.wins / $('.fight-num').val()) * 100) + '%');
