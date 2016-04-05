@@ -29,13 +29,13 @@
         
         <!-- PLAYERS PANEL -->
         <div class="players-panel clearfix">
-            <img class="thumbnail player-card" src="<%= character1.thumbnail.path + '/landscape_incredible' + '.' + character1.thumbnail.extension %>">
-            <img class="thumbnail player-card" src="<%= character2.thumbnail.path + '/landscape_incredible' + '.' + character2.thumbnail.extension %>">
+            <div class="thumbnail player-card" style="background-image: url(<%= character1.thumbnail.path + '.' + character1.thumbnail.extension %>)"></div>
+            <div class="thumbnail player-card" style="background-image: url(<%= character2.thumbnail.path + '.' + character2.thumbnail.extension %>)"></div>
         </div> <!-- END PLAYERS-PANEL -->
 
         <!-- BATTLE FOOTER BAR -->
         <div class="battle-scene-footer clearfix">
-            <input class="fight-num" type="text" placeholder="Number of Fights" />
+            <input class="fight-num" type="text" placeholder="Default: 100" />
             
             <input class="fight" type="submit" value="Fight"/>
         </div>

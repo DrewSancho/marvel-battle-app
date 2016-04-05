@@ -40,9 +40,9 @@ var averageGraph = function (el, results) {
             name: 'Battle Outcome',
             innerSize: '50%',
             data: [
-                [results.fighter1.name + ' wins: ' + Math.floor(((results.fighter1.wins / $('.fight-num').val()) * 100)) + '%', results.fighter1.wins],
-                ['Draws: ' + Math.floor(((results.fighter1.draws / $('.fight-num').val()) * 100)) + '%', results.fighter1.draws],
-                [results.fighter2.name + ' wins: ' + Math.floor(((results.fighter2.wins / $('.fight-num').val()) * 100)) + '%', results.fighter2.wins]
+                [results.fighter1.name + ' wins: ' + Math.floor(((results.fighter1.wins / results.data.length) * 100)) + '%', results.fighter1.wins],
+                ['Draws: ' + Math.floor(((results.fighter1.draws / results.data.length) * 100)) + '%', results.fighter1.draws],
+                [results.fighter2.name + ' wins: ' + Math.floor(((results.fighter2.wins / results.data.length) * 100)) + '%', results.fighter2.wins]
             ]
         }]
     });
