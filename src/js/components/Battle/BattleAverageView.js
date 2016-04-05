@@ -39,7 +39,7 @@ var BattleAverageView = Backbone.View.extend({
         statsCache.get(this.character1.get('id'), function (stats1) {
             statsCache.get(_this.character2.get('id'), function (stats2) {
                 var results = window.BattleManager.statBattle(stats1, stats2, $('.fight-num').val());
-<<<<<<< HEAD
+
                 _this.renderGraph(results);
                 // $('.character1-wins').append('Win Percentage: ' + Math.floor((results.fighter1.wins / $('.fight-num').val()) * 100) + '%');
                 // $('.character1-losses').append('Loss Percentage: ' + Math.floor((results.fighter2.wins / $('.fight-num').val()) * 100) + '%');
@@ -47,15 +47,6 @@ var BattleAverageView = Backbone.View.extend({
                 // $('.character2-wins').append('Win Percentage: ' + Math.floor((results.fighter2.wins / $('.fight-num').val()) * 100) + '%');
                 // $('.character2-losses').append('Loss Percentage: ' + Math.floor((results.fighter1.wins / $('.fight-num').val()) * 100) + '%');
                 // $('.character2-draws').append('Draw Percentage: ' + Math.floor((results.fighter2.draws / $('.fight-num').val()) * 100) + '%');
-=======
-                console.log(results);
-                $('.character1-wins').append('Win Percentage: ' + Math.floor((results.fighter1.wins / $('.fight-num').val()) * 100) + '%');
-                $('.character1-losses').append('Loss Percentage: ' + Math.floor((results.fighter2.wins / $('.fight-num').val()) * 100) + '%');
-                $('.character1-draws').append('Draw Percentage: ' + Math.floor((results.fighter1.draws / $('.fight-num').val()) * 100) + '%');
-                $('.character2-wins').append('Win Percentage: ' + Math.floor((results.fighter2.wins / $('.fight-num').val()) * 100) + '%');
-                $('.character2-losses').append('Loss Percentage: ' + Math.floor((results.fighter1.wins / $('.fight-num').val()) * 100) + '%');
-                $('.character2-draws').append('Draw Percentage: ' + Math.floor((results.fighter2.draws / $('.fight-num').val()) * 100) + '%');
->>>>>>> working
             });
         });
         $('.fight-num').val('');
