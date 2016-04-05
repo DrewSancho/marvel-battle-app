@@ -38,15 +38,14 @@ var BattleAverageView = Backbone.View.extend({
         var _this = this;
         statsCache.get(this.character1.get('id'), function (stats1) {
             statsCache.get(_this.character2.get('id'), function (stats2) {
-                var results = window.BattleManager.statBattle(stats1, stats2, $('.fight-num').val());
-
+                var results = window.BattleManager.statBattle(stats1, stats2, $('.fight-num').val() || 100);
                 _this.renderGraph(results);
-                // $('.character1-wins').append('Win Percentage: ' + Math.floor((results.fighter1.wins / $('.fight-num').val()) * 100) + '%');
-                // $('.character1-losses').append('Loss Percentage: ' + Math.floor((results.fighter2.wins / $('.fight-num').val()) * 100) + '%');
-                // $('.character1-draws').append('Draw Percentage: ' + Math.floor((results.fighter1.draws / $('.fight-num').val()) * 100) + '%');
-                // $('.character2-wins').append('Win Percentage: ' + Math.floor((results.fighter2.wins / $('.fight-num').val()) * 100) + '%');
-                // $('.character2-losses').append('Loss Percentage: ' + Math.floor((results.fighter1.wins / $('.fight-num').val()) * 100) + '%');
-                // $('.character2-draws').append('Draw Percentage: ' + Math.floor((results.fighter2.draws / $('.fight-num').val()) * 100) + '%');
+                $('.character1-wins').text('Wins: ' + results.fighter1.wins);
+                $('.character1-losses').text('Losses: ' + results.fighter2.wins);
+                $('.character1-draws').text('Draws: ' + results.fighter1.draws);
+                $('.character2-wins').text('Wins: ' + results.fighter2.wins);
+                $('.character2-losses').text('Losses: ' + results.fighter1.wins);
+                $('.character2-draws').text('Draws: ' + results.fighter2.draws);
             });
         });
         $('.fight-num').val('');

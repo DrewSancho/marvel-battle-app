@@ -74,6 +74,7 @@ var BattleView = Backbone.View.extend({
             backgroundImage: 'url(' + model.get('thumbnail').path + '.' + model.get('thumbnail').extension + ')'
         });
         this.updateUrl();
+        $('.characterPortrait-1').animateCss('slideInLeft');
         statsCache.get(model.get('id'), function (stats) {
             _this.stats1 = stats;
             _this.renderGraph();
@@ -84,13 +85,13 @@ var BattleView = Backbone.View.extend({
 
     updateBattle2: function (model) {
         $('.resultsSlot').empty();
-        $('.character2').animateCss('slideInRight');
         var _this = this;
         this.character2 = model;
         this.$('.characterPortrait-2').css({
             backgroundImage: 'url(' + model.get('thumbnail').path + '.' + model.get('thumbnail').extension + ')'
         });
         this.updateUrl();
+        $('.characterPortrait-2').animateCss('slideInRight');
         statsCache.get(model.get('id'), function (stats) {
             _this.stats2 = stats;
             _this.renderGraph();
