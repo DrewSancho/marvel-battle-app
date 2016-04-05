@@ -198,14 +198,6 @@ var randomFavorites = [
             path: 'http://i.annihil.us/u/prod/marvel/i/mg/a/f0/5202887448860',
             extension: 'jpg'
         }
-    },
-    {
-        id: 9999999,
-        name: 'GioDi',
-        thumbnail: {
-            path: 'img/gio-hero',
-            extension: 'jpg'
-        }
     }
 ];
 
