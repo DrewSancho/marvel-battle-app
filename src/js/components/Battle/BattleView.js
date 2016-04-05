@@ -70,7 +70,6 @@ var BattleView = Backbone.View.extend({
     },
 
     updateBattle1: function (model) {
-        console.log(model);
         var _this = this;
         this.character1 = model;
         this.$('.characterPortrait-1').css({
