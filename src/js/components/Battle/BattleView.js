@@ -67,7 +67,7 @@ var BattleView = Backbone.View.extend({
     },
 
     updateBattle1: function (model) {
-        $('.resultsSlot').empty();
+        $('.resultsPopUpSlot').empty();
         var _this = this;
         this.character1 = model;
         this.$('.characterPortrait-1').css({
@@ -84,7 +84,7 @@ var BattleView = Backbone.View.extend({
     },
 
     updateBattle2: function (model) {
-        $('.resultsSlot').empty();
+        $('.resultsPopUpSlot').empty();
         var _this = this;
         this.character2 = model;
         this.$('.characterPortrait-2').css({

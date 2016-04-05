@@ -51,7 +51,7 @@ var PopUpSearchView = Backbone.View.extend({
 
         this.children.forEach(function (view) {
             statsCache.get(view.model.get('id'), view.render.bind(view));
-            _this.$('.resultsSlot').append(view.$el);
+            _this.$('.resultsPopUpSlot').append(view.$el);
         });
     },
     random: function () {
