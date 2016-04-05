@@ -20,8 +20,6 @@ var BattleAverageView = Backbone.View.extend({
         this.character1 = options.character1;
         this.character2 = options.character2;
         this.render();
-
-        // this.renderGraph(this.character1, this.character2);
     },
 
     render: function () {
@@ -31,8 +29,8 @@ var BattleAverageView = Backbone.View.extend({
         }));
     },
 
-    renderGraph: function () {
-        averageGraph(this.$('#container')[0], this.stats1, this.stats2);
+    renderGraph: function (results) {
+        averageGraph(this.$('.matchup-radar-chart')[0], results);
     },
 
     fight: function () {

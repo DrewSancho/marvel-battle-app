@@ -4,12 +4,9 @@ var Backbone = require('backbone');
 var _ = require('underscore');
 var $ = require('jquery');
 
-var CharacterSelectView = require('./CharacterSelectView');
 var PopUpSearchView = require('../PopUpSearch/PopUpSearch');
-
 var radarGraph = require('../Utilities/utility').radarGraph;
 var statsCache = require('../Utilities/statsCache');
-var dispatcher = require('../Events/dispatcher');
 
 var BattleView = Backbone.View.extend({
     className: 'battle-view',
@@ -85,6 +82,7 @@ var BattleView = Backbone.View.extend({
     },
 
     updateBattle2: function (model) {
+        $('.character2').animateCss('slideInRight');
         var _this = this;
         this.character2 = model;
         this.$('.characterPortrait-2').css({
